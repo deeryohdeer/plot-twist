@@ -1,0 +1,322 @@
+[
+	{
+		"activity": "International grocery snack tasting challenge",
+		"budget": "$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Any",
+		"region": "Inner West"
+	},
+	{
+		"activity": "Sunset ferry loop with no destination",
+		"budget": "$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Any",
+		"region": "Sydney CBD"
+	},
+	{
+		"activity": "Thrift store outfit styling race",
+		"budget": "$",
+		"effortLevel": "Medium",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Small group",
+		"region": "Inner West"
+	},
+	{
+		"activity": "IKEA fake apartment roleplay",
+		"budget": "$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Small group",
+		"region": "Western Sydney"
+	},
+	{
+		"activity": "Drive-thru dessert ranking tour",
+		"budget": "$$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Two people",
+		"region": "South Sydney"
+	},
+	{
+		"activity": "Night museum wandering session",
+		"budget": "$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Any",
+		"region": "Sydney CBD"
+	},
+	{
+		"activity": "Random suburb train hop exploration",
+		"budget": "$",
+		"effortLevel": "Medium",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Any",
+		"region": "Anywhere"
+	},
+	{
+		"activity": "PowerPoint night (absurd presentations)",
+		"budget": "Free",
+		"effortLevel": "Medium",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Large group",
+		"region": "Anywhere"
+	},
+	{
+		"activity": "Caf\u00e9 hopping coffee judge tour",
+		"budget": "$$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Any",
+		"region": "Inner West"
+	},
+	{
+		"activity": "Beach sunset card games session",
+		"budget": "$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Small group",
+		"region": "Eastern Suburbs"
+	},
+	{
+		"activity": "Bowling night",
+		"budget": "$$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Small group",
+		"region": "Sydney CBD"
+	},
+	{
+		"activity": "Arcade nostalgia challenge",
+		"budget": "$$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Any",
+		"region": "Sydney CBD"
+	},
+	{
+		"activity": "Mystery picnic planning game",
+		"budget": "$$",
+		"effortLevel": "Medium",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Two people",
+		"region": "Northern Beaches"
+	},
+	{
+		"activity": "Op shop gift exchange competition",
+		"budget": "$",
+		"effortLevel": "Medium",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Small group",
+		"region": "Inner West"
+	},
+	{
+		"activity": "DIY mocktail lab night",
+		"budget": "$$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Any",
+		"region": "Anywhere"
+	},
+	{
+		"activity": "Night walk playlist game",
+		"budget": "Free",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Two people",
+		"region": "Sydney CBD"
+	},
+	{
+		"activity": "Indoor rock climbing",
+		"budget": "$$",
+		"effortLevel": "High",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Two people",
+		"region": "Inner West"
+	},
+	{
+		"activity": "Board game caf\u00e9 marathon",
+		"budget": "$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Small group",
+		"region": "Sydney CBD"
+	},
+	{
+		"activity": "Ferry + suburb wander combo",
+		"budget": "$$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Any",
+		"region": "Sydney CBD"
+	},
+	{
+		"activity": "Photography scavenger hunt",
+		"budget": "Free",
+		"effortLevel": "Medium",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Any",
+		"region": "Sydney CBD"
+	},
+	{
+		"activity": "Sauna + cold plunge",
+		"budget": "$$$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Any",
+		"region": "North Shore"
+	},
+	{
+		"activity": "Cooking random country dinner",
+		"budget": "$$",
+		"effortLevel": "Medium",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Small group",
+		"region": "Anywhere"
+	},
+	{
+		"activity": "Mini golf chaos tournament",
+		"budget": "$$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Small group",
+		"region": "Sydney CBD"
+	},
+	{
+		"activity": "Bookstore journaling crawl",
+		"budget": "$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Any",
+		"region": "Inner West"
+	},
+	{
+		"activity": "Bakery tasting challenge",
+		"budget": "$$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Any",
+		"region": "Inner West"
+	},
+	{
+		"activity": "Train station lottery adventure",
+		"budget": "$",
+		"effortLevel": "Medium",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Any",
+		"region": "Anywhere"
+	},
+	{
+		"activity": "Karaoke battle night",
+		"budget": "$$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Large group",
+		"region": "Sydney CBD"
+	},
+	{
+		"activity": "Sunset lookout picnic",
+		"budget": "$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Any",
+		"region": "Eastern Suburbs"
+	},
+	{
+		"activity": "Skill learning YouTube night",
+		"budget": "Free",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Any",
+		"region": "Anywhere"
+	},
+	{
+		"activity": "Dessert-only crawl",
+		"budget": "$$",
+		"effortLevel": "Medium",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Any",
+		"region": "Sydney CBD"
+	},
+	{
+		"activity": "IKEA storytelling game",
+		"budget": "$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Small group",
+		"region": "Western Sydney"
+	},
+	{
+		"activity": "Fake travel vlog city game",
+		"budget": "Free",
+		"effortLevel": "Medium",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Two people",
+		"region": "Sydney CBD"
+	},
+	{
+		"activity": "Beach thermos hang",
+		"budget": "$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Any",
+		"region": "Eastern Suburbs"
+	},
+	{
+		"activity": "Open home wandering",
+		"budget": "Free",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Any",
+		"region": "North Shore"
+	},
+	{
+		"activity": "Random recipe roulette",
+		"budget": "$",
+		"effortLevel": "Medium",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Small group",
+		"region": "Anywhere"
+	},
+	{
+		"activity": "Night photography chaos",
+		"budget": "Free",
+		"effortLevel": "Medium",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Any",
+		"region": "Sydney CBD"
+	},
+	{
+		"activity": "Clay sculpture night",
+		"budget": "$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Small group",
+		"region": "Anywhere"
+	},
+	{
+		"activity": "Bunnings fake mission",
+		"budget": "$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Indoor",
+		"numberOfPeople": "Any",
+		"region": "Anywhere"
+	},
+	{
+		"activity": "Hot chips ranking crawl",
+		"budget": "$$",
+		"effortLevel": "Medium",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Any",
+		"region": "Northern Beaches"
+	},
+	{
+		"activity": "Backyard projector night",
+		"budget": "$$",
+		"effortLevel": "Low",
+		"indoorOrOutdoor": "Outdoor",
+		"numberOfPeople": "Large group",
+		"region": "Anywhere"
+	}
+]
