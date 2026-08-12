@@ -1,6 +1,11 @@
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 
+import json
+from storage import loadList
+
+import random
+
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
@@ -14,7 +19,9 @@ async def filterpage():
 
 @app.get("/random")
 async def randompage():
-    return {"message": "random lol xd"}
+    fullList = loadList()
+    randomResult = random.sample(fullList,10)
+    return(randomResult)
 
 @app.get("/sync")
 async def root():
