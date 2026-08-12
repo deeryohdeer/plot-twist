@@ -13,15 +13,19 @@ templates = Jinja2Templates(directory="templates")
 async def home(request: Request):
     return templates.TemplateResponse(request, "index.html")
 
-@app.get("/filter")
-async def filterpage(request: Request):
-    return templates.TemplateResponse(request, "filter.html")
-
 @app.get("/random")
 async def randompage():
     fullList = loadList()
     randomResult = random.sample(fullList,10)
     return(randomResult)
+
+@app.get("/filter")
+async def filterpage(request: Request):
+    return templates.TemplateResponse(request, "filter.html")
+
+@app.get("/results")
+async def results():
+    return {"message": "hooray!"}
 
 @app.get("/sync")
 async def root():
