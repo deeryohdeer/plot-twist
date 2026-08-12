@@ -1,5 +1,36 @@
 <html>
     <body>
-        <p>hi i work</p>
+    <form action="/results.php" method="get">
+        
+        <div>
+            <label for="numppl">How many people are coming?</label>
+
+            <select name="numppl" id="numppl">
+                <option value="any">Any</option>
+                <option value="one person">Just myself</option>
+                <option value="two people">Two people</option>
+                <option value="small group">Small group</option>
+                <option value="big group">Big group</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="indooroutdor">Indoor or outdoor?</label>
+    
+            <label>
+                <input type="radio" name="indoororoutdoor" value="indoor"> Indoor
+            </label>
+
+            <label>
+                <input type="radio" name="indoororoutdoor" value="outdoor"> Outdoor
+            </label>
+        </div>
+
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+
+    </form>
+
     </body>
 </html>
