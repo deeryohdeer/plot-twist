@@ -14,8 +14,8 @@ async def home(request: Request):
     return templates.TemplateResponse(request, "index.html")
 
 @app.get("/filter")
-async def filterpage():
-    return {"message": "this is the filter page"}
+async def filterpage(request: Request):
+    return templates.TemplateResponse(request, "filter.html")
 
 @app.get("/random")
 async def randompage():
