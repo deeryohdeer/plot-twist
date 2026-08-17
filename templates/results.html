@@ -1,0 +1,36 @@
+<html>
+    <body>
+        {% for activity in activities %}
+            
+            <h2>{{activity.activity}}</h2>
+            <div>
+                <img src="{{activity.imageAddress}}" style="width:300px;height:200px;">
+            </div>
+            <div>
+                <h5>Location: </h5>
+                {% if activity.locationHyperlink is none %}
+                    {{activity.location}}
+                {% else %}
+                    <a href="{{activity.locationHyperlink}}">{{activity.location}}</a>
+                {% endif %}
+                <h5>Description: </h5>{{activity.description}}
+                <h5>When: </h5>{{activity.timing}}
+                <h5>Cost: </h5>{{activity.cost}}
+                <div>
+                    {% if activity.linkHyperlink %}
+                        <a href={{activity.linkHyperlink}}>{{activity.link}}</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div>
+                <h2>Filter criteria</h2>
+                <h5>Group size: </h5>{{activity.numberOfPeople}}
+                <h5>Location: </h5>{{activity.indoorOrOutdoor}}
+                <h5>Budget: </h5>{{activity.budget}}
+                <h5>Effort level: </h5>{{activity.effortLevel}}
+                <h5>Region: </h5>{{activity.region}}
+            </div>
+        
+        {% endfor %}
+    </body>
+</html>

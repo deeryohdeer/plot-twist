@@ -14,10 +14,10 @@ async def home(request: Request):
     return templates.TemplateResponse(request, "index.html")
 
 @app.get("/random")
-async def randompage():
+async def randompage(request: Request):
     fullList = loadList()
     randomResult = random.sample(fullList,10)
-    return(randomResult)
+    return templates.TemplateResponse(request, "results.html", {"activities":randomResult})
 
 @app.get("/filter")
 async def filterpage(request: Request):
