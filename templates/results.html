@@ -1,36 +1,87 @@
+{% from "components/icons.html" import map_pin_icon, summary_icon,
+calendar_icon, circle_dollar_sign_icon %}
 <html>
-    <body>
-        {% for activity in activities %}
-            
-            <h2>{{activity.activity}}</h2>
-            <div>
-                <img src="{{activity.imageAddress}}" style="width:300px;height:200px;">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-keppel: #35a79b;
+        --color-bermuda: #79d8b2;
+        --color-texas: #f3f7a1;
+        --color-casablanca: #f6c146;
+        --color-carnation: #f45f57;
+        --font-lazydog: "Lazy Dog", sans-serif;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='css/style.css') }}"
+    />
+  </head>
+  <body class="p-10">
+    <div class="grid gap-8">
+      {% for activity in activities %}
+      <div class="grid max-w-xl mx-auto px-6 py-5 rounded-xl gap-5 border-4">
+        <div class="grid gap-4">
+          <h2 class="text-3xl font-bold font-lazydog">{{activity.activity}}</h2>
+          <img
+            src="{{activity.imageAddress}}"
+            class="aspect-video object-cover w-auto rounded-xl"
+          />
+        </div>
+        <div class="grid grid-cols-[1fr_200px] gap-4">
+          <div class="grid gap-3 place-content-start">
+            <div class="flex items-start gap-2">
+              {{ map_pin_icon() }} {% if activity.locationHyperlink is none %}
+              {{activity.location}} {% else %}
+              <a class="underline" href="{{activity.locationHyperlink}}"
+                >{{activity.location}}</a
+              >
+              {% endif %}
+            </div>
+            <div class="flex items-start gap-2">
+              {{ summary_icon() }} {{activity.description}}
+            </div>
+            <div class="flex items-start gap-2">
+              {{ calendar_icon() }} {{activity.timing}}
+            </div>
+            <div class="flex items-start gap-2">
+              {{ circle_dollar_sign_icon() }} {{activity.cost}}
             </div>
             <div>
-                <h5>Location: </h5>
-                {% if activity.locationHyperlink is none %}
-                    {{activity.location}}
-                {% else %}
-                    <a href="{{activity.locationHyperlink}}">{{activity.location}}</a>
-                {% endif %}
-                <h5>Description: </h5>{{activity.description}}
-                <h5>When: </h5>{{activity.timing}}
-                <h5>Cost: </h5>{{activity.cost}}
-                <div>
-                    {% if activity.linkHyperlink %}
-                        <a href={{activity.linkHyperlink}}>{{activity.link}}</a>
-                    {% endif %}
-                </div>
+              {% if activity.linkHyperlink %}
+              <a class="underline" href="{{activity.linkHyperlink}}"
+                >{{activity.link}}</a
+              >
+              {% endif %}
+            </div>
+          </div>
+          <div class="grid gap-3 place-content-start">
+            <div>
+              <strong>Group size:</strong>
+              {{activity.numberOfPeople}}
             </div>
             <div>
-                <h2>Filter criteria</h2>
-                <h5>Group size: </h5>{{activity.numberOfPeople}}
-                <h5>Location: </h5>{{activity.indoorOrOutdoor}}
-                <h5>Budget: </h5>{{activity.budget}}
-                <h5>Effort level: </h5>{{activity.effortLevel}}
-                <h5>Region: </h5>{{activity.region}}
+              <strong>Location:</strong>
+              {{activity.indoorOrOutdoor}}
             </div>
-        
-        {% endfor %}
-    </body>
+            <div>
+              <strong>Budget:</strong>
+              {{activity.budget}}
+            </div>
+            <div>
+              <strong>Effort level:</strong>
+              {{activity.effortLevel}}
+            </div>
+            <div>
+              <strong>Region:</strong>
+              {{activity.region}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </body>
 </html>
