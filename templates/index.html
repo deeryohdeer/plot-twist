@@ -1,11 +1,74 @@
 <html>
-    <body>
-        <h1>Em and Aadhya app time!</h1>
-        <p>
-            <a href="/filter">Let me narrow it down a bit</a>
-        </p>
-        <p>
-            <a href="/random">Give me anything!</a>
-        </p>
-    </body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-keppel: #35a79b;
+        --color-bermuda: #79d8b2;
+        --color-texas: #f3f7a1;
+        --color-casablanca: #f6c146;
+        --color-carnation: #f45f57;
+        --font-lazydog: "Lazy Dog", sans-serif;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='css/style.css') }}"
+    />
+  </head>
+  <body class="h-screen w-full overflow-hidden relative m-0 font-lazydog">
+    <div
+      class="site-title absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:top-16 z-10 pointer-events-none bg-white rounded-full border-4 border-black px-6 py-2"
+    >
+      <h1 class="text-3xl font-bold text-black">plottwist</h1>
+    </div>
+
+    <div class="grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 h-screen w-full">
+      <a
+        href="/filter"
+        class="hover-panel group relative flex items-center justify-center overflow-hidden"
+        data-hover-bg="#35A79B"
+      >
+        <div
+          class="absolute inset-0 bg-cover bg-left opacity-10 transition-opacity duration-500 ease-out group-hover:opacity-60 group-hover:delay-150 group-hover:ease-in"
+          style="background-image: url('{{ url_for("static", path="images/ill-decide.jpg") }}');"
+        ></div>
+        <span class="label-wrap relative inline-block px-4 z-10">
+          <span
+            class="label-highlight absolute inset-0 origin-left scale-x-0 bg-white pointer-events-none"
+          ></span>
+          <span
+            class="panel-label relative z-10 text-4xl font-semibold text-black"
+            >I'll decide</span
+          >
+        </span>
+      </a>
+      <a
+        href="/random"
+        class="hover-panel group relative flex items-center justify-center overflow-hidden"
+        data-hover-bg="#F6C146"
+      >
+        <div
+          class="absolute inset-0 bg-cover bg-left opacity-10 transition-opacity duration-500 ease-out group-hover:opacity-60"
+          style="background-image: url('{{ url_for("static", path="images/feeling-lucky.jpg") }}');"
+        ></div>
+        <span class="label-wrap relative inline-block px-4">
+          <span
+            class="label-highlight absolute inset-0 origin-left scale-x-0 bg-white pointer-events-none"
+          ></span>
+          <span
+            class="panel-label relative z-10 text-4xl font-semibold text-black"
+            >I'm feeling lucky</span
+          >
+        </span>
+      </a>
+    </div>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+    <!-- Your JavaScript -->
+    <script src="{{ url_for('static', path='js/animation.js') }}"></script>
+  </body>
 </html>
