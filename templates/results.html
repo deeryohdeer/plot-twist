@@ -12,72 +12,67 @@ calendar_icon, circle_dollar_sign_icon %}
         --color-carnation: #f45f57;
         --font-lazydog: "Lazy Dog", sans-serif;
       }
+
+      h2 {
+        @apply text-xl lg:text-3xl;
+      }
+
+      div {
+        @apply text-sm lg:text-lg;
+      }
+
+      .pill {
+        @apply text-xs lg:text-sm px-3 py-2 border-1 rounded-full;
+      }
     </style>
     <link
       rel="stylesheet"
       href="{{ url_for('static', path='css/style.css') }}"
     />
   </head>
-  <body class="p-10">
-    <div class="grid gap-8">
+  <body class="p-4 lg:p-10">
+    <div class="grid gap-4 lg:gap-8">
       {% for activity in activities %}
       <div class="grid max-w-xl mx-auto px-6 py-5 rounded-xl gap-5 border-4">
         <div class="grid gap-4">
-          <h2 class="text-3xl font-bold font-lazydog">{{activity.activity}}</h2>
+          <h2 class="font-bold font-lazydog">{{activity.activity}}</h2>
           <img
             src="{{activity.imageAddress}}"
-            class="aspect-video object-cover w-auto rounded-xl"
+            class="aspect-[4/3] object-cover w-auto rounded-xl"
           />
         </div>
-        <div class="grid grid-cols-[1fr_200px] gap-4">
-          <div class="grid gap-3 place-content-start">
-            <div class="flex items-start gap-2">
-              {{ map_pin_icon() }} {% if activity.locationHyperlink is none %}
-              {{activity.location}} {% else %}
-              <a class="underline" href="{{activity.locationHyperlink}}"
-                >{{activity.location}}</a
-              >
-              {% endif %}
-            </div>
-            <div class="flex items-start gap-2">
-              {{ summary_icon() }} {{activity.description}}
-            </div>
-            <div class="flex items-start gap-2">
-              {{ calendar_icon() }} {{activity.timing}}
-            </div>
-            <div class="flex items-start gap-2">
-              {{ circle_dollar_sign_icon() }} {{activity.cost}}
-            </div>
-            <div>
-              {% if activity.linkHyperlink %}
-              <a class="underline" href="{{activity.linkHyperlink}}"
-                >{{activity.link}}</a
-              >
-              {% endif %}
-            </div>
+        <div class="grid gap-3 place-content-start">
+          <div class="flex items-start gap-2">
+            {{ map_pin_icon() }} {% if activity.locationHyperlink is none %}
+            {{activity.location}} {% else %}
+            <a class="underline" href="{{activity.locationHyperlink}}"
+              >{{activity.location}}</a
+            >
+            {% endif %}
           </div>
-          <div class="grid gap-3 place-content-start">
-            <div>
-              <strong>Group size:</strong>
-              {{activity.numberOfPeople}}
-            </div>
-            <div>
-              <strong>Location:</strong>
-              {{activity.indoorOrOutdoor}}
-            </div>
-            <div>
-              <strong>Budget:</strong>
-              {{activity.budget}}
-            </div>
-            <div>
-              <strong>Effort level:</strong>
-              {{activity.effortLevel}}
-            </div>
-            <div>
-              <strong>Region:</strong>
-              {{activity.region}}
-            </div>
+          <div class="flex items-start gap-2">
+            {{ summary_icon() }} {{activity.description}}
           </div>
+          <div class="flex items-start gap-2">
+            {{ calendar_icon() }} {{activity.timing}}
+          </div>
+          <div class="flex items-start gap-2">
+            {{ circle_dollar_sign_icon() }} {{activity.cost}}
+          </div>
+          <div>
+            {% if activity.linkHyperlink %}
+            <a class="underline" href="{{activity.linkHyperlink}}"
+              >{{activity.link}}</a
+            >
+            {% endif %}
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <div class="pill">{{activity.numberOfPeople}}</div>
+          <div class="pill">{{activity.indoorOrOutdoor}}</div>
+          <div class="pill">{{activity.budget}}</div>
+          <div class="pill">{{activity.effortLevel}}</div>
+          <div class="pill">{{activity.region}}</div>
         </div>
       </div>
 
