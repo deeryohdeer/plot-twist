@@ -78,5 +78,10 @@ calendar_icon, circle_dollar_sign_icon %}
 
       {% endfor %}
     </div>
+
+    {% if activities|length == 0 %}
+      <h1>No results for you at the moment 😪</h1>
+      <a href="/">Go back please!</a>
+    {% endif %}
   </body>
 </html>

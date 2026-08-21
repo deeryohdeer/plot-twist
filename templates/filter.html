@@ -1,28 +1,43 @@
 <html>
     <body>
-    <form action="/results.php" method="get">
+    <form action="/results" method="get">
         
         <div>
-            <label for="numppl">How many people are coming?</label>
+            <label for="day">What day of the week?</label>
 
-            <select name="numppl" id="numppl">
-                <option value="any">Any</option>
-                <option value="one person">Just myself</option>
-                <option value="two people">Two people</option>
-                <option value="small group">Small group</option>
-                <option value="big group">Big group</option>
+            <select name="day" id="day">
+                <option value="Any">Any day</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
             </select>
         </div>
 
         <div>
-            <label for="indooroutdor">Indoor or outdoor?</label>
+            <label for="numPpl">How many people are coming?</label>
+
+            <select name="numPpl" id="numPpl">
+                <option value="Any">Any group size</option>
+                <option value="Just myself">Just myself</option>
+                <option value="Two people">Two people</option>
+                <option value="Small group">Small group</option>
+                <option value="Big group">Big group</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="indoorOutdor">Indoor or outdoor?</label>
     
             <label>
-                <input type="radio" name="indoororoutdoor" value="indoor"> Indoor
+                <input type="radio" name="indoorOutdoor" value="Indoor" checked> Indoor
             </label>
 
             <label>
-                <input type="radio" name="indoororoutdoor" value="outdoor"> Outdoor
+                <input type="radio" name="indoorOutdoor" value="Outdoor"> Outdoor
             </label>
         </div>
 

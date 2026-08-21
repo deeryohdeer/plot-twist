@@ -32,9 +32,19 @@ async def filterpage(request: Request):
     return templates.TemplateResponse(request, "filter.html")
 
 @app.get("/results")
-async def results():
-    return {"message": "hooray!"}
-
+async def read_results(request: Request, day, numPpl, indoorOutdoor):
+    fullList = loadList()
+    
+    filterNumPpl = [entry for entry in fullList if entry['numberOfPeople']==numPpl]
+    filterIndoorOutdoor = [entry for entry in filterNumPpl if entry['indoorOrOutdoor']==indoorOutdoor]
+    filterDay = [entry for entry in filterIndoorOutdoor if entry.get(day)==1]
+    
+    if len(filterDay) >= 10:
+        randomFilteredResult = random.sample(filterDay,10)
+        return templates.TemplateResponse(request, "results.html", {"activities":randomFilteredResult})
+    else:
+        return templates.TemplateResponse(request, "results.html", {"activities":filterDay})
+   
 @app.get("/sync")
 async def root():
     return {"message": "syncing..."}
