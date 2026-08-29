@@ -5,24 +5,12 @@ calendar_icon, circle_dollar_sign_icon %}
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
       @theme {
-        --color-keppel: #35a79b;
-        --color-bermuda: #79d8b2;
-        --color-texas: #f3f7a1;
         --color-casablanca: #f6c146;
+        --color-darkamethyst: #480052;
         --color-carnation: #f45f57;
+        --color-seagreen: #4c956c;
+        --color-lavender: #a09ebb;
         --font-lazydog: "Lazy Dog", sans-serif;
-      }
-
-      h2 {
-        @apply text-xl lg:text-3xl;
-      }
-
-      div {
-        @apply text-sm lg:text-lg;
-      }
-
-      .pill {
-        @apply text-xs lg:text-sm px-3 py-2 border-1 rounded-full;
       }
     </style>
     <link
@@ -30,58 +18,110 @@ calendar_icon, circle_dollar_sign_icon %}
       href="{{ url_for('static', path='css/style.css') }}"
     />
   </head>
-  <body class="p-4 lg:p-10">
-    <div class="grid gap-4 lg:gap-8">
+  <body
+    class="min-h-screen flex flex-col items-center justify-center gap-6 p-4 lg:p-10"
+  >
+    <h1 class="text-2xl lg:text-3xl font-bold font-lazydog">
+      Swipe your activities
+    </h1>
+
+    <div class="stack-scene" id="stack">
       {% for activity in activities %}
-      <div class="grid max-w-xl mx-auto px-6 py-5 rounded-xl gap-5 border-4">
-        <div class="grid gap-4">
-          <h2 class="font-bold font-lazydog">{{activity.activity}}</h2>
+      <div
+        class="card"
+        data-activity="{{activity.activity}}"
+        data-region="{{activity.region}}"
+        data-image-address="{{activity.imageAddress}}"
+        data-location="{{activity.location}}"
+        data-location-hyperlink="{{activity.locationHyperlink or ''}}"
+        data-budget="{{activity.budget}}"
+        data-effort-level="{{activity.effortLevel}}"
+        data-indoor-or-outdoor="{{activity.indoorOrOutdoor or ''}}"
+        data-number-of-people="{{activity.numberOfPeople or ''}}"
+        data-description="{{activity.description or ''}}"
+        data-cost="{{activity.cost or ''}}"
+        data-timing="{{activity.timing or ''}}"
+        data-link="{{activity.link or ''}}"
+        data-link-hyperlink="{{activity.linkHyperlink or ''}}"
+      >
+        <div class="card-face">
           <img
             src="{{activity.imageAddress}}"
-            class="aspect-[4/3] object-cover w-auto rounded-xl"
+            class="card-img"
+            alt="{{activity.activity}}"
           />
-        </div>
-        <div class="grid gap-3 place-content-start">
-          <div class="flex items-start gap-2">
-            {{ map_pin_icon() }} {% if activity.locationHyperlink is none %}
-            {{activity.location}} {% else %}
-            <a class="underline" href="{{activity.locationHyperlink}}"
-              >{{activity.location}}</a
-            >
-            {% endif %}
+          <div class="card-shade"></div>
+          <div class="card-content">
+            <span class="card-tag">{{activity.region}}</span>
+            <div class="card-title font-lazydog">{{activity.activity}}</div>
+            <div class="card-location">
+              {{ map_pin_icon() }} {% if activity.locationHyperlink %}
+              <a class="underline" href="{{activity.locationHyperlink}}"
+                >{{activity.location}}</a
+              >
+              {% else %} {{activity.location}} {% endif %}
+            </div>
+            <div class="card-pills">
+              <span class="pill">{{activity.budget}}</span>
+              <span class="pill">{{activity.effortLevel}}</span>
+            </div>
           </div>
-          <div class="flex items-start gap-2">
-            {{ summary_icon() }} {{activity.description}}
-          </div>
-          <div class="flex items-start gap-2">
-            {{ calendar_icon() }} {{activity.timing}}
-          </div>
-          <div class="flex items-start gap-2">
-            {{ circle_dollar_sign_icon() }} {{activity.cost}}
-          </div>
-          <div>
-            {% if activity.linkHyperlink %}
-            <a class="underline" href="{{activity.linkHyperlink}}"
-              >{{activity.link}}</a
-            >
-            {% endif %}
-          </div>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <div class="pill">{{activity.numberOfPeople}}</div>
-          <div class="pill">{{activity.indoorOrOutdoor}}</div>
-          <div class="pill">{{activity.budget}}</div>
-          <div class="pill">{{activity.effortLevel}}</div>
-          <div class="pill">{{activity.region}}</div>
+          <div class="card-like">LIKE</div>
+          <div class="card-nope">NOPE</div>
         </div>
       </div>
-
       {% endfor %}
     </div>
 
-    {% if activities|length == 0 %}
-      <h1>No results for you at the moment 😪</h1>
-      <a href="/">Go back please!</a>
-    {% endif %}
+    <div class="stack-counter" id="stack-counter"></div>
+    <button class="stack-restart" id="stack-restart">↺ Restart</button>
+    <p class="stack-hint">Drag left to pass · right to keep</p>
+
+    <div class="activity-modal-backdrop" id="activity-modal-backdrop">
+      <div class="activity-modal" role="dialog" aria-modal="true">
+        <button
+          class="activity-modal-close"
+          id="activity-modal-close"
+          aria-label="Close"
+        >
+          ✕
+        </button>
+        <div class="activity-modal-img-wrap">
+          <img class="activity-modal-img" id="activity-modal-img" alt="" />
+        </div>
+        <div class="activity-modal-body">
+          <span class="activity-modal-tag" id="activity-modal-region"></span>
+          <h2
+            class="activity-modal-title font-lazydog"
+            id="activity-modal-title"
+          ></h2>
+          <div class="activity-modal-location" id="activity-modal-location">
+            {{ map_pin_icon() }}
+            <span id="activity-modal-location-text"></span>
+          </div>
+          <div class="activity-modal-pills" id="activity-modal-pills"></div>
+          <div class="activity-modal-row" id="activity-modal-description-row">
+            {{ summary_icon() }}
+            <span id="activity-modal-description"></span>
+          </div>
+          <div class="activity-modal-row" id="activity-modal-timing-row">
+            {{ calendar_icon() }}
+            <span id="activity-modal-timing"></span>
+          </div>
+          <div class="activity-modal-row" id="activity-modal-cost-row">
+            {{ circle_dollar_sign_icon() }}
+            <span id="activity-modal-cost"></span>
+          </div>
+          <a
+            class="activity-modal-link"
+            id="activity-modal-link"
+            target="_blank"
+            rel="noopener"
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', path='js/card-stack.js') }}"></script>
   </body>
 </html>
