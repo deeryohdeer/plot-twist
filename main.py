@@ -31,24 +31,24 @@ async def randompage(request: Request):
 async def filterpage(request: Request):
     return templates.TemplateResponse(request, "filter.html")
 
-@app.get("/filtermore")
-async def root():
-    return {"message": "more filters coming"}
-    
 @app.get("/results")
-async def read_results(request: Request, day, numPpl, indoorOutdoor):
+async def read_results(request: Request, day, numPpl, indoorOutdoor, budget, effortLevel, region):
     fullList = loadList()
     
-    filterNumPpl = [entry for entry in fullList if entry['numberOfPeople'] in (numPpl, "Any")]
-    filterIndoorOutdoor = [entry for entry in filterNumPpl if indoorOutdoor=="Any" or entry['indoorOrOutdoor']==indoorOutdoor]
-    filterDay = [entry for entry in filterIndoorOutdoor if entry.get(day)==1]
-    
-    if len(filterDay) >= 10:
-        randomFilteredResult = random.sample(filterDay,10)
-        return templates.TemplateResponse(request, "results.html", {"activities":randomFilteredResult})
+    filterNumPpl = [entry for entry in fullList if numPpl=="Any" or entry["numberOfPeople"] in (numPpl, "Any")]
+    filterIndoorOutdoor = [entry for entry in filterNumPpl if indoorOutdoor=="Any" or entry['indoorOrOutdoor']==indoorOutdoor]   
+    filterDay = [entry for entry in filterIndoorOutdoor if day=="Any" or entry.get(day)==1]
+    filterBudget = [entry for entry in filterDay if budget=="Any" or entry['budget']==budget]
+    filterEffortLevel = [entry for entry in filterBudget if effortLevel=="Any" or entry['effortLevel']==effortLevel]
+    filterRegion = [entry for entry in filterEffortLevel if region=="Any" or entry['region']==region]
+
+    if len(filterRegion) >= 10:
+        randomFilteredResult = random.sample(filterRegion,10)
+        return templates.TemplateResponse(request, "results.html", {"activities":filterRegion})
     else:
-        return templates.TemplateResponse(request, "results.html", {"activities":filterDay})
-   
+        return templates.TemplateResponse(request, "results.html", {"activities":filterRegion})
+    return []
+
 @app.get("/sync")
 async def root():
     return {"message": "syncing..."}

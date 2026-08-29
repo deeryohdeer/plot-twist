@@ -1,6 +1,7 @@
 <html>
     <body>
-    <form action="/results" method="get">
+   
+        <form action="/results" method="get">
         
         <div>
             <label for="day">What day of the week?</label>
@@ -33,15 +34,61 @@
             <label for="indoorOutdor">Indoor or outdoor?</label>
     
             <select name="indoorOutdoor" id="indoorOutdoor">
-                <option value="Any">Anywhere</option>
+                <option value="Any">Either is fine</option>
                 <option value="Indoor">Indoor</option>
                 <option value="Outdoor">Outdoor</option>
             </select>
         </div>
 
-        <div>
-            <input type="submit" value="Submit!">
+     <div>
+            <label for="budget">What's your budget?</label>
+            
+            <select name="budget" id="budget">
+                <option value="Any">Any budget</option>
+                <option value="Free">Free</option>
+                <option value="$">$</option>
+                <option value="$$">$$</option>
+                <option value="$$$">$$$</option>
+            </select>
         </div>
+
+        <div>
+            <label for="effortLevel">How much effort do you want to spend?</label>
+
+            <select name="effortLevel" id="effortLevel">
+                <option value="Any">I'll put in any effort</option>
+                <option value="Low">Something easy please</option>
+                <option value="Medium">I've got a bit of energy</option>
+                <option value="High">Give me all you got</option>
+            </select>
+        </div>
+
+        <div>
+        
+            <label for="region">Where would you like to go?</label>
+
+            <select name="region" id="region">
+                <option value="Anywhere">I'll go anywhere</option>
+                <option value="Sydney CBD">Sydney CBD</option>
+                <option value="Inner West">Inner West</option>
+                <option value="Eastern Suburbs">Eastern Suburbs</option>
+                <option value="North Shore">North Shore</option>
+                <option value="Northern Beaches">Northern Beaches</option>
+                <option value="South Sydney">South Sydney</option>
+                <option value="Western Sydney">Western Sydney</option>
+                <option value="Blue Mountains">Blue Mountains</option>
+                <option value="Central Coast">Central Coast</option>
+                <option value="Hunter/Newcastle">Hunter/Newcastle</option>
+                <option value="Southern Highlands">Southern Highlands</option>
+                <option value="South Coast">South Coast</option>
+                <option value="NSW - Other">NSW - Other</option>
+            </select>
+
+        <div>
+
+    <div>
+        <input type="submit" value="Submit!">
+    </div>
 
     </form>
 
@@ -49,9 +96,10 @@
          <input type="button" value="Take me back!" onclick="history.back()">
     </form>
 
-    <form>
-        <input type="button" value="Let me filter some more" onclick=location.href="/filtermore">
+    <form method="POST">
+        <button type="submit" name="action" value="filtermore">Let me filter some more</button>
     </form>
 
     </body>
-</html>
+
+    </html>
