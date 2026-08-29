@@ -7,6 +7,7 @@
 
   const STACK_DEPTH = 5; // cards beyond this depth stay flattened at the back
   const THRESHOLD = 100;
+  const TAP_THRESHOLD = 10; // max pointer movement (px) still counted as a tap
 
   const initialOrder = [...stack.querySelectorAll(".card")].reverse(); // top card last
   let cards = [...initialOrder];
@@ -34,13 +35,14 @@
     const remaining = total - removed;
     counter.textContent =
       remaining === 0
-        ? "All done! 🎉"
+        ? "Out of cards :("
         : `${remaining} card${remaining > 1 ? "s" : ""} remaining`;
   }
   updateCounter();
 
   function dismiss(card) {
-    card.style.transition = "transform .5s cubic-bezier(.4,0,.6,1), opacity .5s";
+    card.style.transition =
+      "transform .5s cubic-bezier(.4,0,.6,1), opacity .5s";
     card.style.transform = "translate(-600px, 50px) rotate(-25deg)";
     card.style.opacity = "0";
     card.dataset.gone = "1";
@@ -53,7 +55,8 @@
   }
 
   function requeue(card) {
-    card.style.transition = "transform .5s cubic-bezier(.4,0,.6,1), opacity .4s";
+    card.style.transition =
+      "transform .5s cubic-bezier(.4,0,.6,1), opacity .4s";
     card.style.transform = "translate(600px, 50px) rotate(25deg)";
     card.style.opacity = "0";
 
@@ -65,16 +68,124 @@
       card.style.transition = "none";
       card.style.transform = "translateY(60px) scale(0.86)";
       card.offsetHeight; // force reflow so the jump doesn't animate
-      card.style.transition = "transform .4s cubic-bezier(.34,1.2,.64,1), opacity .4s";
+      card.style.transition =
+        "transform .4s cubic-bezier(.34,1.2,.64,1), opacity .4s";
       card.style.opacity = "1";
       layoutStack();
     }, 500);
   }
 
+  const modalBackdrop = document.getElementById("activity-modal-backdrop");
+  const modalClose = document.getElementById("activity-modal-close");
+  const modalImg = document.getElementById("activity-modal-img");
+  const modalRegion = document.getElementById("activity-modal-region");
+  const modalTitle = document.getElementById("activity-modal-title");
+  const modalLocationText = document.getElementById(
+    "activity-modal-location-text",
+  );
+  const modalPills = document.getElementById("activity-modal-pills");
+  const modalDescriptionRow = document.getElementById(
+    "activity-modal-description-row",
+  );
+  const modalDescription = document.getElementById(
+    "activity-modal-description",
+  );
+  const modalTimingRow = document.getElementById("activity-modal-timing-row");
+  const modalTiming = document.getElementById("activity-modal-timing");
+  const modalCostRow = document.getElementById("activity-modal-cost-row");
+  const modalCost = document.getElementById("activity-modal-cost");
+  const modalLink = document.getElementById("activity-modal-link");
+
+  function pill(text) {
+    const span = document.createElement("span");
+    span.className = "pill";
+    span.textContent = text;
+    return span;
+  }
+
+  function openModal(card) {
+    if (!modalBackdrop) return;
+    const d = card.dataset;
+
+    modalImg.src = d.imageAddress || "";
+    modalImg.alt = d.activity || "";
+    modalRegion.textContent = d.region || "";
+    modalTitle.textContent = d.activity || "";
+
+    modalLocationText.innerHTML = "";
+    if (d.locationHyperlink) {
+      const a = document.createElement("a");
+      a.href = d.locationHyperlink;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.className = "underline";
+      a.textContent = d.location || "";
+      modalLocationText.appendChild(a);
+    } else {
+      modalLocationText.textContent = d.location || "";
+    }
+
+    modalPills.innerHTML = "";
+    [d.budget, d.effortLevel, d.indoorOrOutdoor, d.numberOfPeople]
+      .filter(Boolean)
+      .forEach((text) => modalPills.appendChild(pill(text)));
+
+    modalDescriptionRow.style.display = d.description ? "flex" : "none";
+    modalDescription.textContent = d.description || "";
+
+    modalTimingRow.style.display = d.timing ? "flex" : "none";
+    modalTiming.textContent = d.timing || "";
+
+    modalCostRow.style.display = d.cost ? "flex" : "none";
+    modalCost.textContent = d.cost || "";
+
+    if (d.linkHyperlink) {
+      modalLink.href = d.linkHyperlink;
+      modalLink.textContent = d.link || "More info";
+      modalLink.style.display = "inline-block";
+    } else {
+      modalLink.style.display = "none";
+    }
+
+    modalBackdrop.classList.add("open");
+  }
+
+  function closeModal() {
+    modalBackdrop.classList.remove("open");
+  }
+
+  if (modalBackdrop) {
+    modalClose.addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+        return;
+      }
+
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      if (modalBackdrop.classList.contains("open")) return;
+
+      const visible = visibleCards();
+      const topCard = visible[visible.length - 1];
+      if (!topCard) return;
+
+      e.preventDefault();
+      if (e.key === "ArrowLeft") {
+        dismiss(topCard);
+      } else {
+        requeue(topCard);
+      }
+    });
+  }
+
   function initCard(card) {
     let startX = 0,
       startY = 0;
-    let currentX = 0;
+    let currentX = 0,
+      currentY = 0;
     let dragging = false;
 
     const like = card.querySelector(".card-like");
@@ -97,7 +208,7 @@
       if (!dragging) return;
       const pt = e.touches ? e.touches[0] : e;
       currentX = pt.clientX - startX;
-      const currentY = pt.clientY - startY;
+      currentY = pt.clientY - startY;
       const rot = currentX * 0.08;
 
       card.style.transform = `translate(${currentX}px,${currentY}px) rotate(${rot}deg)`;
@@ -121,6 +232,8 @@
       like.style.opacity = 0;
       nope.style.opacity = 0;
 
+      const moved = Math.max(Math.abs(currentX), Math.abs(currentY));
+
       if (currentX > THRESHOLD) {
         requeue(card);
       } else if (currentX < -THRESHOLD) {
@@ -128,8 +241,10 @@
       } else {
         card.style.transition = "transform .5s cubic-bezier(.34,1.56,.64,1)";
         layoutStack();
+        if (moved < TAP_THRESHOLD) openModal(card);
       }
       currentX = 0;
+      currentY = 0;
     }
 
     card.addEventListener("pointerdown", onStart);
