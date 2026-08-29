@@ -42,11 +42,12 @@ async def read_results(request: Request, day, numPpl, indoorOutdoor, budget, eff
     filterEffortLevel = [entry for entry in filterBudget if effortLevel=="Any" or entry['effortLevel']==effortLevel]
     filterRegion = [entry for entry in filterEffortLevel if region=="Any" or entry['region']==region]
 
-    if len(filterRegion) >= 10:
+    finalFilteredRange = filterRegion
+    if len(finalFilteredRange) >= 10:
         randomFilteredResult = random.sample(filterRegion,10)
-        return templates.TemplateResponse(request, "results.html", {"activities":filterRegion})
+        return templates.TemplateResponse(request, "results.html", {"activities":finalFilteredRange})
     else:
-        return templates.TemplateResponse(request, "results.html", {"activities":filterRegion})
+        return templates.TemplateResponse(request, "results.html", {"activities":finalFilteredRange})
     return []
 
 @app.get("/sync")
