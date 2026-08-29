@@ -31,12 +31,16 @@ async def randompage(request: Request):
 async def filterpage(request: Request):
     return templates.TemplateResponse(request, "filter.html")
 
+@app.get("/filtermore")
+async def root():
+    return {"message": "more filters coming"}
+    
 @app.get("/results")
 async def read_results(request: Request, day, numPpl, indoorOutdoor):
     fullList = loadList()
     
-    filterNumPpl = [entry for entry in fullList if entry['numberOfPeople']==numPpl]
-    filterIndoorOutdoor = [entry for entry in filterNumPpl if entry['indoorOrOutdoor']==indoorOutdoor]
+    filterNumPpl = [entry for entry in fullList if entry['numberOfPeople'] in (numPpl, "Any")]
+    filterIndoorOutdoor = [entry for entry in filterNumPpl if indoorOutdoor=="Any" or entry['indoorOrOutdoor']==indoorOutdoor]
     filterDay = [entry for entry in filterIndoorOutdoor if entry.get(day)==1]
     
     if len(filterDay) >= 10:

@@ -32,19 +32,25 @@
         <div>
             <label for="indoorOutdor">Indoor or outdoor?</label>
     
-            <label>
-                <input type="radio" name="indoorOutdoor" value="Indoor" checked> Indoor
-            </label>
-
-            <label>
-                <input type="radio" name="indoorOutdoor" value="Outdoor"> Outdoor
-            </label>
+            <select name="indoorOutdoor" id="indoorOutdoor">
+                <option value="Any">Anywhere</option>
+                <option value="Indoor">Indoor</option>
+                <option value="Outdoor">Outdoor</option>
+            </select>
         </div>
 
         <div>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit!">
         </div>
 
+    </form>
+
+    <form>
+         <input type="button" value="Take me back!" onclick="history.back()">
+    </form>
+
+    <form>
+        <input type="button" value="Let me filter some more" onclick=location.href="/filtermore">
     </form>
 
     </body>
