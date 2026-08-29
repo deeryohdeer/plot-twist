@@ -20,6 +20,7 @@
     lastBackgroundColor = color;
     document.body.style.backgroundColor = color;
   }
+  randomizePageBackground();
 
   const initialOrder = [...stack.querySelectorAll(".card")].reverse(); // top card last
   let cards = [...initialOrder];
