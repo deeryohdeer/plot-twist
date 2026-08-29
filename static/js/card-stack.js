@@ -20,6 +20,7 @@
     lastBackgroundColor = color;
     document.body.style.backgroundColor = color;
   }
+  randomizePageBackground();
 
   const initialOrder = [...stack.querySelectorAll(".card")].reverse(); // top card last
   let cards = [...initialOrder];
@@ -27,7 +28,7 @@
   let removed = 0;
 
   function visibleCards() {
-    return cards.filter((c) => !c.dataset.gone);
+    return cards.filter((c) => !c.dataset.gone && !c.dataset.requeuing);
   }
 
   function layoutStack() {
@@ -68,6 +69,9 @@
   }
 
   function requeue(card) {
+    if (card.dataset.requeuing) return;
+    card.dataset.requeuing = "1";
+
     card.style.transition =
       "transform .5s cubic-bezier(.4,0,.6,1), opacity .4s";
     card.style.transform = "translate(600px, 50px) rotate(25deg)";
@@ -77,6 +81,7 @@
     setTimeout(() => {
       cards = cards.filter((c) => c !== card);
       cards.unshift(card);
+      delete card.dataset.requeuing;
 
       // Jump to the back of the stack while invisible, then fade back in.
       card.style.transition = "none";
