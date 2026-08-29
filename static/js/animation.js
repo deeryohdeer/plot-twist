@@ -14,24 +14,15 @@ if (canHover) {
     const tl = gsap.timeline({ paused: true });
 
     tl.to(
-      panel,
+      label,
       {
-        backgroundColor: panel.dataset.hoverBg,
+        opacity: 1,
+        scale: 1.05,
         duration: 0.6,
         ease: "power2.out",
       },
       0
     )
-      .to(
-        label,
-        {
-          opacity: 1,
-          scale: 1.05,
-          duration: 0.6,
-          ease: "power2.out",
-        },
-        0
-      )
       .to(
         highlight,
         {

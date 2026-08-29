@@ -1,3 +1,4 @@
+{% from "components/icons.html" import map_pin_icon, calendar_icon, circle_dollar_sign_icon %}
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +13,15 @@
         --font-lazydog: "Lazy Dog", sans-serif;
       }
     </style>
+    <style>
+      @keyframes doodle-float {
+        0%, 100% { transform: translateY(0) rotate(var(--doodle-rot, 0deg)); }
+        50% { transform: translateY(-10px) rotate(var(--doodle-rot, 0deg)); }
+      }
+      .doodle-float {
+        animation: doodle-float 4.5s ease-in-out infinite;
+      }
+    </style>
     <link
       rel="stylesheet"
       href="{{ url_for('static', path='css/style.css') }}"
@@ -19,21 +29,78 @@
   </head>
   <body class="h-screen w-full overflow-hidden relative m-0 font-lazydog">
     <div
-      class="site-title absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:top-16 z-10 pointer-events-none bg-white rounded-full border-4 border-black px-6 py-2"
+      class="site-title absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:top-16 z-20 pointer-events-none bg-white rounded-full border-4 border-black px-6 py-2"
     >
       <h1 class="text-3xl font-bold text-black">plottwist</h1>
     </div>
 
+    <!-- Jagged seam: vertical on desktop -->
+    <svg
+      class="hidden md:block absolute inset-y-0 left-1/2 -translate-x-1/2 h-full w-10 z-10 pointer-events-none"
+      viewBox="0 0 20 200"
+      preserveAspectRatio="none"
+    >
+      <polyline
+        points="10,0 18,20 2,40 18,60 2,80 18,100 2,120 18,140 2,160 18,180 10,200"
+        fill="none"
+        stroke="black"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+
+    <!-- Jagged seam: horizontal on mobile -->
+    <svg
+      class="md:hidden absolute inset-x-0 top-1/2 -translate-y-1/2 w-full h-10 z-10 pointer-events-none"
+      viewBox="0 0 200 20"
+      preserveAspectRatio="none"
+    >
+      <polyline
+        points="0,10 20,2 40,18 60,2 80,18 100,2 120,18 140,2 160,18 180,2 200,10"
+        fill="none"
+        stroke="black"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+
     <div class="grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 h-screen w-full">
       <a
         href="/filter"
-        class="hover-panel group relative flex items-center justify-center overflow-hidden"
-        data-hover-bg="#35A79B"
+        class="hover-panel group relative flex flex-col items-center justify-center overflow-hidden bg-casablanca"
       >
         <div
-          class="absolute inset-0 bg-cover bg-left opacity-10 transition-opacity duration-500 ease-out group-hover:opacity-60 group-hover:delay-150 group-hover:ease-in"
-          style="background-image: url('{{ url_for("static", path="images/ill-decide.jpg") }}');"
+          class="absolute inset-0 pointer-events-none opacity-30"
+          style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxmaWx0ZXIgaWQ9Im4iPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjg1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI24pIi8+PC9zdmc+'); background-size: 180px 180px; background-repeat: repeat; background-blend-mode: overlay;"
         ></div>
+        <div
+          class="absolute inset-0 pointer-events-none bg-black opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-25"
+        ></div>
+
+        <div
+          class="absolute top-[16%] left-[12%] scale-125 md:scale-150 transition-transform duration-500 ease-out group-hover:scale-150 md:group-hover:scale-[1.75] text-darkamethyst/60"
+        >
+          <div class="doodle-float" style="--doodle-rot: -8deg; animation-delay: 0s;">
+            {{ map_pin_icon() }}
+          </div>
+        </div>
+        <div
+          class="absolute bottom-[20%] left-[20%] scale-110 md:scale-125 transition-transform duration-500 ease-out group-hover:scale-125 md:group-hover:scale-150 text-darkamethyst/50"
+        >
+          <div class="doodle-float" style="--doodle-rot: 6deg; animation-delay: 1.1s;">
+            {{ calendar_icon() }}
+          </div>
+        </div>
+        <div
+          class="absolute top-[24%] right-[16%] scale-110 md:scale-125 transition-transform duration-500 ease-out group-hover:scale-125 md:group-hover:scale-150 text-darkamethyst/50"
+        >
+          <div class="doodle-float" style="--doodle-rot: -4deg; animation-delay: 2.2s;">
+            {{ circle_dollar_sign_icon() }}
+          </div>
+        </div>
+
         <span class="label-wrap relative inline-block px-4 z-10">
           <span
             class="label-highlight absolute inset-0 origin-left scale-x-0 bg-white pointer-events-none"
@@ -43,17 +110,60 @@
             >I'll decide</span
           >
         </span>
+        <p class="relative z-10 mt-2 text-sm md:text-base text-black/60 font-medium">
+          narrow it down
+        </p>
       </a>
       <a
         href="/random"
-        class="hover-panel group relative flex items-center justify-center overflow-hidden"
-        data-hover-bg="#F6C146"
+        class="hover-panel group relative flex flex-col items-center justify-center overflow-hidden bg-darkamethyst"
       >
         <div
-          class="absolute inset-0 bg-cover bg-left opacity-10 transition-opacity duration-500 ease-out group-hover:opacity-60"
-          style="background-image: url('{{ url_for("static", path="images/feeling-lucky.jpg") }}');"
+          class="absolute inset-0 pointer-events-none opacity-30"
+          style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxmaWx0ZXIgaWQ9Im4iPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjg1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI24pIi8+PC9zdmc+'); background-size: 180px 180px; background-repeat: repeat; background-blend-mode: overlay;"
         ></div>
-        <span class="label-wrap relative inline-block px-4">
+        <div
+          class="absolute inset-0 pointer-events-none bg-black opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-25"
+        ></div>
+
+        <div
+          class="absolute top-[18%] right-[14%] transition-transform duration-500 ease-out group-hover:scale-125 text-casablanca/80"
+        >
+          <div class="doodle-float" style="--doodle-rot: 10deg; animation-delay: 0.4s;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sparkle-icon w-8 h-8 md:w-10 md:h-10">
+              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.937A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+              <path d="M20 3v4"/>
+              <path d="M22 5h-4"/>
+              <path d="M4 17v2"/>
+              <path d="M5 18H3"/>
+            </svg>
+          </div>
+        </div>
+        <div
+          class="absolute bottom-[22%] right-[22%] transition-transform duration-500 ease-out group-hover:scale-125 text-casablanca/60"
+        >
+          <div class="doodle-float" style="--doodle-rot: -10deg; animation-delay: 1.6s;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 md:w-9 md:h-9">
+              <rect x="3" y="3" width="18" height="18" rx="4"/>
+              <circle cx="8" cy="8" r="1.2" fill="currentColor" stroke="none"/>
+              <circle cx="16" cy="8" r="1.2" fill="currentColor" stroke="none"/>
+              <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/>
+              <circle cx="8" cy="16" r="1.2" fill="currentColor" stroke="none"/>
+              <circle cx="16" cy="16" r="1.2" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+        </div>
+        <div
+          class="absolute top-[26%] left-[16%] transition-transform duration-500 ease-out group-hover:scale-125 text-casablanca/50"
+        >
+          <div class="doodle-float" style="--doodle-rot: 6deg; animation-delay: 2.6s;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 md:w-9 md:h-9">
+              <path d="M3 12c2-5 6-5 9 0s7 5 9 0"/>
+            </svg>
+          </div>
+        </div>
+
+        <span class="label-wrap relative inline-block px-4 z-10">
           <span
             class="label-highlight absolute inset-0 origin-left scale-x-0 bg-white pointer-events-none"
           ></span>
@@ -62,6 +172,9 @@
             >I'm feeling lucky</span
           >
         </span>
+        <p class="relative z-10 mt-2 text-sm md:text-base text-white/60 font-medium">
+          leave it to chance
+        </p>
       </a>
     </div>
 
