@@ -9,6 +9,18 @@
   const THRESHOLD = 100;
   const TAP_THRESHOLD = 10; // max pointer movement (px) still counted as a tap
 
+  const SWIPE_BACKGROUND_COLORS = ["#f6c146", "#f45f57", "#4c956c", "#a09ebb"];
+  let lastBackgroundColor = null;
+
+  function randomizePageBackground() {
+    const choices = SWIPE_BACKGROUND_COLORS.filter(
+      (c) => c !== lastBackgroundColor,
+    );
+    const color = choices[Math.floor(Math.random() * choices.length)];
+    lastBackgroundColor = color;
+    document.body.style.backgroundColor = color;
+  }
+
   const initialOrder = [...stack.querySelectorAll(".card")].reverse(); // top card last
   let cards = [...initialOrder];
   const total = cards.length;
@@ -46,6 +58,7 @@
     card.style.transform = "translate(-600px, 50px) rotate(-25deg)";
     card.style.opacity = "0";
     card.dataset.gone = "1";
+    randomizePageBackground();
 
     removed++;
     updateCounter();
@@ -59,6 +72,7 @@
       "transform .5s cubic-bezier(.4,0,.6,1), opacity .4s";
     card.style.transform = "translate(600px, 50px) rotate(25deg)";
     card.style.opacity = "0";
+    randomizePageBackground();
 
     setTimeout(() => {
       cards = cards.filter((c) => c !== card);
