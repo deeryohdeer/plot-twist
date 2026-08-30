@@ -27,7 +27,10 @@ calendar_icon, circle_dollar_sign_icon %}
 
     <div>
       {% if has_next %}
-        <a href="/results?day={{day}}&numPpl={{numPpl}}&indoorOutdoor={{indoorOutdoor}}&budget={{budget}}&effortLevel={{effortLevel}}&region={{region}}&page={{page+1}}&seed={{seed}}">I want more</a>
+      <a
+        href="/results?day={{day}}&numPpl={{numPpl}}&indoorOutdoor={{indoorOutdoor}}&budget={{budget}}&effortLevel={{effortLevel}}&region={{region}}&page={{page+1}}&seed={{seed}}"
+        >I want more</a
+      >
       {% endif %}
     </div>
 
@@ -41,9 +44,9 @@ calendar_icon, circle_dollar_sign_icon %}
         data-location="{{activity.location}}"
         data-location-hyperlink="{{activity.locationHyperlink or ''}}"
         data-budget="{{activity.budget}}"
-        data-effort-level="{{activity.effortLevel}}"
+        data-effort-level="{{activity.effortLevel}} Effort"
         data-indoor-or-outdoor="{{activity.indoorOrOutdoor or ''}}"
-        data-number-of-people="{{activity.numberOfPeople or ''}}"
+        data-number-of-people="{{ 'Any Group Size' if activity.numberOfPeople == 'Any' else (activity.numberOfPeople or '') }}"
         data-description="{{activity.description or ''}}"
         data-cost="{{activity.cost or ''}}"
         data-timing="{{activity.timing or ''}}"
@@ -69,7 +72,7 @@ calendar_icon, circle_dollar_sign_icon %}
             </div>
             <div class="card-pills">
               <span class="pill">{{activity.budget}}</span>
-              <span class="pill">{{activity.effortLevel}}</span>
+              <span class="pill">{{activity.effortLevel}} Effort</span>
             </div>
           </div>
           <div class="card-like">LIKE</div>

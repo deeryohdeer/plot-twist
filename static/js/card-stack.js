@@ -157,7 +157,7 @@
     }
 
     modalPills.innerHTML = "";
-    [d.budget, d.effortLevel, d.indoorOrOutdoor, d.numberOfPeople]
+    [d.budget, d.effortLevel, d.indoorOrOutdoor, d.numberOfPeople, d.region]
       .filter(Boolean)
       .forEach((text) => modalPills.appendChild(pill(text)));
 
@@ -196,11 +196,7 @@
         return;
       }
 
-      if (
-        e.key !== "ArrowLeft" &&
-        e.key !== "ArrowRight" &&
-        e.key !== " "
-      )
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight" && e.key !== " ")
         return;
       if (modalBackdrop.classList.contains("open")) return;
 
