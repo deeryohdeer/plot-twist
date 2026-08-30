@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Query
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
@@ -32,7 +32,10 @@ async def filterpage(request: Request):
     return templates.TemplateResponse(request, "filter.html")
 
 @app.get("/results")
-async def read_results(request: Request, day, numPpl, indoorOutdoor, budget, effortLevel, region):
+async def read_results(request: Request, day, numPpl, indoorOutdoor, budget, effortLevel, region, page: int=Query(1,ge=1), seed: int|None=None):
+    
+    if seed is None:
+        seed = random.randint(1,1_000_000)
     fullList = loadList()
     
     filterNumPpl = [entry for entry in fullList if numPpl=="Any" or entry["numberOfPeople"] in (numPpl, "Any")]
@@ -43,12 +46,37 @@ async def read_results(request: Request, day, numPpl, indoorOutdoor, budget, eff
     filterRegion = [entry for entry in filterEffortLevel if region=="Any" or entry['region']==region]
 
     finalFilteredRange = filterRegion
-    if len(finalFilteredRange) >= 10:
-        randomFilteredResult = random.sample(filterRegion,10)
-        return templates.TemplateResponse(request, "results.html", {"activities":finalFilteredRange})
+
+    rng = random.Random(seed)
+    rng.shuffle(finalFilteredRange)
+    
+    pageSize = 10
+    start = (page - 1)*pageSize
+    end = start + pageSize
+
+
+    return templates.TemplateResponse(request, "results.html", context={
+        "results": finalFilteredRange[start:end],
+        "page": page,
+        "seed": seed,
+        "has_next": end < len(finalFilteredRange),
+        "day": day, 
+        "numPpl": numPpl, 
+        "indoorOutdoor": indoorOutdoor, 
+        "budget": budget, 
+        "effortLevel": effortLevel, 
+        "region": region
+    })
+
+@app.get("/activities/{id}")
+async def getActivity(request: Request, id:str):
+    fullList = loadList()
+
+    filterActivity = [entry for entry in fullList if entry["id"]==id]
+    if len(filterActivity) > 0:
+        return templates.TemplateResponse(request, "getactivity.html", {"activities":filterActivity})
     else:
-        return templates.TemplateResponse(request, "results.html", {"activities":finalFilteredRange})
-    return []
+        return templates.TemplateResponse(request, "404.html")
 
 @app.get("/sync")
 async def root():

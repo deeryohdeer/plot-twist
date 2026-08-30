@@ -21,7 +21,8 @@
 		"Sunday": 0,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/www.sydneysalsaclasses.com.au\/free-beginners-class"
+		"linkHyperlink": "https:\/\/www.sydneysalsaclasses.com.au\/free-beginners-class",
+		"id": "000001"
 	},
 	{
 		"activity": "Improv class",
@@ -45,7 +46,8 @@
 		"Sunday": 0,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/www.eventbrite.com.au\/e\/comedy-class-improvisation-2026-tickets-1978556731445?aff=oddtdtcreator"
+		"linkHyperlink": "https:\/\/www.eventbrite.com.au\/e\/comedy-class-improvisation-2026-tickets-1978556731445?aff=oddtdtcreator",
+		"id": "000002"
 	},
 	{
 		"activity": "Wheel throwing taster session",
@@ -69,7 +71,8 @@
 		"Sunday": 0,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/claysydney.com\/products\/wheel-taster"
+		"linkHyperlink": "https:\/\/claysydney.com\/products\/wheel-taster",
+		"id": "000003"
 	},
 	{
 		"activity": "Queer linedancing",
@@ -93,7 +96,8 @@
 		"Sunday": 0,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/linktr.ee\/saddleclub"
+		"linkHyperlink": "https:\/\/linktr.ee\/saddleclub",
+		"id": "000004"
 	},
 	{
 		"activity": "Rat Klub comedy night",
@@ -117,7 +121,8 @@
 		"Sunday": 0,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/whatson.cityofsydney.nsw.gov.au\/events\/rat-klub-comedy"
+		"linkHyperlink": "https:\/\/whatson.cityofsydney.nsw.gov.au\/events\/rat-klub-comedy",
+		"id": "000005"
 	},
 	{
 		"activity": "Secret magic show",
@@ -141,7 +146,8 @@
 		"Sunday": 1,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/www.theblackties.com.au\/wizards-hideout"
+		"linkHyperlink": "https:\/\/www.theblackties.com.au\/wizards-hideout",
+		"id": "000006"
 	},
 	{
 		"activity": "Irish dance course",
@@ -165,7 +171,8 @@
 		"Sunday": 0,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/www.kennedydanceschool.com\/adults"
+		"linkHyperlink": "https:\/\/www.kennedydanceschool.com\/adults",
+		"id": "000007"
 	},
 	{
 		"activity": "Pontoon Salsa Thursdays",
@@ -189,7 +196,8 @@
 		"Sunday": 0,
 		"Any": 1.0,
 		"link": null,
-		"linkHyperlink": null
+		"linkHyperlink": null,
+		"id": "000008"
 	},
 	{
 		"activity": "Markerspace workshops",
@@ -213,7 +221,8 @@
 		"Sunday": 0,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/www.cityofsydney.nsw.gov.au\/talks-courses-workshops\/makerspace-workshops-ideas-lab"
+		"linkHyperlink": "https:\/\/www.cityofsydney.nsw.gov.au\/talks-courses-workshops\/makerspace-workshops-ideas-lab",
+		"id": "000009"
 	},
 	{
 		"activity": "Irish music sessions",
@@ -237,7 +246,8 @@
 		"Sunday": 1,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/www.bushmusic.org.au\/bmc_music_irish.shtml"
+		"linkHyperlink": "https:\/\/www.bushmusic.org.au\/bmc_music_irish.shtml",
+		"id": "000010"
 	},
 	{
 		"activity": "Join a shanty singing club",
@@ -261,7 +271,8 @@
 		"Sunday": 0,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/www.instagram.com\/redfernshantyclub\/"
+		"linkHyperlink": "https:\/\/www.instagram.com\/redfernshantyclub\/",
+		"id": "000011"
 	},
 	{
 		"activity": "Underwater hockey",
@@ -285,7 +296,8 @@
 		"Sunday": 0,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/nswunderwaterhockey.com\/clubs\/sydney"
+		"linkHyperlink": "https:\/\/nswunderwaterhockey.com\/clubs\/sydney",
+		"id": "000012"
 	},
 	{
 		"activity": "Fencing lesson",
@@ -309,7 +321,8 @@
 		"Sunday": 0,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/theoldswordclub.com\/fencing\/"
+		"linkHyperlink": "https:\/\/theoldswordclub.com\/fencing\/",
+		"id": "000013"
 	},
 	{
 		"activity": "Archery class",
@@ -333,7 +346,8 @@
 		"Sunday": 1,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/www.sydneyolympicpark.nsw.gov.au\/things-to-see-and-do\/bronze-arrow-session-beginner"
+		"linkHyperlink": "https:\/\/www.sydneyolympicpark.nsw.gov.au\/things-to-see-and-do\/bronze-arrow-session-beginner",
+		"id": "000014"
 	},
 	{
 		"activity": "Live drawing class",
@@ -357,7 +371,8 @@
 		"Sunday": 0,
 		"Any": 1.0,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/totalbore.com\/"
+		"linkHyperlink": "https:\/\/totalbore.com\/",
+		"id": "000015"
 	},
 	{
 		"activity": "Movie in a vintage cocktail parlour",
@@ -381,6 +396,7 @@
 		"Sunday": 0,
 		"Any": null,
 		"link": "Click here for more information",
-		"linkHyperlink": "https:\/\/whatson.cityofsydney.nsw.gov.au\/events\/dulcies-picture-house-movies-in-a-vintage-cocktail-parlour"
+		"linkHyperlink": "https:\/\/whatson.cityofsydney.nsw.gov.au\/events\/dulcies-picture-house-movies-in-a-vintage-cocktail-parlour",
+		"id": "000016"
 	}
 ]

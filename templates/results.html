@@ -25,8 +25,14 @@ calendar_icon, circle_dollar_sign_icon %}
       Swipe your activities
     </h1>
 
+    <div>
+      {% if has_next %}
+        <a href="/results?day={{day}}&numPpl={{numPpl}}&indoorOutdoor={{indoorOutdoor}}&budget={{budget}}&effortLevel={{effortLevel}}&region={{region}}&page={{page+1}}&seed={{seed}}">I want more</a>
+      {% endif %}
+    </div>
+
     <div class="stack-scene" id="stack">
-      {% for activity in activities %}
+      {% for activity in results %}
       <div
         class="card"
         data-activity="{{activity.activity}}"
