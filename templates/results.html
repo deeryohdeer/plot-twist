@@ -1,5 +1,5 @@
-{% from "components/icons.html" import map_pin_icon, summary_icon,
-calendar_icon, circle_dollar_sign_icon %}
+{% from "components/icons.html" import map_pin_icon %} {% from
+"components/activity_card.html" import activity_card %}
 <html>
   <head>
     <title>plottwist</title>
@@ -38,7 +38,8 @@ calendar_icon, circle_dollar_sign_icon %}
     <div>
       {% if has_next %}
       <a
-        href="/results?day={{day}}&numPpl={{numPpl}}&indoorOutdoor={{indoorOutdoor}}&budget={{budget}}&effortLevel={{effortLevel}}&region={{region}}&page={{page+1}}&seed={{seed}}"
+        class="btn-hover-pop inline-block"
+        href="/results?isRandom={{isRandom}}&day={{day}}&numPpl={{numPpl}}&indoorOutdoor={{indoorOutdoor}}&budget={{budget}}&effortLevel={{effortLevel}}&region={{region}}&page={{page+1}}&seed={{seed}}"
         >I want more</a
       >
       {% endif %}
@@ -48,6 +49,7 @@ calendar_icon, circle_dollar_sign_icon %}
       {% for activity in results %}
       <div
         class="card"
+        data-id="{{activity.id}}"
         data-activity="{{activity.activity}}"
         data-region="{{activity.region}}"
         data-image-address="{{activity.imageAddress}}"
@@ -98,48 +100,18 @@ calendar_icon, circle_dollar_sign_icon %}
     <div class="activity-modal-backdrop" id="activity-modal-backdrop">
       <div class="activity-modal" role="dialog" aria-modal="true">
         <button
-          class="activity-modal-close"
+          class="activity-modal-close btn-hover-pop"
           id="activity-modal-close"
           aria-label="Close"
         >
           ✕
         </button>
-        <div class="activity-modal-img-wrap">
-          <img class="activity-modal-img" id="activity-modal-img" alt="" />
-        </div>
-        <div class="activity-modal-body">
-          <h2
-            class="activity-modal-title font-lazydog"
-            id="activity-modal-title"
-          ></h2>
-          <div class="activity-modal-location" id="activity-modal-location">
-            {{ map_pin_icon() }}
-            <span id="activity-modal-location-text"></span>
-          </div>
-          <div class="activity-modal-pills" id="activity-modal-pills"></div>
-          <div class="activity-modal-row" id="activity-modal-description-row">
-            {{ summary_icon() }}
-            <span id="activity-modal-description"></span>
-          </div>
-          <div class="activity-modal-row" id="activity-modal-timing-row">
-            {{ calendar_icon() }}
-            <span id="activity-modal-timing"></span>
-          </div>
-          <div class="activity-modal-row" id="activity-modal-cost-row">
-            {{ circle_dollar_sign_icon() }}
-            <span id="activity-modal-cost"></span>
-          </div>
-          <a
-            class="activity-modal-link"
-            id="activity-modal-link"
-            target="_blank"
-            rel="noopener"
-          ></a>
-        </div>
+        {{ activity_card() }}
       </div>
     </div>
 
     <script src="{{ url_for('static', path='js/card-stack.js') }}"></script>
+    <script src="{{ url_for('static', path='js/share.js') }}"></script>
     <script src="{{ url_for('static', path='js/register-sw.js') }}"></script>
   </body>
 </html>
