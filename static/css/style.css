@@ -140,12 +140,14 @@ body {
 .card-like {
   left: 1.25rem;
   color: #35a79b;
+  background: #fff;
   border-color: #35a79b;
   transform: rotate(-12deg);
 }
 .card-nope {
   right: 1.25rem;
   color: #f45f57;
+  background: #fff;
   border-color: #f45f57;
   transform: rotate(12deg);
 }

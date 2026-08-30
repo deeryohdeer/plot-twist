@@ -62,7 +62,6 @@ calendar_icon, circle_dollar_sign_icon %}
           />
           <div class="card-shade"></div>
           <div class="card-content">
-            <span class="card-tag">{{activity.region}}</span>
             <div class="card-title font-lazydog">{{activity.activity}}</div>
             <div class="card-location">
               {{ map_pin_icon() }} {% if activity.locationHyperlink %}
@@ -76,7 +75,7 @@ calendar_icon, circle_dollar_sign_icon %}
               <span class="pill">{{activity.effortLevel}} Effort</span>
             </div>
           </div>
-          <div class="card-like">LIKE</div>
+          <div class="card-like">YOPE</div>
           <div class="card-nope">NOPE</div>
         </div>
       </div>
@@ -100,7 +99,6 @@ calendar_icon, circle_dollar_sign_icon %}
           <img class="activity-modal-img" id="activity-modal-img" alt="" />
         </div>
         <div class="activity-modal-body">
-          <span class="activity-modal-tag" id="activity-modal-region"></span>
           <h2
             class="activity-modal-title font-lazydog"
             id="activity-modal-title"
