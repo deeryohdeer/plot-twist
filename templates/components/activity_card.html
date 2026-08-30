@@ -1,5 +1,5 @@
 {% from "components/icons.html" import map_pin_icon, summary_icon,
-calendar_icon, circle_dollar_sign_icon, share_icon %}
+calendar_icon, circle_dollar_sign_icon, link_icon %}
 
 {% macro activity_card(activity=None, share_url=None) %}
 {% set a = activity or {} %}
@@ -109,7 +109,7 @@ calendar_icon, circle_dollar_sign_icon, share_icon %}
         aria-label="Share"
         data-share-url="{{ share_url or '' }}"
       >
-        {{ share_icon(class_="!w-4 !h-4") }}
+        {{ link_icon(class_="!w-4 !h-4") }}
       </button>
       <div
         class="activity-modal-share-popover"

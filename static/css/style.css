@@ -344,8 +344,8 @@ body {
 }
 
 .activity-modal-share-btn {
-  width: 32px;
-  height: 32px;
+  width: 2.2rem;
+  height: 2.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -467,8 +467,8 @@ body {
   }
 
   .activity-modal-share-btn {
-    width: 40px;
-    height: 40px;
+    width: 2.8rem;
+    height: 2.8rem;
   }
 
   .activity-modal-share-popover {
