@@ -1,105 +1,182 @@
 <html>
-    <body>
-   
-        <form action="/results" method="get">
-        
-        <div>
-            <label for="day">What day of the week?</label>
+  <head>
+    <title>plottwist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#480052" />
+    <link rel="manifest" href="{{ url_for('static', path='manifest.webmanifest') }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', path='icons/favicon-32.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', path='icons/favicon-16.png') }}" />
+    <link rel="apple-touch-icon" href="{{ url_for('static', path='icons/apple-touch-icon.png') }}" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="plottwist" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-casablanca: #f6c146;
+        --color-darkamethyst: #480052;
+        --color-carnation: #f45f57;
+        --color-seagreen: #4c956c;
+        --color-lavender: #a09ebb;
+        --font-lazydog: "Lazy Dog", sans-serif;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='css/style.css') }}"
+    />
+  </head>
+  <body
+    class="min-h-screen flex flex-col items-center gap-6 p-4 py-8 lg:p-10 bg-white"
+  >
+    <h1 class="text-2xl lg:text-3xl font-bold font-lazydog text-center">
+      Let's narrow it down
+    </h1>
 
-            <select name="day" id="day">
-                <option value="Any">Any day</option>
-                <option value="Monday">Monday</option>
-                <option value="Tuesday">Tuesday</option>
-                <option value="Wednesday">Wednesday</option>
-                <option value="Thursday">Thursday</option>
-                <option value="Friday">Friday</option>
-                <option value="Saturday">Saturday</option>
-                <option value="Sunday">Sunday</option>
-            </select>
-        </div>
+    <form
+      action="/results"
+      method="get"
+      class="w-full max-w-md flex flex-col gap-5"
+    >
+      <div class="flex flex-col gap-1">
+        <label for="day" class="text-sm font-medium text-black/70"
+          >What day of the week?</label
+        >
+        <select
+          name="day"
+          id="day"
+          class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
+        >
+          <option value="Any">Any day</option>
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
+          <option value="Saturday">Saturday</option>
+          <option value="Sunday">Sunday</option>
+        </select>
+      </div>
 
-        <div>
-            <label for="numPpl">How many people are coming?</label>
+      <div class="flex flex-col gap-1">
+        <label for="numPpl" class="text-sm font-medium text-black/70"
+          >How many people are coming?</label
+        >
+        <select
+          name="numPpl"
+          id="numPpl"
+          class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
+        >
+          <option value="Any">Any group size</option>
+          <option value="Just myself">Just myself</option>
+          <option value="Two people">Two people</option>
+          <option value="Small group">Small group</option>
+          <option value="Big group">Big group</option>
+        </select>
+      </div>
 
-            <select name="numPpl" id="numPpl">
-                <option value="Any">Any group size</option>
-                <option value="Just myself">Just myself</option>
-                <option value="Two people">Two people</option>
-                <option value="Small group">Small group</option>
-                <option value="Big group">Big group</option>
-            </select>
-        </div>
+      <div class="flex flex-col gap-1">
+        <label for="indoorOutdoor" class="text-sm font-medium text-black/70"
+          >Indoor or outdoor?</label
+        >
+        <select
+          name="indoorOutdoor"
+          id="indoorOutdoor"
+          class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
+        >
+          <option value="Any">Indoor/Outdoor</option>
+          <option value="Indoor">Indoor only</option>
+          <option value="Outdoor">Outdoor only</option>
+        </select>
+      </div>
 
-        <div>
-            <label for="indoorOutdor">Indoor or outdoor?</label>
-    
-            <select name="indoorOutdoor" id="indoorOutdoor">
-                <option value="Any">Indoor/Outdoor</option>
-                <option value="Indoor">Indoor only</option>
-                <option value="Outdoor">Outdoor only</option>
-            </select>
-        </div>
+      <div class="flex flex-col gap-1">
+        <label for="budget" class="text-sm font-medium text-black/70"
+          >What's your budget?</label
+        >
+        <select
+          name="budget"
+          id="budget"
+          class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
+        >
+          <option value="Any">Any budget</option>
+          <option value="Free">Free</option>
+          <option value="$">$</option>
+          <option value="$$">$$</option>
+          <option value="$$$">$$$</option>
+        </select>
+      </div>
 
-     <div>
-            <label for="budget">What's your budget?</label>
-            
-            <select name="budget" id="budget">
-                <option value="Any">Any budget</option>
-                <option value="Free">Free</option>
-                <option value="$">$</option>
-                <option value="$$">$$</option>
-                <option value="$$$">$$$</option>
-            </select>
-        </div>
+      <div class="flex flex-col gap-1">
+        <label for="effortLevel" class="text-sm font-medium text-black/70"
+          >How much effort do you want to spend?</label
+        >
+        <select
+          name="effortLevel"
+          id="effortLevel"
+          class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
+        >
+          <option value="Any">I'll put in any effort</option>
+          <option value="Low">Something easy please</option>
+          <option value="Medium">I've got a bit of energy</option>
+          <option value="High">Give me all you got</option>
+        </select>
+      </div>
 
-        <div>
-            <label for="effortLevel">How much effort do you want to spend?</label>
+      <div class="flex flex-col gap-1">
+        <label for="region" class="text-sm font-medium text-black/70"
+          >Where would you like to go?</label
+        >
+        <select
+          name="region"
+          id="region"
+          class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
+        >
+          <option value="Any">I'll go anywhere</option>
+          <option value="Sydney CBD">Sydney CBD</option>
+          <option value="Inner West">Inner West</option>
+          <option value="Eastern Suburbs">Eastern Suburbs</option>
+          <option value="North Shore">North Shore</option>
+          <option value="Northern Beaches">Northern Beaches</option>
+          <option value="South Sydney">South Sydney</option>
+          <option value="Western Sydney">Western Sydney</option>
+          <option value="Blue Mountains">Blue Mountains</option>
+          <option value="Central Coast">Central Coast</option>
+          <option value="Hunter/Newcastle">Hunter/Newcastle</option>
+          <option value="Southern Highlands">Southern Highlands</option>
+          <option value="South Coast">South Coast</option>
+          <option value="NSW - Other">NSW - Other</option>
+        </select>
+      </div>
 
-            <select name="effortLevel" id="effortLevel">
-                <option value="Any">I'll put in any effort</option>
-                <option value="Low">Something easy please</option>
-                <option value="Medium">I've got a bit of energy</option>
-                <option value="High">Give me all you got</option>
-            </select>
-        </div>
+      <input
+        type="submit"
+        value="Submit!"
+        class="w-full rounded-full border-2 border-black bg-casablanca px-6 py-3 font-semibold text-black cursor-pointer"
+      />
+    </form>
 
-        <div>
-        
-            <label for="region">Where would you like to go?</label>
+    <div class="w-full max-w-md flex flex-col gap-3">
+      <form>
+        <input
+          type="button"
+          value="Take me back!"
+          onclick="history.back()"
+          class="w-full rounded-full border-2 border-black bg-white px-6 py-3 font-semibold text-black cursor-pointer"
+        />
+      </form>
 
-            <select name="region" id="region">
-                <option value="Any">I'll go anywhere</option>
-                <option value="Sydney CBD">Sydney CBD</option>
-                <option value="Inner West">Inner West</option>
-                <option value="Eastern Suburbs">Eastern Suburbs</option>
-                <option value="North Shore">North Shore</option>
-                <option value="Northern Beaches">Northern Beaches</option>
-                <option value="South Sydney">South Sydney</option>
-                <option value="Western Sydney">Western Sydney</option>
-                <option value="Blue Mountains">Blue Mountains</option>
-                <option value="Central Coast">Central Coast</option>
-                <option value="Hunter/Newcastle">Hunter/Newcastle</option>
-                <option value="Southern Highlands">Southern Highlands</option>
-                <option value="South Coast">South Coast</option>
-                <option value="NSW - Other">NSW - Other</option>
-            </select>
-
-        <div>
-
-    <div>
-        <input type="submit" value="Submit!">
+      <form method="POST">
+        <button
+          type="submit"
+          name="action"
+          value="filtermore"
+          class="w-full rounded-full border-2 border-black bg-lavender px-6 py-3 font-semibold text-black cursor-pointer"
+        >
+          Let me filter some more
+        </button>
+      </form>
     </div>
-
-    </form>
-
-    <form>
-         <input type="button" value="Take me back!" onclick="history.back()">
-    </form>
-
-    <form method="POST">
-        <button type="submit" name="action" value="filtermore">Let me filter some more</button>
-    </form>
-
-    </body>
-
-    </html>
+    <script src="{{ url_for('static', path='js/register-sw.js') }}"></script>
+  </body>
+</html>

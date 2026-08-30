@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request, Query
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import FileResponse
 
 import json
 from storage import loadList
@@ -21,11 +22,19 @@ templates = Jinja2Templates(directory="templates")
 async def home(request: Request):
     return templates.TemplateResponse(request, "index.html")
 
+@app.get("/sw.js")
+async def service_worker():
+    return FileResponse("static/sw.js", media_type="application/javascript")
+
+@app.get("/favicon.ico")
+async def favicon():
+    return FileResponse("static/icons/favicon.ico", media_type="image/x-icon")
+
 @app.get("/random")
 async def randompage(request: Request):
     fullList = loadList()
     randomResult = random.sample(fullList,10)
-    return templates.TemplateResponse(request, "results.html", {"activities":randomResult})
+    return templates.TemplateResponse(request, "results.html", {"results":randomResult})
 
 @app.get("/filter")
 async def filterpage(request: Request):

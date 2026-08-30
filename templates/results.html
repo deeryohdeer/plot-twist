@@ -2,6 +2,16 @@
 calendar_icon, circle_dollar_sign_icon %}
 <html>
   <head>
+    <title>plottwist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#480052" />
+    <link rel="manifest" href="{{ url_for('static', path='manifest.webmanifest') }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', path='icons/favicon-32.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', path='icons/favicon-16.png') }}" />
+    <link rel="apple-touch-icon" href="{{ url_for('static', path='icons/apple-touch-icon.png') }}" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="plottwist" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
       @theme {
@@ -21,13 +31,16 @@ calendar_icon, circle_dollar_sign_icon %}
   <body
     class="min-h-screen flex flex-col items-center justify-center gap-6 p-4 lg:p-10"
   >
-    <h1 class="text-2xl lg:text-3xl font-bold font-lazydog">
-      Swipe your activities
+    <h1 class="text-2xl lg:text-3xl font-bold font-lazydog pt-6 lg:pt-0">
+      Swipe till it sticks
     </h1>
 
     <div>
       {% if has_next %}
-        <a href="/results?day={{day}}&numPpl={{numPpl}}&indoorOutdoor={{indoorOutdoor}}&budget={{budget}}&effortLevel={{effortLevel}}&region={{region}}&page={{page+1}}&seed={{seed}}">I want more</a>
+      <a
+        href="/results?day={{day}}&numPpl={{numPpl}}&indoorOutdoor={{indoorOutdoor}}&budget={{budget}}&effortLevel={{effortLevel}}&region={{region}}&page={{page+1}}&seed={{seed}}"
+        >I want more</a
+      >
       {% endif %}
     </div>
 
@@ -41,9 +54,9 @@ calendar_icon, circle_dollar_sign_icon %}
         data-location="{{activity.location}}"
         data-location-hyperlink="{{activity.locationHyperlink or ''}}"
         data-budget="{{activity.budget}}"
-        data-effort-level="{{activity.effortLevel}}"
+        data-effort-level="{{activity.effortLevel}} Effort"
         data-indoor-or-outdoor="{{activity.indoorOrOutdoor or ''}}"
-        data-number-of-people="{{activity.numberOfPeople or ''}}"
+        data-number-of-people="{{ 'Any Group Size' if activity.numberOfPeople == 'Any' else (activity.numberOfPeople or '') }}"
         data-description="{{activity.description or ''}}"
         data-cost="{{activity.cost or ''}}"
         data-timing="{{activity.timing or ''}}"
@@ -58,7 +71,6 @@ calendar_icon, circle_dollar_sign_icon %}
           />
           <div class="card-shade"></div>
           <div class="card-content">
-            <span class="card-tag">{{activity.region}}</span>
             <div class="card-title font-lazydog">{{activity.activity}}</div>
             <div class="card-location">
               {{ map_pin_icon() }} {% if activity.locationHyperlink %}
@@ -69,10 +81,10 @@ calendar_icon, circle_dollar_sign_icon %}
             </div>
             <div class="card-pills">
               <span class="pill">{{activity.budget}}</span>
-              <span class="pill">{{activity.effortLevel}}</span>
+              <span class="pill">{{activity.effortLevel}} Effort</span>
             </div>
           </div>
-          <div class="card-like">LIKE</div>
+          <div class="card-like">YOPE</div>
           <div class="card-nope">NOPE</div>
         </div>
       </div>
@@ -96,7 +108,6 @@ calendar_icon, circle_dollar_sign_icon %}
           <img class="activity-modal-img" id="activity-modal-img" alt="" />
         </div>
         <div class="activity-modal-body">
-          <span class="activity-modal-tag" id="activity-modal-region"></span>
           <h2
             class="activity-modal-title font-lazydog"
             id="activity-modal-title"
@@ -129,5 +140,6 @@ calendar_icon, circle_dollar_sign_icon %}
     </div>
 
     <script src="{{ url_for('static', path='js/card-stack.js') }}"></script>
+    <script src="{{ url_for('static', path='js/register-sw.js') }}"></script>
   </body>
 </html>

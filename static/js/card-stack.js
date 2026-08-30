@@ -109,7 +109,6 @@
   const modalBackdrop = document.getElementById("activity-modal-backdrop");
   const modalClose = document.getElementById("activity-modal-close");
   const modalImg = document.getElementById("activity-modal-img");
-  const modalRegion = document.getElementById("activity-modal-region");
   const modalTitle = document.getElementById("activity-modal-title");
   const modalLocationText = document.getElementById(
     "activity-modal-location-text",
@@ -140,7 +139,6 @@
 
     modalImg.src = d.imageAddress || "";
     modalImg.alt = d.activity || "";
-    modalRegion.textContent = d.region || "";
     modalTitle.textContent = d.activity || "";
 
     modalLocationText.innerHTML = "";
@@ -157,7 +155,7 @@
     }
 
     modalPills.innerHTML = "";
-    [d.budget, d.effortLevel, d.indoorOrOutdoor, d.numberOfPeople]
+    [d.budget, d.effortLevel, d.indoorOrOutdoor, d.numberOfPeople, d.region]
       .filter(Boolean)
       .forEach((text) => modalPills.appendChild(pill(text)));
 
@@ -196,11 +194,7 @@
         return;
       }
 
-      if (
-        e.key !== "ArrowLeft" &&
-        e.key !== "ArrowRight" &&
-        e.key !== " "
-      )
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight" && e.key !== " ")
         return;
       if (modalBackdrop.classList.contains("open")) return;
 

@@ -1,28 +1,61 @@
-{% from "components/icons.html" import wand_sparkles_icon, person_simple_hike_icon,
-  piano_icon, playing_cards_icon, puzzle_icon, squirrel_icon, tree_palm_icon,
-  hand_metal_icon, gamepad_2_icon, footprints_icon, bubbles_icon, drum_icon,
-  fish_icon, flame_kindling_icon, flower_2_icon, gem_icon, ghost_icon,
-  helicopter_icon, ice_cream_cone_icon, kayak_icon, languages_icon, origami_icon,
-  pocket_knife_icon, roller_coaster_icon, sailboat_icon, sword_icon,
-  telescope_icon, trees_icon %}
+{% from "components/icons.html" import wand_sparkles_icon,
+person_simple_hike_icon, piano_icon, playing_cards_icon, puzzle_icon,
+squirrel_icon, tree_palm_icon, hand_metal_icon, gamepad_2_icon, footprints_icon,
+bubbles_icon, drum_icon, fish_icon, flame_kindling_icon, flower_2_icon,
+gem_icon, ghost_icon, helicopter_icon, ice_cream_cone_icon, kayak_icon,
+languages_icon, origami_icon, pocket_knife_icon, roller_coaster_icon,
+sailboat_icon, sword_icon, telescope_icon, trees_icon %}
 <html>
   <head>
+    <title>plottwist</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#480052" />
+    <link
+      rel="manifest"
+      href="{{ url_for('static', path='manifest.webmanifest') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ url_for('static', path='icons/favicon-32.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ url_for('static', path='icons/favicon-16.png') }}"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="{{ url_for('static', path='icons/apple-touch-icon.png') }}"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="plottwist" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
       @theme {
         --color-casablanca: #f6c146;
         --color-darkamethyst: #480052;
         --color-carnation: #f45f57;
-        --color-seagreen: #4C956C;
-        --color-lavender: #A09EBB;
+        --color-seagreen: #4c956c;
+        --color-lavender: #a09ebb;
         --font-lazydog: "Lazy Dog", sans-serif;
       }
     </style>
     <style>
       @keyframes doodle-float {
-        0%, 100% { transform: translateY(0) rotate(var(--doodle-rot, 0deg)); }
-        50% { transform: translateY(-10px) rotate(var(--doodle-rot, 0deg)); }
+        0%,
+        100% {
+          transform: translateY(0) rotate(var(--doodle-rot, 0deg));
+        }
+        50% {
+          transform: translateY(-10px) rotate(var(--doodle-rot, 0deg));
+        }
       }
       .doodle-float {
         animation: doodle-float 4.5s ease-in-out infinite;
@@ -37,7 +70,7 @@
     <div
       class="site-title absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:top-16 z-20 pointer-events-none bg-white rounded-full border-4 border-black px-6 py-2"
     >
-      <h1 class="text-3xl font-bold text-black">plottwist</h1>
+      <h1 class="text-3xl font-bold text-black font-lazydog">plottwist</h1>
     </div>
 
     <!-- Jagged seam: vertical on desktop -->
@@ -79,7 +112,12 @@
       >
         <div
           class="absolute inset-0 pointer-events-none opacity-30"
-          style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxmaWx0ZXIgaWQ9Im4iPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjg1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI24pIi8+PC9zdmc+'); background-size: 180px 180px; background-repeat: repeat; background-blend-mode: overlay;"
+          style="
+            background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxmaWx0ZXIgaWQ9Im4iPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjg1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI24pIi8+PC9zdmc+&quot;);
+            background-size: 180px 180px;
+            background-repeat: repeat;
+            background-blend-mode: overlay;
+          "
         ></div>
         <div
           class="absolute inset-0 pointer-events-none bg-black opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-25"
@@ -88,98 +126,140 @@
         <div
           class="absolute top-[10%] left-[15%] scale-110 md:scale-125 transition-transform duration-500 ease-out group-hover:scale-125 md:group-hover:scale-150 text-darkamethyst/55"
         >
-          <div class="doodle-float" style="--doodle-rot: -8deg; animation-delay: 0s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -8deg; animation-delay: 0s"
+          >
             {{ wand_sparkles_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[5%] left-[38%] scale-90 md:scale-100 transition-transform duration-500 ease-out group-hover:scale-100 md:group-hover:scale-110 text-darkamethyst/32"
         >
-          <div class="doodle-float" style="--doodle-rot: 6deg; animation-delay: 0.32s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 6deg; animation-delay: 0.32s"
+          >
             {{ piano_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[9%] right-[22%] scale-100 md:scale-110 transition-transform duration-500 ease-out group-hover:scale-110 md:group-hover:scale-125 text-darkamethyst/42"
         >
-          <div class="doodle-float" style="--doodle-rot: -4deg; animation-delay: 0.64s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -4deg; animation-delay: 0.64s"
+          >
             {{ puzzle_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[22%] left-[6%] scale-110 md:scale-125 transition-transform duration-500 ease-out group-hover:scale-125 md:group-hover:scale-150 text-darkamethyst/55"
         >
-          <div class="doodle-float" style="--doodle-rot: 10deg; animation-delay: 0.96s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 10deg; animation-delay: 0.96s"
+          >
             {{ tree_palm_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[16%] right-[9%] scale-90 md:scale-100 transition-transform duration-500 ease-out group-hover:scale-100 md:group-hover:scale-110 text-darkamethyst/32"
         >
-          <div class="doodle-float" style="--doodle-rot: -6deg; animation-delay: 1.28s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -6deg; animation-delay: 1.28s"
+          >
             {{ gamepad_2_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[35%] left-[22%] scale-100 md:scale-110 transition-transform duration-500 ease-out group-hover:scale-110 md:group-hover:scale-125 text-darkamethyst/42"
         >
-          <div class="doodle-float" style="--doodle-rot: 4deg; animation-delay: 1.6s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 4deg; animation-delay: 1.6s"
+          >
             {{ bubbles_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[38%] right-[30%] scale-90 md:scale-100 transition-transform duration-500 ease-out group-hover:scale-100 md:group-hover:scale-110 text-darkamethyst/32"
         >
-          <div class="doodle-float" style="--doodle-rot: 8deg; animation-delay: 1.92s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 8deg; animation-delay: 1.92s"
+          >
             {{ fish_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[59%] left-[10%] scale-100 md:scale-110 transition-transform duration-500 ease-out group-hover:scale-110 md:group-hover:scale-125 text-darkamethyst/42"
         >
-          <div class="doodle-float" style="--doodle-rot: -10deg; animation-delay: 2.24s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -10deg; animation-delay: 2.24s"
+          >
             {{ flower_2_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[63%] right-[6%] scale-110 md:scale-125 transition-transform duration-500 ease-out group-hover:scale-125 md:group-hover:scale-150 text-darkamethyst/55"
         >
-          <div class="doodle-float" style="--doodle-rot: 5deg; animation-delay: 2.56s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 5deg; animation-delay: 2.56s"
+          >
             {{ ghost_icon() }}
           </div>
         </div>
         <div
           class="absolute bottom-[28%] left-[26%] scale-90 md:scale-100 transition-transform duration-500 ease-out group-hover:scale-100 md:group-hover:scale-110 text-darkamethyst/32"
         >
-          <div class="doodle-float" style="--doodle-rot: -5deg; animation-delay: 2.88s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -5deg; animation-delay: 2.88s"
+          >
             {{ ice_cream_cone_icon() }}
           </div>
         </div>
         <div
           class="absolute bottom-[32%] right-[19%] scale-100 md:scale-110 transition-transform duration-500 ease-out group-hover:scale-110 md:group-hover:scale-125 text-darkamethyst/42"
         >
-          <div class="doodle-float" style="--doodle-rot: 9deg; animation-delay: 3.2s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 9deg; animation-delay: 3.2s"
+          >
             {{ languages_icon() }}
           </div>
         </div>
         <div
           class="absolute bottom-[10%] left-[13%] scale-90 md:scale-100 transition-transform duration-500 ease-out group-hover:scale-100 md:group-hover:scale-110 text-darkamethyst/32"
         >
-          <div class="doodle-float" style="--doodle-rot: -7deg; animation-delay: 3.52s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -7deg; animation-delay: 3.52s"
+          >
             {{ pocket_knife_icon() }}
           </div>
         </div>
         <div
           class="absolute bottom-[15%] right-[32%] scale-100 md:scale-110 transition-transform duration-500 ease-out group-hover:scale-110 md:group-hover:scale-125 text-darkamethyst/42"
         >
-          <div class="doodle-float" style="--doodle-rot: 3deg; animation-delay: 3.84s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 3deg; animation-delay: 3.84s"
+          >
             {{ sailboat_icon() }}
           </div>
         </div>
         <div
           class="absolute bottom-[5%] left-[44%] scale-110 md:scale-125 transition-transform duration-500 ease-out group-hover:scale-125 md:group-hover:scale-150 text-darkamethyst/55"
         >
-          <div class="doodle-float" style="--doodle-rot: -3deg; animation-delay: 4.16s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -3deg; animation-delay: 4.16s"
+          >
             {{ telescope_icon() }}
           </div>
         </div>
@@ -189,11 +269,13 @@
             class="label-highlight absolute inset-0 origin-left scale-x-0 bg-white pointer-events-none"
           ></span>
           <span
-            class="panel-label relative z-10 text-4xl font-semibold text-black"
+            class="panel-label relative z-10 text-4xl font-semibold text-black font-lazydog"
             >I'll decide</span
           >
         </span>
-        <p class="relative z-10 mt-2 text-sm md:text-base text-black/60 font-medium">
+        <p
+          class="relative z-10 mt-2 text-sm md:text-base text-black/60 font-medium font-lazydog"
+        >
           narrow it down
         </p>
       </a>
@@ -203,7 +285,12 @@
       >
         <div
           class="absolute inset-0 pointer-events-none opacity-30"
-          style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxmaWx0ZXIgaWQ9Im4iPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjg1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI24pIi8+PC9zdmc+'); background-size: 180px 180px; background-repeat: repeat; background-blend-mode: overlay;"
+          style="
+            background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxmaWx0ZXIgaWQ9Im4iPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjg1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI24pIi8+PC9zdmc+&quot;);
+            background-size: 180px 180px;
+            background-repeat: repeat;
+            background-blend-mode: overlay;
+          "
         ></div>
         <div
           class="absolute inset-0 pointer-events-none bg-black opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-25"
@@ -212,112 +299,156 @@
         <div
           class="absolute top-[8%] right-[16%] scale-110 md:scale-125 transition-transform duration-500 ease-out group-hover:scale-125 md:group-hover:scale-150 text-casablanca/75"
         >
-          <div class="doodle-float" style="--doodle-rot: 10deg; animation-delay: 0.16s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 10deg; animation-delay: 0.16s"
+          >
             {{ person_simple_hike_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[6%] right-[40%] scale-90 md:scale-100 transition-transform duration-500 ease-out group-hover:scale-100 md:group-hover:scale-110 text-casablanca/35"
         >
-          <div class="doodle-float" style="--doodle-rot: -10deg; animation-delay: 0.48s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -10deg; animation-delay: 0.48s"
+          >
             {{ playing_cards_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[10%] left-[20%] scale-100 md:scale-110 transition-transform duration-500 ease-out group-hover:scale-110 md:group-hover:scale-125 text-casablanca/50"
         >
-          <div class="doodle-float" style="--doodle-rot: 6deg; animation-delay: 0.8s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 6deg; animation-delay: 0.8s"
+          >
             {{ squirrel_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[24%] right-[7%] scale-110 md:scale-125 transition-transform duration-500 ease-out group-hover:scale-125 md:group-hover:scale-150 text-casablanca/75"
         >
-          <div class="doodle-float" style="--doodle-rot: -6deg; animation-delay: 1.12s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -6deg; animation-delay: 1.12s"
+          >
             {{ hand_metal_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[18%] left-[10%] scale-90 md:scale-100 transition-transform duration-500 ease-out group-hover:scale-100 md:group-hover:scale-110 text-casablanca/35"
         >
-          <div class="doodle-float" style="--doodle-rot: 4deg; animation-delay: 1.44s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 4deg; animation-delay: 1.44s"
+          >
             {{ footprints_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[36%] right-[22%] scale-100 md:scale-110 transition-transform duration-500 ease-out group-hover:scale-110 md:group-hover:scale-125 text-casablanca/50"
         >
-          <div class="doodle-float" style="--doodle-rot: 8deg; animation-delay: 1.76s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 8deg; animation-delay: 1.76s"
+          >
             {{ drum_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[37%] left-[30%] scale-90 md:scale-100 transition-transform duration-500 ease-out group-hover:scale-100 md:group-hover:scale-110 text-casablanca/35"
         >
-          <div class="doodle-float" style="--doodle-rot: -8deg; animation-delay: 2.08s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -8deg; animation-delay: 2.08s"
+          >
             {{ flame_kindling_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[61%] right-[10%] scale-100 md:scale-110 transition-transform duration-500 ease-out group-hover:scale-110 md:group-hover:scale-125 text-casablanca/50"
         >
-          <div class="doodle-float" style="--doodle-rot: 5deg; animation-delay: 2.4s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 5deg; animation-delay: 2.4s"
+          >
             {{ gem_icon() }}
           </div>
         </div>
         <div
           class="absolute top-[64%] left-[7%] scale-110 md:scale-125 transition-transform duration-500 ease-out group-hover:scale-125 md:group-hover:scale-150 text-casablanca/75"
         >
-          <div class="doodle-float" style="--doodle-rot: -5deg; animation-delay: 2.72s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -5deg; animation-delay: 2.72s"
+          >
             {{ helicopter_icon() }}
           </div>
         </div>
         <div
           class="absolute bottom-[30%] right-[26%] scale-90 md:scale-100 transition-transform duration-500 ease-out group-hover:scale-100 md:group-hover:scale-110 text-casablanca/35"
         >
-          <div class="doodle-float" style="--doodle-rot: 9deg; animation-delay: 3.04s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 9deg; animation-delay: 3.04s"
+          >
             {{ kayak_icon() }}
           </div>
         </div>
         <div
           class="absolute bottom-[34%] left-[20%] scale-100 md:scale-110 transition-transform duration-500 ease-out group-hover:scale-110 md:group-hover:scale-125 text-casablanca/50"
         >
-          <div class="doodle-float" style="--doodle-rot: -7deg; animation-delay: 3.36s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -7deg; animation-delay: 3.36s"
+          >
             {{ origami_icon() }}
           </div>
         </div>
         <div
           class="absolute bottom-[10%] right-[14%] scale-90 md:scale-100 transition-transform duration-500 ease-out group-hover:scale-100 md:group-hover:scale-110 text-casablanca/35"
         >
-          <div class="doodle-float" style="--doodle-rot: 3deg; animation-delay: 3.68s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: 3deg; animation-delay: 3.68s"
+          >
             {{ roller_coaster_icon() }}
           </div>
         </div>
         <div
           class="absolute bottom-[16%] left-[32%] scale-100 md:scale-110 transition-transform duration-500 ease-out group-hover:scale-110 md:group-hover:scale-125 text-casablanca/50"
         >
-          <div class="doodle-float" style="--doodle-rot: -3deg; animation-delay: 4s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -3deg; animation-delay: 4s"
+          >
             {{ sword_icon() }}
           </div>
         </div>
         <div
           class="absolute bottom-[6%] right-[44%] scale-110 md:scale-125 transition-transform duration-500 ease-out group-hover:scale-125 md:group-hover:scale-150 text-casablanca/75"
         >
-          <div class="doodle-float" style="--doodle-rot: -9deg; animation-delay: 4.32s;">
+          <div
+            class="doodle-float"
+            style="--doodle-rot: -9deg; animation-delay: 4.32s"
+          >
             {{ trees_icon() }}
           </div>
         </div>
 
         <span class="label-wrap relative inline-block px-4 z-10">
           <span
-            class="label-highlight absolute inset-0 origin-left scale-x-0 bg-white pointer-events-none"
+            class="label-highlight absolute inset-0 origin-left scale-x-0 bg-black pointer-events-none"
           ></span>
           <span
-            class="panel-label relative z-10 text-4xl font-semibold text-black"
+            class="panel-label relative z-10 text-4xl font-semibold text-white font-lazydog"
             >I'm feeling lucky</span
           >
         </span>
-        <p class="relative z-10 mt-2 text-sm md:text-base text-white/60 font-medium">
+        <p
+          class="relative z-10 mt-2 text-sm md:text-base text-white/60 font-medium font-lazydog"
+        >
           leave it to chance
         </p>
       </a>
@@ -328,8 +459,8 @@
 
     <!-- Your JavaScript -->
     <script src="{{ url_for('static', path='js/animation.js') }}"></script>
+    <script src="{{ url_for('static', path='js/register-sw.js') }}"></script>
 
     <!-- Link to recommendation sheet for biboo = https://forms.gle/Ki9TDyS3RCwZNsFR6 -->
-
   </body>
 </html>

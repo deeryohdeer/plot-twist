@@ -2,6 +2,16 @@
 calendar_icon, circle_dollar_sign_icon %}
 <html>
   <head>
+    <title>plottwist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#480052" />
+    <link rel="manifest" href="{{ url_for('static', path='manifest.webmanifest') }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', path='icons/favicon-32.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', path='icons/favicon-16.png') }}" />
+    <link rel="apple-touch-icon" href="{{ url_for('static', path='icons/apple-touch-icon.png') }}" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="plottwist" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
       @theme {
@@ -32,7 +42,6 @@ calendar_icon, circle_dollar_sign_icon %}
             <img class="activity-modal-img" id="activity-modal-img" alt="" />
             </div>
             <div class="activity-modal-body">
-            <span class="activity-modal-tag" id="activity-modal-region"></span>
             <h2
                 class="activity-modal-title font-lazydog"
                 id="activity-modal-title"
@@ -63,5 +72,6 @@ calendar_icon, circle_dollar_sign_icon %}
             </div>
         </div>
         </div>
+        <script src="{{ url_for('static', path='js/register-sw.js') }}"></script>
     </body>
 </html>

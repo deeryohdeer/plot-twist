@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 @font-face {
   font-family: "Lazy Dog";
   src: url("../fonts/LAZYDOG.TTF") format("truetype");
@@ -11,6 +13,7 @@ body {
 }
 
 body {
+  font-family: "Poppins", sans-serif;
   transition: background-color 0.4s ease;
 }
 
@@ -138,16 +141,18 @@ body {
   pointer-events: none;
 }
 .card-like {
-  right: 1.25rem;
+  left: 1.25rem;
   color: #35a79b;
+  background: #fff;
   border-color: #35a79b;
-  transform: rotate(12deg);
+  transform: rotate(-12deg);
 }
 .card-nope {
-  left: 1.25rem;
+  right: 1.25rem;
   color: #f45f57;
+  background: #fff;
   border-color: #f45f57;
-  transform: rotate(-12deg);
+  transform: rotate(12deg);
 }
 
 .stack-counter {
