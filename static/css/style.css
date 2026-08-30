@@ -17,6 +17,14 @@ body {
   transition: background-color 0.4s ease;
 }
 
+/* ── Global button hover: consistent pop feedback for buttons/button-like links ── */
+.btn-hover-pop {
+  transition: transform 0.2s ease-out;
+}
+.btn-hover-pop:hover {
+  transform: scale(1.1);
+}
+
 /* ── Card stack (Tinder-style activity swiper) ── */
 .stack-scene {
   position: relative;
@@ -174,12 +182,14 @@ body {
   transition:
     color 0.2s,
     border-color 0.2s,
-    background 0.2s;
+    background 0.2s,
+    transform 0.2s ease-out;
   display: none;
 }
 .stack-restart:hover {
   background: rgba(30, 24, 16, 0.05);
   border-color: rgba(30, 24, 16, 0.35);
+  transform: scale(1.1);
 }
 
 .stack-hint {
@@ -233,10 +243,6 @@ body {
   color: #000;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: transform 0.2s ease-out;
-}
-.activity-modal-close:hover {
-  transform: scale(1.1);
 }
 
 .activity-modal-img-wrap {
@@ -354,10 +360,6 @@ body {
   background: #fff;
   color: #000;
   cursor: pointer;
-  transition: transform 0.2s ease-out;
-}
-.activity-modal-share-btn:hover {
-  transform: scale(1.1);
 }
 
 .activity-modal-share-popover {

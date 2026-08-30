@@ -38,6 +38,7 @@
     <div>
       {% if has_next %}
       <a
+        class="btn-hover-pop inline-block"
         href="/results?isRandom={{isRandom}}&day={{day}}&numPpl={{numPpl}}&indoorOutdoor={{indoorOutdoor}}&budget={{budget}}&effortLevel={{effortLevel}}&region={{region}}&page={{page+1}}&seed={{seed}}"
         >I want more</a
       >
@@ -99,7 +100,7 @@
     <div class="activity-modal-backdrop" id="activity-modal-backdrop">
       <div class="activity-modal" role="dialog" aria-modal="true">
         <button
-          class="activity-modal-close"
+          class="activity-modal-close btn-hover-pop"
           id="activity-modal-close"
           aria-label="Close"
         >
