@@ -1,3 +1,67 @@
-<body>
-    <h1>This is the activity page</h1>
-</body>
+{% from "components/icons.html" import map_pin_icon, summary_icon,
+calendar_icon, circle_dollar_sign_icon %}
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-casablanca: #f6c146;
+        --color-darkamethyst: #480052;
+        --color-carnation: #f45f57;
+        --color-seagreen: #4c956c;
+        --color-lavender: #a09ebb;
+        --font-lazydog: "Lazy Dog", sans-serif;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='css/style.css') }}"
+    />
+  </head>
+    <body>
+        <div class="activity-modal-backdrop" id="activity-modal-backdrop">
+        <div class="activity-modal" role="dialog" aria-modal="true">
+            <button
+            class="activity-modal-close"
+            id="activity-modal-close"
+            aria-label="Close"
+            >
+            ✕
+            </button>
+            <div class="activity-modal-img-wrap">
+            <img class="activity-modal-img" id="activity-modal-img" alt="" />
+            </div>
+            <div class="activity-modal-body">
+            <span class="activity-modal-tag" id="activity-modal-region"></span>
+            <h2
+                class="activity-modal-title font-lazydog"
+                id="activity-modal-title"
+            ></h2>
+            <div class="activity-modal-location" id="activity-modal-location">
+                {{ map_pin_icon() }}
+                <span id="activity-modal-location-text"></span>
+            </div>
+            <div class="activity-modal-pills" id="activity-modal-pills"></div>
+            <div class="activity-modal-row" id="activity-modal-description-row">
+                {{ summary_icon() }}
+                <span id="activity-modal-description"></span>
+            </div>
+            <div class="activity-modal-row" id="activity-modal-timing-row">
+                {{ calendar_icon() }}
+                <span id="activity-modal-timing"></span>
+            </div>
+            <div class="activity-modal-row" id="activity-modal-cost-row">
+                {{ circle_dollar_sign_icon() }}
+                <span id="activity-modal-cost"></span>
+            </div>
+            <a
+                class="activity-modal-link"
+                id="activity-modal-link"
+                target="_blank"
+                rel="noopener"
+            ></a>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
