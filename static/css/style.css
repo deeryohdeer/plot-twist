@@ -377,6 +377,10 @@ body {
 .activity-modal-share-popover[hidden] {
   display: none;
 }
+.activity-modal-share-popover--left {
+  right: auto;
+  left: 0;
+}
 
 .activity-modal-share-input {
   flex: 1;

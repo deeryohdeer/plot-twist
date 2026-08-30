@@ -9,9 +9,28 @@
     copyBtn.textContent = "Copy";
   }
 
+  function positionPopover() {
+    const margin = 8;
+    popover.classList.remove("activity-modal-share-popover--left");
+    popover.style.left = "";
+
+    let rect = popover.getBoundingClientRect();
+    if (rect.left < margin) {
+      popover.classList.add("activity-modal-share-popover--left");
+      rect = popover.getBoundingClientRect();
+    }
+
+    const viewportWidth = document.documentElement.clientWidth;
+    if (rect.right > viewportWidth - margin) {
+      const overflow = rect.right - (viewportWidth - margin);
+      popover.style.left = `-${overflow}px`;
+    }
+  }
+
   function openPopover() {
     input.value = shareBtn.dataset.shareUrl || "";
     popover.hidden = false;
+    positionPopover();
     input.focus();
     input.select();
   }
