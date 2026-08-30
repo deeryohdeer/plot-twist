@@ -12,6 +12,14 @@
   const SWIPE_BACKGROUND_COLORS = ["#f6c146", "#f45f57", "#4c956c", "#a09ebb"];
   let lastBackgroundColor = null;
 
+  function hexToRgba(hex, alpha, darken = 0) {
+    const n = parseInt(hex.slice(1), 16);
+    const r = ((n >> 16) & 255) * (1 - darken);
+    const g = ((n >> 8) & 255) * (1 - darken);
+    const b = (n & 255) * (1 - darken);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+
   function randomizePageBackground() {
     const choices = SWIPE_BACKGROUND_COLORS.filter(
       (c) => c !== lastBackgroundColor,
@@ -19,6 +27,10 @@
     const color = choices[Math.floor(Math.random() * choices.length)];
     lastBackgroundColor = color;
     document.body.style.backgroundColor = color;
+    document.documentElement.style.setProperty(
+      "--modal-overlay-tint",
+      hexToRgba(color, 0.9, 0.4),
+    );
   }
   randomizePageBackground();
 
@@ -184,7 +196,12 @@
         return;
       }
 
-      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      if (
+        e.key !== "ArrowLeft" &&
+        e.key !== "ArrowRight" &&
+        e.key !== " "
+      )
+        return;
       if (modalBackdrop.classList.contains("open")) return;
 
       const visible = visibleCards();
@@ -194,8 +211,10 @@
       e.preventDefault();
       if (e.key === "ArrowLeft") {
         dismiss(topCard);
-      } else {
+      } else if (e.key === "ArrowRight") {
         requeue(topCard);
+      } else {
+        openModal(topCard);
       }
     });
   }
