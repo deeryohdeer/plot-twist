@@ -48,6 +48,7 @@
       {% for activity in results %}
       <div
         class="card"
+        data-id="{{activity.id}}"
         data-activity="{{activity.activity}}"
         data-region="{{activity.region}}"
         data-image-address="{{activity.imageAddress}}"
@@ -109,6 +110,7 @@
     </div>
 
     <script src="{{ url_for('static', path='js/card-stack.js') }}"></script>
+    <script src="{{ url_for('static', path='js/share.js') }}"></script>
     <script src="{{ url_for('static', path='js/register-sw.js') }}"></script>
   </body>
 </html>

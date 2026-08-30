@@ -39,8 +39,9 @@
       >
         {{ house_icon(class_="!w-4 !h-4") }}
       </a>
-      {{ activity_card(activities[0]) }}
+      {{ activity_card(activities[0], share_url=request.url) }}
     </div>
+    <script src="{{ url_for('static', path='js/share.js') }}"></script>
     <script src="{{ url_for('static', path='js/register-sw.js') }}"></script>
   </body>
 </html>

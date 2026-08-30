@@ -1,7 +1,7 @@
 {% from "components/icons.html" import map_pin_icon, summary_icon,
-calendar_icon, circle_dollar_sign_icon %}
+calendar_icon, circle_dollar_sign_icon, share_icon %}
 
-{% macro activity_card(activity=None) %}
+{% macro activity_card(activity=None, share_url=None) %}
 {% set a = activity or {} %}
 <div class="activity-modal-img-wrap">
   <img
@@ -83,22 +83,55 @@ calendar_icon, circle_dollar_sign_icon %}
     {{ circle_dollar_sign_icon() }}
     <span id="activity-modal-cost">{{ a.cost or '' }}</span>
   </div>
-  <a
-    class="activity-modal-link"
-    id="activity-modal-link"
-    target="_blank"
-    rel="noopener"
-    {%
-    if
-    a.linkHyperlink
-    %}href="{{ a.linkHyperlink }}"
-    {%
-    else
-    %}style="display:none"
-    {%
-    endif
-    %}
-    >{{ a.link or 'More info' }}</a
-  >
+  <div class="activity-modal-actions">
+    <a
+      class="activity-modal-link"
+      id="activity-modal-link"
+      target="_blank"
+      rel="noopener"
+      {%
+      if
+      a.linkHyperlink
+      %}href="{{ a.linkHyperlink }}"
+      {%
+      else
+      %}style="display:none"
+      {%
+      endif
+      %}
+      >{{ a.link or 'More info' }}</a
+    >
+    <div class="activity-modal-share">
+      <button
+        type="button"
+        class="activity-modal-share-btn"
+        id="activity-modal-share-btn"
+        aria-label="Share"
+        data-share-url="{{ share_url or '' }}"
+      >
+        {{ share_icon(class_="!w-4 !h-4") }}
+      </button>
+      <div
+        class="activity-modal-share-popover"
+        id="activity-modal-share-popover"
+        hidden
+      >
+        <input
+          type="text"
+          class="activity-modal-share-input"
+          id="activity-modal-share-input"
+          readonly
+          value="{{ share_url or '' }}"
+        />
+        <button
+          type="button"
+          class="activity-modal-share-copy"
+          id="activity-modal-share-copy"
+        >
+          Copy
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 {% endmacro %}

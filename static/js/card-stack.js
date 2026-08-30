@@ -125,6 +125,10 @@
   const modalCostRow = document.getElementById("activity-modal-cost-row");
   const modalCost = document.getElementById("activity-modal-cost");
   const modalLink = document.getElementById("activity-modal-link");
+  const modalShareBtn = document.getElementById("activity-modal-share-btn");
+  const modalSharePopover = document.getElementById(
+    "activity-modal-share-popover",
+  );
 
   function pill(text) {
     const span = document.createElement("span");
@@ -176,11 +180,19 @@
       modalLink.style.display = "none";
     }
 
+    if (modalShareBtn) {
+      modalShareBtn.dataset.shareUrl = d.id
+        ? `${window.location.origin}/activities/${d.id}`
+        : "";
+    }
+    if (modalSharePopover) modalSharePopover.hidden = true;
+
     modalBackdrop.classList.add("open");
   }
 
   function closeModal() {
     modalBackdrop.classList.remove("open");
+    if (modalSharePopover) modalSharePopover.hidden = true;
   }
 
   if (modalBackdrop) {
