@@ -1,0 +1,104 @@
+{% from "components/icons.html" import map_pin_icon, summary_icon,
+calendar_icon, circle_dollar_sign_icon %}
+
+{% macro activity_card(activity=None) %}
+{% set a = activity or {} %}
+<div class="activity-modal-img-wrap">
+  <img
+    class="activity-modal-img"
+    id="activity-modal-img"
+    src="{{ a.imageAddress or '' }}"
+    alt="{{ a.activity or '' }}"
+  />
+</div>
+<div class="activity-modal-body">
+  <h2 class="activity-modal-title font-lazydog" id="activity-modal-title">
+    {{ a.activity or '' }}
+  </h2>
+  <div class="activity-modal-location" id="activity-modal-location">
+    {{ map_pin_icon() }}
+    <span id="activity-modal-location-text">
+      {% if a.locationHyperlink %}<a
+        class="underline"
+        href="{{ a.locationHyperlink }}"
+        target="_blank"
+        rel="noopener"
+        >{{ a.location or '' }}</a
+      >{% else %}{{ a.location or '' }}{% endif %}
+    </span>
+  </div>
+  <div class="activity-modal-pills" id="activity-modal-pills">
+    {% for pill in [
+      a.budget,
+      (a.effortLevel ~ ' Effort') if a.effortLevel else none,
+      a.indoorOrOutdoor,
+      ('Any Group Size' if a.numberOfPeople == 'Any' else a.numberOfPeople),
+      a.region,
+    ] %} {% if pill %}
+    <span class="pill">{{ pill }}</span>
+    {% endif %} {% endfor %}
+  </div>
+  <div
+    class="activity-modal-row"
+    id="activity-modal-description-row"
+    {%
+    if
+    not
+    a.description
+    %}style="display:none"
+    {%
+    endif
+    %}
+  >
+    {{ summary_icon() }}
+    <span id="activity-modal-description">{{ a.description or '' }}</span>
+  </div>
+  <div
+    class="activity-modal-row"
+    id="activity-modal-timing-row"
+    {%
+    if
+    not
+    a.timing
+    %}style="display:none"
+    {%
+    endif
+    %}
+  >
+    {{ calendar_icon() }}
+    <span id="activity-modal-timing">{{ a.timing or '' }}</span>
+  </div>
+  <div
+    class="activity-modal-row"
+    id="activity-modal-cost-row"
+    {%
+    if
+    not
+    a.cost
+    %}style="display:none"
+    {%
+    endif
+    %}
+  >
+    {{ circle_dollar_sign_icon() }}
+    <span id="activity-modal-cost">{{ a.cost or '' }}</span>
+  </div>
+  <a
+    class="activity-modal-link"
+    id="activity-modal-link"
+    target="_blank"
+    rel="noopener"
+    {%
+    if
+    a.linkHyperlink
+    %}href="{{ a.linkHyperlink }}"
+    {%
+    else
+    %}style="display:none"
+    {%
+    endif
+    %}
+    >{{ a.link or 'More info' }}</a
+  >
+</div>
+{% endmacro %}

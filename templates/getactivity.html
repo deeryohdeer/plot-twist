@@ -1,5 +1,5 @@
-{% from "components/icons.html" import map_pin_icon, summary_icon,
-calendar_icon, circle_dollar_sign_icon %}
+{% from "components/activity_card.html" import activity_card %} {% from
+"components/icons.html" import house_icon %}
 <html>
   <head>
     <title>plottwist</title>
@@ -28,50 +28,19 @@ calendar_icon, circle_dollar_sign_icon %}
       href="{{ url_for('static', path='css/style.css') }}"
     />
   </head>
-    <body>
-        <div class="activity-modal-backdrop" id="activity-modal-backdrop">
-        <div class="activity-modal" role="dialog" aria-modal="true">
-            <button
-            class="activity-modal-close"
-            id="activity-modal-close"
-            aria-label="Close"
-            >
-            ✕
-            </button>
-            <div class="activity-modal-img-wrap">
-            <img class="activity-modal-img" id="activity-modal-img" alt="" />
-            </div>
-            <div class="activity-modal-body">
-            <h2
-                class="activity-modal-title font-lazydog"
-                id="activity-modal-title"
-            ></h2>
-            <div class="activity-modal-location" id="activity-modal-location">
-                {{ map_pin_icon() }}
-                <span id="activity-modal-location-text"></span>
-            </div>
-            <div class="activity-modal-pills" id="activity-modal-pills"></div>
-            <div class="activity-modal-row" id="activity-modal-description-row">
-                {{ summary_icon() }}
-                <span id="activity-modal-description"></span>
-            </div>
-            <div class="activity-modal-row" id="activity-modal-timing-row">
-                {{ calendar_icon() }}
-                <span id="activity-modal-timing"></span>
-            </div>
-            <div class="activity-modal-row" id="activity-modal-cost-row">
-                {{ circle_dollar_sign_icon() }}
-                <span id="activity-modal-cost"></span>
-            </div>
-            <a
-                class="activity-modal-link"
-                id="activity-modal-link"
-                target="_blank"
-                rel="noopener"
-            ></a>
-            </div>
-        </div>
-        </div>
-        <script src="{{ url_for('static', path='js/register-sw.js') }}"></script>
-    </body>
+  <body
+    class="min-h-screen flex items-center justify-center bg-darkamethyst p-4"
+  >
+    <div class="activity-modal">
+      <a
+        class="activity-modal-close flex items-center justify-center"
+        href="/"
+        aria-label="Back to home"
+      >
+        {{ house_icon(class_="!w-4 !h-4") }}
+      </a>
+      {{ activity_card(activities[0]) }}
+    </div>
+    <script src="{{ url_for('static', path='js/register-sw.js') }}"></script>
+  </body>
 </html>
