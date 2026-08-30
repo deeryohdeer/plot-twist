@@ -138,16 +138,16 @@ body {
   pointer-events: none;
 }
 .card-like {
-  right: 1.25rem;
+  left: 1.25rem;
   color: #35a79b;
   border-color: #35a79b;
-  transform: rotate(12deg);
+  transform: rotate(-12deg);
 }
 .card-nope {
-  left: 1.25rem;
+  right: 1.25rem;
   color: #f45f57;
   border-color: #f45f57;
-  transform: rotate(-12deg);
+  transform: rotate(12deg);
 }
 
 .stack-counter {
