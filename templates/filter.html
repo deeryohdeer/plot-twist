@@ -1,3 +1,7 @@
+{% from "components/icons.html" import calendar_icon, person_simple_hike_icon,
+house_icon, circle_dollar_sign_icon, flame_kindling_icon, map_pin_icon,
+wand_sparkles_icon, puzzle_icon, gem_icon, ghost_icon, telescope_icon,
+kayak_icon %}
 <html>
   <head>
     <title>plottwist</title>
@@ -21,161 +25,248 @@
         --font-lazydog: "Lazy Dog", sans-serif;
       }
     </style>
+    <style>
+      @keyframes doodle-float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(var(--doodle-rot, 0deg));
+        }
+        50% {
+          transform: translateY(-10px) rotate(var(--doodle-rot, 0deg));
+        }
+      }
+      .doodle-float {
+        animation: doodle-float 4.5s ease-in-out infinite;
+      }
+    </style>
     <link
       rel="stylesheet"
       href="{{ url_for('static', path='css/style.css') }}"
     />
   </head>
   <body
-    class="min-h-screen flex flex-col items-center gap-6 p-4 py-8 lg:p-10 bg-white"
+    class="relative overflow-hidden min-h-screen flex flex-col items-center gap-6 p-4 py-8 lg:p-10 bg-white"
   >
-    <h1 class="text-2xl lg:text-3xl font-bold font-lazydog text-center">
-      Let's narrow it down
-    </h1>
+    <!-- Warm wash + noise texture, echoing the "I'll decide" panel this page came from -->
+    <div class="absolute inset-0 pointer-events-none bg-casablanca/15"></div>
+    <div
+      class="absolute inset-0 pointer-events-none opacity-25"
+      style="
+        background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxmaWx0ZXIgaWQ9Im4iPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjg1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI24pIi8+PC9zdmc+&quot;);
+        background-size: 180px 180px;
+        background-repeat: repeat;
+        background-blend-mode: overlay;
+      "
+    ></div>
 
-    <form
-      action="/results"
-      method="get"
-      class="w-full max-w-md flex flex-col gap-5"
+    <!-- Floating doodles -->
+    <div
+      class="absolute top-[4%] left-[4%] scale-90 md:scale-100 text-darkamethyst/30 pointer-events-none"
     >
-      <div class="flex flex-col gap-1">
-        <label for="day" class="text-sm font-medium text-black/70"
-          >What day of the week?</label
-        >
-        <select
-          name="day"
-          id="day"
-          class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
-        >
-          <option value="Any">Any day</option>
-          <option value="Monday">Monday</option>
-          <option value="Tuesday">Tuesday</option>
-          <option value="Wednesday">Wednesday</option>
-          <option value="Thursday">Thursday</option>
-          <option value="Friday">Friday</option>
-          <option value="Saturday">Saturday</option>
-          <option value="Sunday">Sunday</option>
-        </select>
+      <div class="doodle-float" style="--doodle-rot: -8deg">
+        {{ wand_sparkles_icon() }}
+      </div>
+    </div>
+    <div
+      class="absolute top-[4%] right-[4%] scale-90 md:scale-100 text-darkamethyst/30 pointer-events-none"
+    >
+      <div class="doodle-float" style="--doodle-rot: 6deg; animation-delay: 0.5s">
+        {{ puzzle_icon() }}
+      </div>
+    </div>
+    <div
+      class="absolute bottom-[4%] left-[4%] scale-90 md:scale-100 text-darkamethyst/30 pointer-events-none"
+    >
+      <div class="doodle-float" style="--doodle-rot: 5deg; animation-delay: 1s">
+        {{ gem_icon() }}
+      </div>
+    </div>
+    <div
+      class="absolute bottom-[4%] right-[4%] scale-90 md:scale-100 text-darkamethyst/30 pointer-events-none"
+    >
+      <div class="doodle-float" style="--doodle-rot: -6deg; animation-delay: 1.5s">
+        {{ ghost_icon() }}
+      </div>
+    </div>
+    <div
+      class="hidden md:block absolute top-[45%] left-[6%] text-darkamethyst/30 pointer-events-none"
+    >
+      <div class="doodle-float" style="--doodle-rot: -4deg; animation-delay: 2s">
+        {{ telescope_icon() }}
+      </div>
+    </div>
+    <div
+      class="hidden md:block absolute top-[45%] right-[6%] text-darkamethyst/30 pointer-events-none"
+    >
+      <div class="doodle-float" style="--doodle-rot: 8deg; animation-delay: 2.5s">
+        {{ kayak_icon() }}
+      </div>
+    </div>
+
+    <div class="relative z-10 w-full flex flex-col items-center gap-6">
+      <div class="flex flex-col items-center gap-1">
+        <h1 class="text-2xl lg:text-3xl font-bold font-lazydog text-center">
+          Let's narrow it down
+        </h1>
+        <p class="text-sm md:text-base text-black/60 font-medium font-lazydog text-center">
+          No wrong answers here — just vibes.
+        </p>
       </div>
 
-      <div class="flex flex-col gap-1">
-        <label for="numPpl" class="text-sm font-medium text-black/70"
-          >How many people are coming?</label
-        >
-        <select
-          name="numPpl"
-          id="numPpl"
-          class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
-        >
-          <option value="Any">Any group size</option>
-          <option value="Just myself">Just myself</option>
-          <option value="Two people">Two people</option>
-          <option value="Small group">Small group</option>
-          <option value="Big group">Big group</option>
-        </select>
-      </div>
-
-      <div class="flex flex-col gap-1">
-        <label for="indoorOutdoor" class="text-sm font-medium text-black/70"
-          >Indoor or outdoor?</label
-        >
-        <select
-          name="indoorOutdoor"
-          id="indoorOutdoor"
-          class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
-        >
-          <option value="Any">Indoor/Outdoor</option>
-          <option value="Indoor">Indoor only</option>
-          <option value="Outdoor">Outdoor only</option>
-        </select>
-      </div>
-
-      <div id="moreFilters" class="hidden flex-col gap-5">
-        <div class="flex flex-col gap-1">
-          <label for="budget" class="text-sm font-medium text-black/70"
-            >What's your budget?</label
-          >
-          <select
-            name="budget"
-            id="budget"
-            class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
-          >
-            <option value="Any">Any budget</option>
-            <option value="Free">Free</option>
-            <option value="$">$</option>
-            <option value="$$">$$</option>
-            <option value="$$$">$$$</option>
-          </select>
-        </div>
-
-        <div class="flex flex-col gap-1">
-          <label for="effortLevel" class="text-sm font-medium text-black/70"
-            >How much effort do you want to spend?</label
-          >
-          <select
-            name="effortLevel"
-            id="effortLevel"
-            class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
-          >
-            <option value="Any">I'll put in any effort</option>
-            <option value="Low">Something easy please</option>
-            <option value="Medium">I've got a bit of energy</option>
-            <option value="High">Give me all you got</option>
-          </select>
-        </div>
-
-        <div class="flex flex-col gap-1">
-          <label for="region" class="text-sm font-medium text-black/70"
-            >Where would you like to go?</label
-          >
-          <select
-            name="region"
-            id="region"
-            class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
-          >
-            <option value="Any">I'll go anywhere</option>
-            <option value="Sydney CBD">Sydney CBD</option>
-            <option value="Inner West">Inner West</option>
-            <option value="Eastern Suburbs">Eastern Suburbs</option>
-            <option value="North Shore">North Shore</option>
-            <option value="Northern Beaches">Northern Beaches</option>
-            <option value="South Sydney">South Sydney</option>
-            <option value="Western Sydney">Western Sydney</option>
-            <option value="Blue Mountains">Blue Mountains</option>
-            <option value="Central Coast">Central Coast</option>
-            <option value="Hunter/Newcastle">Hunter/Newcastle</option>
-            <option value="Southern Highlands">Southern Highlands</option>
-            <option value="South Coast">South Coast</option>
-            <option value="NSW - Other">NSW - Other</option>
-          </select>
-        </div>
-      </div>
-
-      <button
-        type="button"
-        id="filterMoreBtn"
-        class="btn-hover-pop w-full rounded-full border-2 border-black bg-lavender px-6 py-3 font-semibold text-black cursor-pointer"
+      <form
+        action="/results"
+        method="get"
+        class="w-full max-w-md flex flex-col gap-5"
       >
-        Let me filter some more
-      </button>
+        <div class="flex flex-col gap-1">
+          <label for="day" class="flex items-center gap-2 text-sm font-medium text-black/70">
+            <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-black bg-casablanca text-darkamethyst shrink-0">{{ calendar_icon() }}</span>
+            What day of the week?
+          </label>
+          <select
+            name="day"
+            id="day"
+            class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
+          >
+            <option value="Any">Any day</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+          </select>
+        </div>
 
-      <input
-        type="submit"
-        value="Submit!"
-        class="btn-hover-pop w-full rounded-full border-2 border-black bg-casablanca px-6 py-3 font-semibold text-black cursor-pointer"
-      />
-    </form>
+        <div class="flex flex-col gap-1">
+          <label for="numPpl" class="flex items-center gap-2 text-sm font-medium text-black/70">
+            <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-black bg-lavender text-darkamethyst shrink-0">{{ person_simple_hike_icon() }}</span>
+            How many people are coming?
+          </label>
+          <select
+            name="numPpl"
+            id="numPpl"
+            class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
+          >
+            <option value="Any">Any group size</option>
+            <option value="Just myself">Just myself</option>
+            <option value="Two people">Two people</option>
+            <option value="Small group">Small group</option>
+            <option value="Big group">Big group</option>
+          </select>
+        </div>
 
-    <div class="w-full max-w-md flex flex-col gap-3">
-      <form>
-        <input
+        <div class="flex flex-col gap-1">
+          <label for="indoorOutdoor" class="flex items-center gap-2 text-sm font-medium text-black/70">
+            <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-black bg-seagreen text-white shrink-0">{{ house_icon() }}</span>
+            Indoor or outdoor?
+          </label>
+          <select
+            name="indoorOutdoor"
+            id="indoorOutdoor"
+            class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
+          >
+            <option value="Any">Indoor/Outdoor</option>
+            <option value="Indoor">Indoor only</option>
+            <option value="Outdoor">Outdoor only</option>
+          </select>
+        </div>
+
+        <div id="moreFilters" class="flex flex-col gap-5 overflow-hidden" style="height: 0; opacity: 0;">
+          <div class="flex flex-col gap-1">
+            <label for="budget" class="flex items-center gap-2 text-sm font-medium text-black/70">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-black bg-casablanca text-darkamethyst shrink-0">{{ circle_dollar_sign_icon() }}</span>
+              What's your budget?
+            </label>
+            <select
+              name="budget"
+              id="budget"
+              class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
+            >
+              <option value="Any">Any budget</option>
+              <option value="Free">Free</option>
+              <option value="$">$</option>
+              <option value="$$">$$</option>
+              <option value="$$$">$$$</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="effortLevel" class="flex items-center gap-2 text-sm font-medium text-black/70">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-black bg-lavender text-darkamethyst shrink-0">{{ flame_kindling_icon() }}</span>
+              How much effort do you want to spend?
+            </label>
+            <select
+              name="effortLevel"
+              id="effortLevel"
+              class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
+            >
+              <option value="Any">I'll put in any effort</option>
+              <option value="Low">Something easy please</option>
+              <option value="Medium">I've got a bit of energy</option>
+              <option value="High">Give me all you got</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="region" class="flex items-center gap-2 text-sm font-medium text-black/70">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-black bg-seagreen text-white shrink-0">{{ map_pin_icon() }}</span>
+              Where would you like to go?
+            </label>
+            <select
+              name="region"
+              id="region"
+              class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
+            >
+              <option value="Any">I'll go anywhere</option>
+              <option value="Sydney CBD">Sydney CBD</option>
+              <option value="Inner West">Inner West</option>
+              <option value="Eastern Suburbs">Eastern Suburbs</option>
+              <option value="North Shore">North Shore</option>
+              <option value="Northern Beaches">Northern Beaches</option>
+              <option value="South Sydney">South Sydney</option>
+              <option value="Western Sydney">Western Sydney</option>
+              <option value="Blue Mountains">Blue Mountains</option>
+              <option value="Central Coast">Central Coast</option>
+              <option value="Hunter/Newcastle">Hunter/Newcastle</option>
+              <option value="Southern Highlands">Southern Highlands</option>
+              <option value="South Coast">South Coast</option>
+              <option value="NSW - Other">NSW - Other</option>
+            </select>
+          </div>
+        </div>
+
+        <button
           type="button"
-          value="Take me back!"
-          onclick="history.back()"
-          class="btn-hover-pop w-full rounded-full border-2 border-black bg-white px-6 py-3 font-semibold text-black cursor-pointer"
+          id="filterMoreBtn"
+          class="btn-hover-pop w-full rounded-full border-2 border-black bg-lavender px-6 py-3 font-semibold text-black cursor-pointer"
+        >
+          Let me filter some more
+        </button>
+
+        <input
+          type="submit"
+          value="Submit!"
+          class="btn-hover-pop w-full rounded-full border-2 border-black bg-casablanca px-6 py-3 font-semibold text-black cursor-pointer"
         />
       </form>
+
+      <div class="w-full max-w-md flex flex-col gap-3">
+        <form>
+          <input
+            type="button"
+            value="Take me back!"
+            onclick="history.back()"
+            class="btn-hover-pop w-full rounded-full border-2 border-black bg-white px-6 py-3 font-semibold text-black cursor-pointer"
+          />
+        </form>
+      </div>
     </div>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
     <script src="{{ url_for('static', path='js/register-sw.js') }}"></script>
     <script src="{{ url_for('static', path='js/filter-more.js') }}"></script>
   </body>

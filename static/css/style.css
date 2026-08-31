@@ -64,6 +64,17 @@ body {
   object-fit: cover;
 }
 
+.img-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxmaWx0ZXIgaWQ9Im4iPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjQiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHJlc3VsdD0ibm9pc2UiLz48ZmVDb2xvck1hdHJpeCBpbj0ibm9pc2UiIHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiIHJlc3VsdD0ibW9ubyIvPjxmZUNvbXBvbmVudFRyYW5zZmVyIGluPSJtb25vIj48ZmVGdW5jQSB0eXBlPSJsaW5lYXIiIHNsb3BlPSIwIiBpbnRlcmNlcHQ9IjEiLz48L2ZlQ29tcG9uZW50VHJhbnNmZXI+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI24pIi8+PC9zdmc+");
+  background-size: 40px 40px;
+  background-repeat: repeat;
+}
+
 .card-shade {
   position: absolute;
   inset: 0;
