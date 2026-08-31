@@ -55,6 +55,7 @@
     });
   }
   layoutStack();
+  requestAnimationFrame(() => stack.classList.add("stack-ready"));
 
   function updateCounter() {
     const remaining = total - removed;
