@@ -186,7 +186,7 @@ body {
   transform: rotate(12deg);
 }
 
-.heading-hidden {
+.visually-hidden {
   visibility: hidden;
 }
 

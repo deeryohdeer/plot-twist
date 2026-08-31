@@ -5,6 +5,7 @@
   const counter = document.getElementById("stack-counter");
   const stackEmpty = document.getElementById("stack-empty");
   const swipeHeading = document.getElementById("swipe-heading");
+  const stackHint = document.getElementById("stack-hint");
 
   const STACK_DEPTH = 5; // cards beyond this depth stay flattened at the back
   const THRESHOLD = 100;
@@ -66,7 +67,8 @@
 
   function showEmptyState() {
     if (stackEmpty) stackEmpty.style.display = "flex";
-    if (swipeHeading) swipeHeading.classList.add("heading-hidden");
+    if (swipeHeading) swipeHeading.classList.add("visually-hidden");
+    if (stackHint) stackHint.classList.add("visually-hidden");
   }
   if (total === 0) showEmptyState();
 
