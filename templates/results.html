@@ -5,12 +5,31 @@
     <title>plottwist</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#480052" />
-    <link rel="manifest" href="{{ url_for('static', path='manifest.webmanifest') }}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', path='icons/favicon-32.png') }}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', path='icons/favicon-16.png') }}" />
-    <link rel="apple-touch-icon" href="{{ url_for('static', path='icons/apple-touch-icon.png') }}" />
+    <link
+      rel="manifest"
+      href="{{ url_for('static', path='manifest.webmanifest') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ url_for('static', path='icons/favicon-32.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ url_for('static', path='icons/favicon-16.png') }}"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="{{ url_for('static', path='icons/apple-touch-icon.png') }}"
+    />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
     <meta name="apple-mobile-web-app-title" content="plottwist" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
@@ -31,19 +50,12 @@
   <body
     class="min-h-screen flex flex-col items-center justify-center gap-6 p-4 lg:p-10"
   >
-    <h1 class="text-2xl lg:text-3xl font-bold font-lazydog pt-6 lg:pt-0">
+    <h1
+      id="swipe-heading"
+      class="text-2xl lg:text-3xl font-bold font-lazydog pt-6 lg:pt-0"
+    >
       Swipe till it sticks
     </h1>
-
-    <div>
-      {% if has_next %}
-      <a
-        class="btn-hover-pop inline-block"
-        href="/results?isRandom={{isRandom}}&day={{day}}&numPpl={{numPpl}}&indoorOutdoor={{indoorOutdoor}}&budget={{budget}}&effortLevel={{effortLevel}}&region={{region}}&page={{page+1}}&seed={{seed}}"
-        >I want more</a
-      >
-      {% endif %}
-    </div>
 
     <div class="stack-scene" id="stack">
       {% for activity in results %}
@@ -92,10 +104,22 @@
         </div>
       </div>
       {% endfor %}
+
+      <div class="stack-empty" id="stack-empty">
+        <p class="stack-empty-text">Looks like we're out of cards!</p>
+        <div class="text-8xl">😭</div>
+        {% if has_next %}
+        <a
+          id="i-want-more-btn"
+          class="btn-hover-pop inline-block bg-casablanca text-black font-semibold rounded-full border-4 border-black px-5 py-2"
+          href="/results?isRandom={{isRandom}}&day={{day}}&numPpl={{numPpl}}&indoorOutdoor={{indoorOutdoor}}&budget={{budget}}&effortLevel={{effortLevel}}&region={{region}}&page={{page+1}}&seed={{seed}}"
+          >Not enough, give me more!</a
+        >
+        {% endif %}
+      </div>
     </div>
 
     <div class="stack-counter" id="stack-counter"></div>
-    <button class="stack-restart" id="stack-restart">↺ Restart</button>
     <p class="stack-hint">Drag left to pass · right to keep</p>
 
     <div class="activity-modal-backdrop" id="activity-modal-backdrop">

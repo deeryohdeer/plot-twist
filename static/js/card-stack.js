@@ -3,7 +3,8 @@
   if (!stack) return;
 
   const counter = document.getElementById("stack-counter");
-  const restart = document.getElementById("stack-restart");
+  const stackEmpty = document.getElementById("stack-empty");
+  const swipeHeading = document.getElementById("swipe-heading");
 
   const STACK_DEPTH = 5; // cards beyond this depth stay flattened at the back
   const THRESHOLD = 100;
@@ -55,15 +56,19 @@
     });
   }
   layoutStack();
+  requestAnimationFrame(() => stack.classList.add("stack-ready"));
 
   function updateCounter() {
     const remaining = total - removed;
-    counter.textContent =
-      remaining === 0
-        ? "Out of cards :("
-        : `${remaining} card${remaining > 1 ? "s" : ""} remaining`;
+    counter.textContent = `${remaining} card${remaining !== 1 ? "s" : ""} remaining`;
   }
   updateCounter();
+
+  function showEmptyState() {
+    if (stackEmpty) stackEmpty.style.display = "flex";
+    if (swipeHeading) swipeHeading.textContent = "Oh naurrrrrrr";
+  }
+  if (total === 0) showEmptyState();
 
   function dismiss(card) {
     card.style.transition =
@@ -75,7 +80,7 @@
 
     removed++;
     updateCounter();
-    if (removed === total) restart.style.display = "block";
+    if (removed === total) showEmptyState();
 
     setTimeout(layoutStack, 50);
   }
@@ -304,17 +309,4 @@
   }
 
   cards.forEach(initCard);
-
-  restart.addEventListener("click", () => {
-    cards = [...initialOrder];
-    cards.forEach((card) => {
-      delete card.dataset.gone;
-      card.style.transition = "none";
-      card.style.opacity = "1";
-    });
-    removed = 0;
-    updateCounter();
-    restart.style.display = "none";
-    layoutStack();
-  });
 })();

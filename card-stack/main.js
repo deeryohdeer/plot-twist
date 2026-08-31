@@ -94,7 +94,7 @@ function dismiss(card, dir) {
   remaining--;
   counter.textContent =
     remaining === 0
-      ? "Out of cards :("
+      ? "Looks like we're out of cards 😭"
       : `${remaining} card${remaining > 1 ? "s" : ""} remaining`;
 
   if (remaining === 0) restart.style.display = "block";
