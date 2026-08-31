@@ -51,7 +51,11 @@ async def read_results(request: Request, day, numPpl, indoorOutdoor, budget, eff
         filterNumPpl = [entry for entry in fullList if numPpl=="Any" or entry["numberOfPeople"] in (numPpl, "Any")]
         filterIndoorOutdoor = [entry for entry in filterNumPpl if indoorOutdoor=="Any" or entry['indoorOrOutdoor']==indoorOutdoor]   
         filterDay = [entry for entry in filterIndoorOutdoor if day=="Any" or entry.get(day)==1]
-        filterBudget = [entry for entry in filterDay if budget=="Any" or entry['budget']==budget]
+
+        budget_levels = {"Free": 0, "$": 1, "$$": 2, "$$$": 3}
+        filterBudget = [entry for entry in filterDay if budget=="Any" or budget_levels[entry["budget"]] <= budget_levels[budget]]
+
+
         filterEffortLevel = [entry for entry in filterBudget if effortLevel=="Any" or entry['effortLevel']==effortLevel]
         filterRegion = [entry for entry in filterEffortLevel if region=="Any" or entry['region']==region]
 
