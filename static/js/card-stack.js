@@ -66,7 +66,7 @@
 
   function showEmptyState() {
     if (stackEmpty) stackEmpty.style.display = "flex";
-    if (swipeHeading) swipeHeading.textContent = "Oh naurrrrrrr";
+    if (swipeHeading) swipeHeading.classList.add("heading-hidden");
   }
   if (total === 0) showEmptyState();
 

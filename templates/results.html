@@ -106,14 +106,27 @@
       {% endfor %}
 
       <div class="stack-empty" id="stack-empty">
-        <p class="stack-empty-text">Looks like we're out of cards!</p>
-        <div class="text-8xl">😭</div>
         {% if has_next %}
+        <div class="text-8xl">😭</div>
+        <p class="stack-empty-title font-lazydog">Oh naurrrrrrr</p>
+        <p class="stack-empty-text">Looks like we're out of cards</p>
         <a
           id="i-want-more-btn"
           class="btn-hover-pop inline-block bg-casablanca text-black font-semibold rounded-full border-4 border-black px-5 py-2"
           href="/results?isRandom={{isRandom}}&day={{day}}&numPpl={{numPpl}}&indoorOutdoor={{indoorOutdoor}}&budget={{budget}}&effortLevel={{effortLevel}}&region={{region}}&page={{page+1}}&seed={{seed}}"
           >Not enough, give me more!</a
+        >
+        {% else %}
+        <div class="text-8xl">💀</div>
+        <p class="stack-empty-title font-lazydog">
+          Well damn, you've exhausted all your options
+        </p>
+        <p class="stack-empty-text">Time to lower your standards</p>
+        <a
+          id="back-to-start-btn"
+          class="btn-hover-pop inline-block bg-darkamethyst text-white font-semibold rounded-full border-4 border-black px-5 py-2"
+          href="/"
+          >Back to the start I guess...</a
         >
         {% endif %}
       </div>

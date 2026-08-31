@@ -186,6 +186,10 @@ body {
   transform: rotate(12deg);
 }
 
+.heading-hidden {
+  visibility: hidden;
+}
+
 .stack-empty {
   position: absolute;
   inset: 0;
@@ -195,6 +199,12 @@ body {
   justify-content: center;
   gap: 1.25rem;
   text-align: center;
+}
+
+.stack-empty-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e1812;
 }
 
 .stack-empty-text {
