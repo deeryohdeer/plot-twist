@@ -1,5 +1,11 @@
 {% from "components/activity_card.html" import activity_card %} {% from
-"components/icons.html" import house_icon %}
+"components/icons.html" import house_icon, wand_sparkles_icon,
+person_simple_hike_icon, piano_icon, playing_cards_icon, puzzle_icon,
+squirrel_icon, tree_palm_icon, hand_metal_icon, gamepad_2_icon, footprints_icon,
+bubbles_icon, drum_icon, fish_icon, flame_kindling_icon, flower_2_icon,
+gem_icon, ghost_icon, helicopter_icon, ice_cream_cone_icon, kayak_icon,
+languages_icon, origami_icon, pocket_knife_icon, roller_coaster_icon,
+sailboat_icon, sword_icon, telescope_icon, trees_icon %}
 <html>
   <head>
     <title>plottwist</title>
@@ -23,6 +29,20 @@
         --font-lazydog: "Lazy Dog", sans-serif;
       }
     </style>
+    <style>
+      @keyframes doodle-float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(var(--doodle-rot, 0deg));
+        }
+        50% {
+          transform: translateY(-10px) rotate(var(--doodle-rot, 0deg));
+        }
+      }
+      .doodle-float {
+        animation: doodle-float 4.5s ease-in-out infinite;
+      }
+    </style>
     <link
       rel="stylesheet"
       href="{{ url_for('static', path='css/style.css') }}"
@@ -31,7 +51,153 @@
   <body
     class="min-h-screen flex items-center justify-center bg-darkamethyst p-4"
   >
-    <div class="activity-modal">
+    <div
+      class="fixed inset-0 z-0 overflow-hidden pointer-events-none"
+      aria-hidden="true"
+    >
+      <div class="absolute top-[6%] left-[6%] scale-110 text-casablanca/75">
+        <div class="doodle-float" style="--doodle-rot: -8deg; animation-delay: 0s">
+          {{ wand_sparkles_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[4%] left-[27%] scale-90 text-casablanca/35">
+        <div class="doodle-float" style="--doodle-rot: 10deg; animation-delay: 0.16s">
+          {{ person_simple_hike_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[8%] left-[46%] scale-100 text-casablanca/50">
+        <div class="doodle-float" style="--doodle-rot: 6deg; animation-delay: 0.32s">
+          {{ piano_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[5%] right-[30%] scale-110 text-casablanca/75">
+        <div class="doodle-float" style="--doodle-rot: -10deg; animation-delay: 0.48s">
+          {{ playing_cards_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[9%] right-[14%] scale-90 text-casablanca/35">
+        <div class="doodle-float" style="--doodle-rot: -4deg; animation-delay: 0.64s">
+          {{ puzzle_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[6%] right-[4%] scale-100 text-casablanca/50">
+        <div class="doodle-float" style="--doodle-rot: 6deg; animation-delay: 0.8s">
+          {{ squirrel_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[20%] left-[3%] scale-110 text-casablanca/75">
+        <div class="doodle-float" style="--doodle-rot: 10deg; animation-delay: 0.96s">
+          {{ tree_palm_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[24%] right-[3%] scale-90 text-casablanca/35">
+        <div class="doodle-float" style="--doodle-rot: -6deg; animation-delay: 1.12s">
+          {{ hand_metal_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[16%] left-[18%] scale-90 text-casablanca/35">
+        <div class="doodle-float" style="--doodle-rot: -6deg; animation-delay: 1.28s">
+          {{ gamepad_2_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[16%] right-[18%] scale-90 text-casablanca/35">
+        <div class="doodle-float" style="--doodle-rot: 4deg; animation-delay: 1.44s">
+          {{ footprints_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[35%] left-[6%] scale-100 text-casablanca/50">
+        <div class="doodle-float" style="--doodle-rot: 4deg; animation-delay: 1.6s">
+          {{ bubbles_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[38%] right-[5%] scale-100 text-casablanca/50">
+        <div class="doodle-float" style="--doodle-rot: 8deg; animation-delay: 1.76s">
+          {{ drum_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[42%] left-[20%] scale-90 text-casablanca/35">
+        <div class="doodle-float" style="--doodle-rot: 8deg; animation-delay: 1.92s">
+          {{ fish_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[45%] right-[20%] scale-90 text-casablanca/35">
+        <div class="doodle-float" style="--doodle-rot: -8deg; animation-delay: 2.08s">
+          {{ flame_kindling_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[55%] left-[4%] scale-110 text-casablanca/75">
+        <div class="doodle-float" style="--doodle-rot: -10deg; animation-delay: 2.24s">
+          {{ flower_2_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[58%] right-[4%] scale-110 text-casablanca/75">
+        <div class="doodle-float" style="--doodle-rot: 5deg; animation-delay: 2.4s">
+          {{ gem_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[63%] left-[10%] scale-100 text-casablanca/50">
+        <div class="doodle-float" style="--doodle-rot: 5deg; animation-delay: 2.56s">
+          {{ ghost_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[65%] right-[10%] scale-100 text-casablanca/50">
+        <div class="doodle-float" style="--doodle-rot: -5deg; animation-delay: 2.72s">
+          {{ helicopter_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[73%] left-[3%] scale-90 text-casablanca/35">
+        <div class="doodle-float" style="--doodle-rot: -5deg; animation-delay: 2.88s">
+          {{ ice_cream_cone_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[75%] right-[3%] scale-90 text-casablanca/35">
+        <div class="doodle-float" style="--doodle-rot: 9deg; animation-delay: 3.04s">
+          {{ kayak_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[80%] left-[16%] scale-100 text-casablanca/50">
+        <div class="doodle-float" style="--doodle-rot: 9deg; animation-delay: 3.2s">
+          {{ languages_icon() }}
+        </div>
+      </div>
+      <div class="absolute top-[82%] right-[16%] scale-100 text-casablanca/50">
+        <div class="doodle-float" style="--doodle-rot: -7deg; animation-delay: 3.36s">
+          {{ origami_icon() }}
+        </div>
+      </div>
+      <div class="absolute bottom-[8%] left-[6%] scale-90 text-casablanca/35">
+        <div class="doodle-float" style="--doodle-rot: -7deg; animation-delay: 3.52s">
+          {{ pocket_knife_icon() }}
+        </div>
+      </div>
+      <div class="absolute bottom-[8%] right-[6%] scale-90 text-casablanca/35">
+        <div class="doodle-float" style="--doodle-rot: 3deg; animation-delay: 3.68s">
+          {{ roller_coaster_icon() }}
+        </div>
+      </div>
+      <div class="absolute bottom-[5%] left-[26%] scale-100 text-casablanca/50">
+        <div class="doodle-float" style="--doodle-rot: 3deg; animation-delay: 3.84s">
+          {{ sailboat_icon() }}
+        </div>
+      </div>
+      <div class="absolute bottom-[5%] right-[26%] scale-100 text-casablanca/50">
+        <div class="doodle-float" style="--doodle-rot: -3deg; animation-delay: 4s">
+          {{ sword_icon() }}
+        </div>
+      </div>
+      <div class="absolute bottom-[3%] left-[44%] scale-110 text-casablanca/75">
+        <div class="doodle-float" style="--doodle-rot: -3deg; animation-delay: 4.16s">
+          {{ telescope_icon() }}
+        </div>
+      </div>
+      <div class="absolute bottom-[3%] right-[44%] scale-110 text-casablanca/75">
+        <div class="doodle-float" style="--doodle-rot: -9deg; animation-delay: 4.32s">
+          {{ trees_icon() }}
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-modal relative z-10">
       <a
         class="activity-modal-close btn-hover-pop flex items-center justify-center"
         href="/"
