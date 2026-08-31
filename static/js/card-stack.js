@@ -208,7 +208,14 @@
 
       if (e.key !== "ArrowLeft" && e.key !== "ArrowRight" && e.key !== " ")
         return;
-      if (modalBackdrop.classList.contains("open")) return;
+
+      if (modalBackdrop.classList.contains("open")) {
+        if (e.key === " ") {
+          e.preventDefault();
+          closeModal();
+        }
+        return;
+      }
 
       const visible = visibleCards();
       const topCard = visible[visible.length - 1];
