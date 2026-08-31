@@ -21,8 +21,10 @@ body {
 .btn-hover-pop {
   transition: transform 0.2s ease-out;
 }
-.btn-hover-pop:hover {
-  transform: scale(1.1);
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+  .btn-hover-pop:hover {
+    transform: scale(1.1);
+  }
 }
 
 /* ── Card stack (Tinder-style activity swiper) ── */

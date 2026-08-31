@@ -1,18 +1,37 @@
 {% from "components/icons.html" import calendar_icon, person_simple_hike_icon,
 house_icon, circle_dollar_sign_icon, flame_kindling_icon, map_pin_icon,
 wand_sparkles_icon, puzzle_icon, gem_icon, ghost_icon, telescope_icon,
-kayak_icon %}
+kayak_icon, chevron_down_icon %}
 <html>
   <head>
     <title>plottwist</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#480052" />
-    <link rel="manifest" href="{{ url_for('static', path='manifest.webmanifest') }}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', path='icons/favicon-32.png') }}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', path='icons/favicon-16.png') }}" />
-    <link rel="apple-touch-icon" href="{{ url_for('static', path='icons/apple-touch-icon.png') }}" />
+    <link
+      rel="manifest"
+      href="{{ url_for('static', path='manifest.webmanifest') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ url_for('static', path='icons/favicon-32.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ url_for('static', path='icons/favicon-16.png') }}"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="{{ url_for('static', path='icons/apple-touch-icon.png') }}"
+    />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
     <meta name="apple-mobile-web-app-title" content="plottwist" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
@@ -70,7 +89,10 @@ kayak_icon %}
     <div
       class="absolute top-[4%] right-[4%] scale-90 md:scale-100 text-darkamethyst/30 pointer-events-none"
     >
-      <div class="doodle-float" style="--doodle-rot: 6deg; animation-delay: 0.5s">
+      <div
+        class="doodle-float"
+        style="--doodle-rot: 6deg; animation-delay: 0.5s"
+      >
         {{ puzzle_icon() }}
       </div>
     </div>
@@ -84,21 +106,30 @@ kayak_icon %}
     <div
       class="absolute bottom-[4%] right-[4%] scale-90 md:scale-100 text-darkamethyst/30 pointer-events-none"
     >
-      <div class="doodle-float" style="--doodle-rot: -6deg; animation-delay: 1.5s">
+      <div
+        class="doodle-float"
+        style="--doodle-rot: -6deg; animation-delay: 1.5s"
+      >
         {{ ghost_icon() }}
       </div>
     </div>
     <div
       class="hidden md:block absolute top-[45%] left-[6%] text-darkamethyst/30 pointer-events-none"
     >
-      <div class="doodle-float" style="--doodle-rot: -4deg; animation-delay: 2s">
+      <div
+        class="doodle-float"
+        style="--doodle-rot: -4deg; animation-delay: 2s"
+      >
         {{ telescope_icon() }}
       </div>
     </div>
     <div
       class="hidden md:block absolute top-[45%] right-[6%] text-darkamethyst/30 pointer-events-none"
     >
-      <div class="doodle-float" style="--doodle-rot: 8deg; animation-delay: 2.5s">
+      <div
+        class="doodle-float"
+        style="--doodle-rot: 8deg; animation-delay: 2.5s"
+      >
         {{ kayak_icon() }}
       </div>
     </div>
@@ -108,132 +139,192 @@ kayak_icon %}
         <h1 class="text-2xl lg:text-3xl font-bold font-lazydog text-center">
           Let's narrow it down
         </h1>
-        <p class="text-sm md:text-base text-black/60 font-medium font-lazydog text-center">
-          No wrong answers here — just vibes.
+        <p
+          class="text-sm md:text-base text-black/60 font-medium font-lazydog text-center"
+        >
+          No wrong answers here, just vibes.
         </p>
       </div>
 
       <form
         action="/results"
         method="get"
-        class="w-full max-w-md flex flex-col gap-5"
+        class="w-full max-w-md flex flex-col gap-7"
       >
-        <div class="flex flex-col gap-1">
-          <label for="day" class="flex items-center gap-2 text-sm font-medium text-black/70">
-            <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-black bg-casablanca text-darkamethyst shrink-0">{{ calendar_icon() }}</span>
+        <div class="flex flex-col gap-2">
+          <label
+            for="day"
+            class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-lazydog"
+          >
+            <span
+              class="flex items-center justify-center shrink-0 text-casablanca"
+              >{{ calendar_icon() }}</span
+            >
             What day of the week?
           </label>
-          <select
-            name="day"
-            id="day"
-            class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
-          >
-            <option value="Any">Any day</option>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
-          </select>
+          <div class="relative">
+            <select
+              name="day"
+              id="day"
+              class="w-full appearance-none rounded-full border-2 border-black bg-white px-4 py-2 pr-10 text-black"
+            >
+              <option value="Any">Any day</option>
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+              <option value="Sunday">Sunday</option>
+            </select>
+            <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black">{{ chevron_down_icon() }}</span>
+          </div>
         </div>
 
-        <div class="flex flex-col gap-1">
-          <label for="numPpl" class="flex items-center gap-2 text-sm font-medium text-black/70">
-            <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-black bg-lavender text-darkamethyst shrink-0">{{ person_simple_hike_icon() }}</span>
+        <div class="flex flex-col gap-2">
+          <label
+            for="numPpl"
+            class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-lazydog"
+          >
+            <span
+              class="flex items-center justify-center shrink-0 text-lavender"
+              >{{ person_simple_hike_icon() }}</span
+            >
             How many people are coming?
           </label>
-          <select
-            name="numPpl"
-            id="numPpl"
-            class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
-          >
-            <option value="Any">Any group size</option>
-            <option value="Just myself">Just myself</option>
-            <option value="Two people">Two people</option>
-            <option value="Small group">Small group</option>
-            <option value="Big group">Big group</option>
-          </select>
+          <div class="relative">
+            <select
+              name="numPpl"
+              id="numPpl"
+              class="w-full appearance-none rounded-full border-2 border-black bg-white px-4 py-2 pr-10 text-black"
+            >
+              <option value="Any">Any group size</option>
+              <option value="Just myself">Just myself</option>
+              <option value="Two people">Two people</option>
+              <option value="Small group">Small group</option>
+              <option value="Big group">Big group</option>
+            </select>
+            <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black">{{ chevron_down_icon() }}</span>
+          </div>
         </div>
 
-        <div class="flex flex-col gap-1">
-          <label for="indoorOutdoor" class="flex items-center gap-2 text-sm font-medium text-black/70">
-            <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-black bg-seagreen text-white shrink-0">{{ house_icon() }}</span>
+        <div class="flex flex-col gap-2">
+          <label
+            for="indoorOutdoor"
+            class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-lazydog"
+          >
+            <span
+              class="flex items-center justify-center shrink-0 text-seagreen"
+              >{{ house_icon() }}</span
+            >
             Indoor or outdoor?
           </label>
-          <select
-            name="indoorOutdoor"
-            id="indoorOutdoor"
-            class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
-          >
-            <option value="Any">Indoor/Outdoor</option>
-            <option value="Indoor">Indoor only</option>
-            <option value="Outdoor">Outdoor only</option>
-          </select>
+          <div class="relative">
+            <select
+              name="indoorOutdoor"
+              id="indoorOutdoor"
+              class="w-full appearance-none rounded-full border-2 border-black bg-white px-4 py-2 pr-10 text-black"
+            >
+              <option value="Any">Indoor/Outdoor</option>
+              <option value="Indoor">Indoor only</option>
+              <option value="Outdoor">Outdoor only</option>
+            </select>
+            <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black">{{ chevron_down_icon() }}</span>
+          </div>
         </div>
 
-        <div id="moreFilters" class="flex flex-col gap-5 overflow-hidden" style="height: 0; opacity: 0;">
-          <div class="flex flex-col gap-1">
-            <label for="budget" class="flex items-center gap-2 text-sm font-medium text-black/70">
-              <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-black bg-casablanca text-darkamethyst shrink-0">{{ circle_dollar_sign_icon() }}</span>
+        <div
+          id="moreFilters"
+          class="flex flex-col gap-7 overflow-hidden"
+          style="height: 0; opacity: 0"
+        >
+          <div class="flex flex-col gap-2">
+            <label
+              for="budget"
+              class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-lazydog"
+            >
+              <span
+                class="flex items-center justify-center shrink-0 text-casablanca"
+                >{{ circle_dollar_sign_icon() }}</span
+              >
               What's your budget?
             </label>
-            <select
-              name="budget"
-              id="budget"
-              class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
-            >
-              <option value="Any">Any budget</option>
-              <option value="Free">Free</option>
-              <option value="$">$</option>
-              <option value="$$">$$</option>
-              <option value="$$$">$$$</option>
-            </select>
+            <div class="relative">
+              <select
+                name="budget"
+                id="budget"
+                class="w-full appearance-none rounded-full border-2 border-black bg-white px-4 py-2 pr-10 text-black"
+              >
+                <option value="Any">Any budget</option>
+                <option value="Free">Free</option>
+                <option value="$">$</option>
+                <option value="$$">$$</option>
+                <option value="$$$">$$$</option>
+              </select>
+              <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black">{{ chevron_down_icon() }}</span>
+            </div>
           </div>
 
-          <div class="flex flex-col gap-1">
-            <label for="effortLevel" class="flex items-center gap-2 text-sm font-medium text-black/70">
-              <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-black bg-lavender text-darkamethyst shrink-0">{{ flame_kindling_icon() }}</span>
+          <div class="flex flex-col gap-2">
+            <label
+              for="effortLevel"
+              class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-lazydog"
+            >
+              <span
+                class="flex items-center justify-center shrink-0 text-lavender"
+                >{{ flame_kindling_icon() }}</span
+              >
               How much effort do you want to spend?
             </label>
-            <select
-              name="effortLevel"
-              id="effortLevel"
-              class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
-            >
-              <option value="Any">I'll put in any effort</option>
-              <option value="Low">Something easy please</option>
-              <option value="Medium">I've got a bit of energy</option>
-              <option value="High">Give me all you got</option>
-            </select>
+            <div class="relative">
+              <select
+                name="effortLevel"
+                id="effortLevel"
+                class="w-full appearance-none rounded-full border-2 border-black bg-white px-4 py-2 pr-10 text-black"
+              >
+                <option value="Any">I'll put in any effort</option>
+                <option value="Low">Something easy please</option>
+                <option value="Medium">I've got a bit of energy</option>
+                <option value="High">Give me all you got</option>
+              </select>
+              <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black">{{ chevron_down_icon() }}</span>
+            </div>
           </div>
 
-          <div class="flex flex-col gap-1">
-            <label for="region" class="flex items-center gap-2 text-sm font-medium text-black/70">
-              <span class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-black bg-seagreen text-white shrink-0">{{ map_pin_icon() }}</span>
+          <div class="flex flex-col gap-2">
+            <label
+              for="region"
+              class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-lazydog"
+            >
+              <span
+                class="flex items-center justify-center shrink-0 text-seagreen"
+                >{{ map_pin_icon() }}</span
+              >
               Where would you like to go?
             </label>
-            <select
-              name="region"
-              id="region"
-              class="w-full rounded-full border-2 border-black bg-white px-4 py-2 text-black"
-            >
-              <option value="Any">I'll go anywhere</option>
-              <option value="Sydney CBD">Sydney CBD</option>
-              <option value="Inner West">Inner West</option>
-              <option value="Eastern Suburbs">Eastern Suburbs</option>
-              <option value="North Shore">North Shore</option>
-              <option value="Northern Beaches">Northern Beaches</option>
-              <option value="South Sydney">South Sydney</option>
-              <option value="Western Sydney">Western Sydney</option>
-              <option value="Blue Mountains">Blue Mountains</option>
-              <option value="Central Coast">Central Coast</option>
-              <option value="Hunter/Newcastle">Hunter/Newcastle</option>
-              <option value="Southern Highlands">Southern Highlands</option>
-              <option value="South Coast">South Coast</option>
-              <option value="NSW - Other">NSW - Other</option>
-            </select>
+            <div class="relative">
+              <select
+                name="region"
+                id="region"
+                class="w-full appearance-none rounded-full border-2 border-black bg-white px-4 py-2 pr-10 text-black"
+              >
+                <option value="Any">I'll go anywhere</option>
+                <option value="Sydney CBD">Sydney CBD</option>
+                <option value="Inner West">Inner West</option>
+                <option value="Eastern Suburbs">Eastern Suburbs</option>
+                <option value="North Shore">North Shore</option>
+                <option value="Northern Beaches">Northern Beaches</option>
+                <option value="South Sydney">South Sydney</option>
+                <option value="Western Sydney">Western Sydney</option>
+                <option value="Blue Mountains">Blue Mountains</option>
+                <option value="Central Coast">Central Coast</option>
+                <option value="Hunter/Newcastle">Hunter/Newcastle</option>
+                <option value="Southern Highlands">Southern Highlands</option>
+                <option value="South Coast">South Coast</option>
+                <option value="NSW - Other">NSW - Other</option>
+              </select>
+              <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black">{{ chevron_down_icon() }}</span>
+            </div>
           </div>
         </div>
 
