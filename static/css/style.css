@@ -186,6 +186,10 @@ body {
   transform: rotate(12deg);
 }
 
+.visually-hidden {
+  visibility: hidden;
+}
+
 .stack-empty {
   position: absolute;
   inset: 0;
@@ -197,6 +201,12 @@ body {
   text-align: center;
 }
 
+.stack-empty-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e1812;
+}
+
 .stack-empty-text {
   font-size: 1.1rem;
   color: #1e1812;
@@ -206,14 +216,14 @@ body {
   font-size: 0.7rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(30, 24, 16, 0.45);
+  color: rgba(30, 24, 16, 0.75);
 }
 
 .stack-hint {
   font-size: 0.62rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(30, 24, 16, 0.3);
+  color: rgba(30, 24, 16, 0.65);
 }
 
 /* ── Activity detail modal ── */
