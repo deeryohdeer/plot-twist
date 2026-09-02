@@ -182,7 +182,8 @@
                 top: 45%;
                 height: 12px;
                 width: 70px;
-                
+                transform: translate(-50%, -50%);
+
                 .box__eye-left {
                 width: 12px;
                 height: 12px;
@@ -370,18 +371,26 @@
         var mouseY=0;
         var mouseX=0;
 
-        $(document).mousemove(function( event ) {
+        function moveGhostEyes(posX, posY) {
         //verticalAxis
-        mouseY = event.pageY;
-        yAxis = (pageY/2-mouseY)/pageY*300; 
+        mouseY = posY;
+        yAxis = (pageY/2-mouseY)/pageY*300;
         //horizontalAxis
-        mouseX = event.pageX / -pageX;
+        mouseX = posX / -pageX;
         xAxis = -mouseX * 100 - 100;
 
-        $('.box__ghost-eyes').css({ 'transform': 'translate('+ xAxis +'%,-'+ yAxis +'%)' }); 
+        $('.box__ghost-eyes').css({ 'transform': 'translate('+ xAxis +'%,-'+ yAxis +'%)' });
+        }
 
-        //console.log('X: ' + xAxis);
+        $(document).on('mousemove', function( event ) {
+        moveGhostEyes(event.pageX, event.pageY);
+        });
 
+        $(document).on('touchmove touchstart', function( event ) {
+        var touch = event.originalEvent.touches[0];
+        if (touch) {
+            moveGhostEyes(touch.pageX, touch.pageY);
+        }
         });
     </script>
   </body>
