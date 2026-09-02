@@ -444,6 +444,90 @@ body {
   cursor: pointer;
 }
 
+/* ── Group size slider (filter page) ── */
+.people-slider-track-wrap {
+  position: relative;
+}
+.people-slider {
+  position: relative;
+  z-index: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 12px;
+  border: none;
+  border-radius: 100px;
+  background: rgba(72, 0, 82, 0.1);
+  cursor: pointer;
+}
+.people-slider-ticks {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 12px;
+  pointer-events: none;
+}
+.people-slider-checkpoint {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #000;
+  opacity: 0.35;
+}
+.people-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  margin-top: -6px;
+  border-radius: 50%;
+  border: none;
+  background: #f6c146;
+}
+.people-slider::-moz-range-track {
+  height: 8px;
+  border-radius: 100px;
+  background: transparent;
+}
+.people-slider::-moz-range-thumb {
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: #f6c146;
+}
+.people-slider:focus-visible {
+  outline: 2px solid #480052;
+  outline-offset: 2px;
+}
+
+/* ── Effort slider icon animation (filter page) ── */
+.effort-icon > svg {
+  animation: effort-icon-sway var(--effort-duration, 1.6s) ease-in-out infinite
+    alternate;
+}
+
+@keyframes effort-icon-sway {
+  from {
+    transform: translateX(-8px);
+  }
+  to {
+    transform: translateX(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .effort-icon > svg {
+    animation: none;
+  }
+}
+
 @media (min-width: 1024px) {
   .activity-modal {
     display: flex;
