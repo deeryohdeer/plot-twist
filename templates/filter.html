@@ -152,8 +152,8 @@ kayak_icon, chevron_down_icon %}
         class="w-full max-w-md flex flex-col gap-7"
       >
         <div class="flex flex-col gap-2">
-          <label
-            for="day"
+          <span
+            id="day-label"
             class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-lazydog"
           >
             <span
@@ -161,23 +161,120 @@ kayak_icon, chevron_down_icon %}
               >{{ calendar_icon() }}</span
             >
             What day of the week?
-          </label>
-          <div class="relative">
-            <select
+          </span>
+          <div role="group" aria-labelledby="day-label" class="flex gap-2">
+            <input
+              type="radio"
               name="day"
-              id="day"
-              class="w-full appearance-none rounded-full border-2 border-black bg-white px-4 py-2 pr-10 text-black"
+              id="day-any"
+              value="Any"
+              class="peer/any sr-only"
+              checked
+            />
+            <label
+              for="day-any"
+              aria-label="Any day"
+              class="flex-1 text-center rounded-full border-2 border-black py-2 text-xs sm:text-sm font-medium text-black cursor-pointer peer-checked/any:bg-black peer-checked/any:text-white"
+              >Any</label
             >
-              <option value="Any">Any day</option>
-              <option value="Monday">Monday</option>
-              <option value="Tuesday">Tuesday</option>
-              <option value="Wednesday">Wednesday</option>
-              <option value="Thursday">Thursday</option>
-              <option value="Friday">Friday</option>
-              <option value="Saturday">Saturday</option>
-              <option value="Sunday">Sunday</option>
-            </select>
-            <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black">{{ chevron_down_icon() }}</span>
+
+            <input
+              type="radio"
+              name="day"
+              id="day-monday"
+              value="Monday"
+              class="peer/monday sr-only"
+            />
+            <label
+              for="day-monday"
+              aria-label="Monday"
+              class="flex-1 text-center rounded-full border-2 border-black py-2 text-xs sm:text-sm font-medium text-black cursor-pointer peer-checked/monday:bg-black peer-checked/monday:text-white"
+              >Mo</label
+            >
+
+            <input
+              type="radio"
+              name="day"
+              id="day-tuesday"
+              value="Tuesday"
+              class="peer/tuesday sr-only"
+            />
+            <label
+              for="day-tuesday"
+              aria-label="Tuesday"
+              class="flex-1 text-center rounded-full border-2 border-black py-2 text-xs sm:text-sm font-medium text-black cursor-pointer peer-checked/tuesday:bg-black peer-checked/tuesday:text-white"
+              >Tu</label
+            >
+
+            <input
+              type="radio"
+              name="day"
+              id="day-wednesday"
+              value="Wednesday"
+              class="peer/wednesday sr-only"
+            />
+            <label
+              for="day-wednesday"
+              aria-label="Wednesday"
+              class="flex-1 text-center rounded-full border-2 border-black py-2 text-xs sm:text-sm font-medium text-black cursor-pointer peer-checked/wednesday:bg-black peer-checked/wednesday:text-white"
+              >We</label
+            >
+
+            <input
+              type="radio"
+              name="day"
+              id="day-thursday"
+              value="Thursday"
+              class="peer/thursday sr-only"
+            />
+            <label
+              for="day-thursday"
+              aria-label="Thursday"
+              class="flex-1 text-center rounded-full border-2 border-black py-2 text-xs sm:text-sm font-medium text-black cursor-pointer peer-checked/thursday:bg-black peer-checked/thursday:text-white"
+              >Th</label
+            >
+
+            <input
+              type="radio"
+              name="day"
+              id="day-friday"
+              value="Friday"
+              class="peer/friday sr-only"
+            />
+            <label
+              for="day-friday"
+              aria-label="Friday"
+              class="flex-1 text-center rounded-full border-2 border-black py-2 text-xs sm:text-sm font-medium text-black cursor-pointer peer-checked/friday:bg-black peer-checked/friday:text-white"
+              >Fr</label
+            >
+
+            <input
+              type="radio"
+              name="day"
+              id="day-saturday"
+              value="Saturday"
+              class="peer/saturday sr-only"
+            />
+            <label
+              for="day-saturday"
+              aria-label="Saturday"
+              class="flex-1 text-center rounded-full border-2 border-black py-2 text-xs sm:text-sm font-medium text-black cursor-pointer peer-checked/saturday:bg-black peer-checked/saturday:text-white"
+              >Sa</label
+            >
+
+            <input
+              type="radio"
+              name="day"
+              id="day-sunday"
+              value="Sunday"
+              class="peer/sunday sr-only"
+            />
+            <label
+              for="day-sunday"
+              aria-label="Sunday"
+              class="flex-1 text-center rounded-full border-2 border-black py-2 text-xs sm:text-sm font-medium text-black cursor-pointer peer-checked/sunday:bg-black peer-checked/sunday:text-white"
+              >Su</label
+            >
           </div>
         </div>
 
@@ -204,7 +301,10 @@ kayak_icon, chevron_down_icon %}
               <option value="Small group">Small group</option>
               <option value="Big group">Big group</option>
             </select>
-            <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black">{{ chevron_down_icon() }}</span>
+            <span
+              class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black"
+              >{{ chevron_down_icon() }}</span
+            >
           </div>
         </div>
 
@@ -229,7 +329,10 @@ kayak_icon, chevron_down_icon %}
               <option value="Indoor">Indoor only</option>
               <option value="Outdoor">Outdoor only</option>
             </select>
-            <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black">{{ chevron_down_icon() }}</span>
+            <span
+              class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black"
+              >{{ chevron_down_icon() }}</span
+            >
           </div>
         </div>
 
@@ -261,7 +364,10 @@ kayak_icon, chevron_down_icon %}
                 <option value="$$">$$</option>
                 <option value="$$$">$$$</option>
               </select>
-              <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black">{{ chevron_down_icon() }}</span>
+              <span
+                class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black"
+                >{{ chevron_down_icon() }}</span
+              >
             </div>
           </div>
 
@@ -287,7 +393,10 @@ kayak_icon, chevron_down_icon %}
                 <option value="Medium">I've got a bit of energy</option>
                 <option value="High">Give me all you got</option>
               </select>
-              <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black">{{ chevron_down_icon() }}</span>
+              <span
+                class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black"
+                >{{ chevron_down_icon() }}</span
+              >
             </div>
           </div>
 
@@ -323,7 +432,10 @@ kayak_icon, chevron_down_icon %}
                 <option value="South Coast">South Coast</option>
                 <option value="NSW - Other">NSW - Other</option>
               </select>
-              <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black">{{ chevron_down_icon() }}</span>
+              <span
+                class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black"
+                >{{ chevron_down_icon() }}</span
+              >
             </div>
           </div>
         </div>
