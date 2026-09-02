@@ -22,8 +22,34 @@ function updateNumPpl(index) {
   });
 }
 
+// The input uses a fractional step so the thumb glides smoothly under the
+// cursor instead of hopping between whole positions; we round here for
+// the discrete icon/label logic.
+function numPplIndex() {
+  return Math.round(Number(numPplSlider.value));
+}
+
 numPplSlider.addEventListener("input", () => {
-  updateNumPpl(numPplSlider.value);
+  updateNumPpl(numPplIndex());
 });
 
-updateNumPpl(numPplSlider.value);
+// Once the user lets go, snap the thumb to a clean resting position.
+numPplSlider.addEventListener("change", () => {
+  numPplSlider.value = String(numPplIndex());
+});
+
+numPplSlider.addEventListener("keydown", (event) => {
+  const step = { ArrowLeft: -1, ArrowDown: -1, ArrowRight: 1, ArrowUp: 1 }[
+    event.key
+  ];
+  if (step === undefined) return;
+  event.preventDefault();
+  const next = Math.min(
+    NUM_PPL.length - 1,
+    Math.max(0, numPplIndex() + step),
+  );
+  numPplSlider.value = String(next);
+  updateNumPpl(next);
+});
+
+updateNumPpl(numPplIndex());

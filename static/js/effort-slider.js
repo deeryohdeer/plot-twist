@@ -31,8 +31,31 @@ function updateEffort(index) {
   );
 }
 
+// The input uses a fractional step so the thumb glides smoothly under the
+// cursor instead of hopping between whole positions; we round here for
+// the discrete icon/label logic.
+function effortIndex() {
+  return Math.round(Number(effortSlider.value));
+}
+
 effortSlider.addEventListener("input", () => {
-  updateEffort(effortSlider.value);
+  updateEffort(effortIndex());
 });
 
-updateEffort(effortSlider.value);
+// Once the user lets go, snap the thumb to a clean resting position.
+effortSlider.addEventListener("change", () => {
+  effortSlider.value = String(effortIndex());
+});
+
+effortSlider.addEventListener("keydown", (event) => {
+  const step = { ArrowLeft: -1, ArrowDown: -1, ArrowRight: 1, ArrowUp: 1 }[
+    event.key
+  ];
+  if (step === undefined) return;
+  event.preventDefault();
+  const next = Math.min(EFFORT.length - 1, Math.max(0, effortIndex() + step));
+  effortSlider.value = String(next);
+  updateEffort(next);
+});
+
+updateEffort(effortIndex());

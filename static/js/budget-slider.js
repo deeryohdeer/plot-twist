@@ -22,8 +22,31 @@ function updateBudget(index) {
   });
 }
 
+// The input uses a fractional step so the thumb glides smoothly under the
+// cursor instead of hopping between whole positions; we round here for
+// the discrete icon/label logic.
+function budgetIndex() {
+  return Math.round(Number(budgetSlider.value));
+}
+
 budgetSlider.addEventListener("input", () => {
-  updateBudget(budgetSlider.value);
+  updateBudget(budgetIndex());
 });
 
-updateBudget(budgetSlider.value);
+// Once the user lets go, snap the thumb to a clean resting position.
+budgetSlider.addEventListener("change", () => {
+  budgetSlider.value = String(budgetIndex());
+});
+
+budgetSlider.addEventListener("keydown", (event) => {
+  const step = { ArrowLeft: -1, ArrowDown: -1, ArrowRight: 1, ArrowUp: 1 }[
+    event.key
+  ];
+  if (step === undefined) return;
+  event.preventDefault();
+  const next = Math.min(BUDGET.length - 1, Math.max(0, budgetIndex() + step));
+  budgetSlider.value = String(next);
+  updateBudget(next);
+});
+
+updateBudget(budgetIndex());
