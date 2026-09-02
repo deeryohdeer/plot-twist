@@ -1,9 +1,9 @@
 const BUDGET = [
   { value: "Any", label: "Any budget" },
   { value: "Free", label: "Free" },
-  { value: "$", label: "$" },
-  { value: "$$", label: "$$" },
-  { value: "$$$", label: "$$$" },
+  { value: "$", label: "Cheapo" },
+  { value: "$$", label: "Treat yo self" },
+  { value: "$$$", label: "Make it rain" },
 ];
 
 const budgetSlider = document.getElementById("budget-slider");

@@ -1,4 +1,4 @@
-{% from "components/icons.html" import map_pin_icon %} {% from
+{% from "components/icons.html" import map_pin_icon, house_icon %} {% from
 "components/activity_card.html" import activity_card %}
 <html>
   <head>
@@ -50,6 +50,14 @@
   <body
     class="min-h-screen flex flex-col items-center justify-center gap-6 p-4 lg:p-10"
   >
+    <a
+      href="/"
+      class="page-back-btn btn-hover-pop flex items-center justify-center"
+      aria-label="Back to home"
+    >
+      {{ house_icon(class_="!w-4 !h-4") }}
+    </a>
+
     <h1
       id="swipe-heading"
       class="text-2xl lg:text-3xl font-bold font-lazydog pt-6 lg:pt-0"

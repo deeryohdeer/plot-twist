@@ -2,7 +2,8 @@
 bird_icon, house_icon, circle_dollar_sign_icon, flame_kindling_icon,
 map_pin_icon, wand_sparkles_icon, puzzle_icon, gem_icon, ghost_icon,
 telescope_icon, kayak_icon, chevron_down_icon, hand_coins_icon,
-dollar_sign_icon, fish_icon, turtle_icon, squirrel_icon, rabbit_icon %}
+dollar_sign_icon, fish_icon, turtle_icon, squirrel_icon, rabbit_icon,
+person_simple_hike_icon %}
 <html>
   <head>
     <title>plottwist</title>
@@ -67,17 +68,8 @@ dollar_sign_icon, fish_icon, turtle_icon, squirrel_icon, rabbit_icon %}
   <body
     class="relative overflow-hidden min-h-screen flex flex-col items-center gap-6 p-4 py-8 lg:p-10 bg-white"
   >
-    <!-- Warm wash + noise texture, echoing the "I'll decide" panel this page came from -->
+    <!-- Warm wash, echoing the "I'll decide" panel this page came from -->
     <div class="absolute inset-0 pointer-events-none bg-casablanca/15"></div>
-    <div
-      class="absolute inset-0 pointer-events-none opacity-25"
-      style="
-        background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxmaWx0ZXIgaWQ9Im4iPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjg1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI24pIi8+PC9zdmc+&quot;);
-        background-size: 180px 180px;
-        background-repeat: repeat;
-        background-blend-mode: overlay;
-      "
-    ></div>
 
     <!-- Floating doodles -->
     <div
@@ -341,9 +333,14 @@ dollar_sign_icon, fish_icon, turtle_icon, squirrel_icon, rabbit_icon %}
         <div class="flex flex-col gap-3">
           <label
             for="numPpl-slider"
-            class="text-base md:text-lg font-medium text-black/70 font-lazydog"
-            >How many people are coming?</label
+            class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-lazydog"
           >
+            <span
+              class="flex items-center justify-center shrink-0 text-lavender"
+              >{{ person_simple_hike_icon() }}</span
+            >
+            How many people are coming?
+          </label>
 
           <div
             id="numPpl-icons"
@@ -617,17 +614,15 @@ dollar_sign_icon, fish_icon, turtle_icon, squirrel_icon, rabbit_icon %}
         />
       </form>
 
-      <div class="w-full max-w-md flex flex-col gap-3">
-        <form>
-          <input
-            type="button"
-            value="Take me back!"
-            onclick="history.back()"
-            class="btn-hover-pop w-full rounded-full border-2 border-black bg-white px-6 py-3 font-semibold text-black cursor-pointer"
-          />
-        </form>
-      </div>
     </div>
+
+    <a
+      href="/"
+      class="page-back-btn btn-hover-pop flex items-center justify-center"
+      aria-label="Back to home"
+    >
+      {{ house_icon(class_="!w-4 !h-4") }}
+    </a>
 
     <script src="{{ url_for('static', path='js/register-sw.js') }}"></script>
     <script src="{{ url_for('static', path='js/num-people-slider.js') }}"></script>
