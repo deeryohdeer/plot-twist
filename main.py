@@ -39,11 +39,36 @@ VIBE_ORDER = [
 ]
 VALID_VIBES = set(VIBE_ORDER)
 VIBE_LABELS = {"DateNight": "Date Night"}
+VIBE_COLORS = {
+    "Outdoorsy": "#599803",
+    "Date Night": "#e280b1",
+    "Sporty": "#012981",
+    "Artsy": "#1ba8de",
+    "Groovy": "#ea4414",
+    "Musical": "#de8818",
+    "Relaxing": "#dedbe8",
+    "Party": "#8c2163",
+    "Chill": "#4d615f",
+}
+VIBE_TEXT_COLORS = {
+    "Relaxing": "#000",
+}
 
 
 def withVibes(entry):
     vibes = [VIBE_LABELS.get(v, v) for v in VIBE_ORDER if entry.get(v) == 1]
     return {**entry, "vibes": vibes}
+
+
+def vibe_style(label):
+    bg = VIBE_COLORS.get(label)
+    if not bg:
+        return ""
+    fg = VIBE_TEXT_COLORS.get(label, "#fff")
+    return f"background-color:{bg};color:{fg};"
+
+
+templates.env.filters["vibe_style"] = vibe_style
 
 
 @app.exception_handler(StarletteHTTPException)

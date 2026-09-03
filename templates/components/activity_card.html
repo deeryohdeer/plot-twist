@@ -38,7 +38,7 @@ calendar_icon, circle_dollar_sign_icon, link_icon %}
     ] %} {% if pill %}
     <span class="pill">{{ pill }}</span>
     {% endif %} {% endfor %} {% for vibe in a.vibes or [] %}
-    <span class="pill">{{ vibe }}</span>
+    <span class="pill pill-vibe" style="{{ vibe|vibe_style }}">{{ vibe }}</span>
     {% endfor %}
   </div>
   <div
