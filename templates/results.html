@@ -85,6 +85,7 @@
         data-timing="{{activity.timing or ''}}"
         data-link="{{activity.link or ''}}"
         data-link-hyperlink="{{activity.linkHyperlink or ''}}"
+        data-vibes="{{ activity.vibes|join(',') }}"
       >
         <div class="card-face">
           <img
@@ -106,6 +107,9 @@
             <div class="card-pills">
               <span class="pill">{{activity.budget}}</span>
               <span class="pill">{{activity.effortLevel}} Effort</span>
+              {% for vibe in activity.vibes %}
+              <span class="pill">{{ vibe }}</span>
+              {% endfor %}
             </div>
           </div>
           <div class="card-like">YOPE</div>
@@ -122,7 +126,7 @@
         <a
           id="i-want-more-btn"
           class="btn-hover-pop inline-block bg-darkamethyst text-white font-semibold rounded-full border-4 border-black px-5 py-2"
-          href="/results?isRandom={{isRandom}}&day={{day}}&numPpl={{numPpl}}&indoorOutdoor={{indoorOutdoor}}&budget={{budget}}&effortLevel={{effortLevel}}&region={{region}}&page={{page+1}}&seed={{seed}}"
+          href="/results?isRandom={{isRandom}}&day={{day}}&numPpl={{numPpl}}&indoorOutdoor={{indoorOutdoor}}&dayNight={{dayNight}}&budget={{budget}}&effortLevel={{effortLevel}}&region={{region}}{% for v in vibe %}&vibe={{v}}{% endfor %}&page={{page+1}}&seed={{seed}}"
           >Not enough, give me more!</a
         >
         {% else %}

@@ -33,6 +33,18 @@ VALID_REGION = {
     "Central Coast", "Hunter/Newcastle", "Southern Highlands", "South Coast",
     "NSW - Other",
 }
+VIBE_ORDER = [
+    "Sporty", "Artsy", "Groovy", "Musical", "Outdoorsy", "Relaxing",
+    "Party", "Chill", "DateNight",
+]
+VALID_VIBES = set(VIBE_ORDER)
+VIBE_LABELS = {"DateNight": "Date Night"}
+
+
+def withVibes(entry):
+    vibes = [VIBE_LABELS.get(v, v) for v in VIBE_ORDER if entry.get(v) == 1]
+    return {**entry, "vibes": vibes}
+
 
 @app.exception_handler(StarletteHTTPException)
 async def not_found_handler(request: Request, exc: StarletteHTTPException):
@@ -62,7 +74,7 @@ async def filterpage(request: Request):
     return templates.TemplateResponse(request, "filter.html")
 
 @app.get("/results")
-async def read_results(request: Request, day, numPpl, indoorOutdoor, dayNight, budget, effortLevel, region, isRandom: bool=False, page: int=Query(1,ge=1), seed: int|None=None):
+async def read_results(request: Request, day, numPpl, indoorOutdoor, dayNight, budget, effortLevel, region, isRandom: bool=False, page: int=Query(1,ge=1), seed: int|None=None, vibe: list[str]=Query([])):
 
     if (
         day not in VALID_DAYS
@@ -72,6 +84,7 @@ async def read_results(request: Request, day, numPpl, indoorOutdoor, dayNight, b
         or budget not in VALID_BUDGET
         or effortLevel not in VALID_EFFORT_LEVEL
         or region not in VALID_REGION
+        or not all(v in VALID_VIBES for v in vibe)
     ):
         return templates.TemplateResponse(request, "404.html", status_code=404)
 
@@ -97,8 +110,9 @@ async def read_results(request: Request, day, numPpl, indoorOutdoor, dayNight, b
 
         filterEffortLevel = [entry for entry in filterBudget if effortLevel=="Any" or entry['effortLevel']==effortLevel]
         filterRegion = [entry for entry in filterEffortLevel if region=="Any" or entry['region']==region]
+        filterVibe = [entry for entry in filterRegion if not vibe or any(entry.get(v)==1 for v in vibe)]
 
-        finalFilteredRange = filterRegion
+        finalFilteredRange = filterVibe
     else: 
         finalFilteredRange = fullList
 
@@ -106,24 +120,26 @@ async def read_results(request: Request, day, numPpl, indoorOutdoor, dayNight, b
     rng.shuffle(finalFilteredRange)
 
     return templates.TemplateResponse(request, "results.html", context={
-        "results": finalFilteredRange[start:end],
+        "results": [withVibes(entry) for entry in finalFilteredRange[start:end]],
         "page": page,
         "seed": seed,
         "isRandom": isRandom,
         "has_next": end < len(finalFilteredRange),
         "day": day,
-        "numPpl": numPpl, 
-        "indoorOutdoor": indoorOutdoor, 
-        "budget": budget, 
-        "effortLevel": effortLevel, 
-        "region": region
+        "numPpl": numPpl,
+        "indoorOutdoor": indoorOutdoor,
+        "dayNight": dayNight,
+        "budget": budget,
+        "effortLevel": effortLevel,
+        "region": region,
+        "vibe": vibe,
     })
 
 @app.get("/activities/{id}")
 async def getActivity(request: Request, id:str):
     fullList = loadList()
 
-    filterActivity = [entry for entry in fullList if entry["id"]==id]
+    filterActivity = [withVibes(entry) for entry in fullList if entry["id"]==id]
     if len(filterActivity) > 0:
         return templates.TemplateResponse(request, "getactivity.html", {"activities":filterActivity})
     else:

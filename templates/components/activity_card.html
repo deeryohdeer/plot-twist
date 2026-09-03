@@ -37,7 +37,9 @@ calendar_icon, circle_dollar_sign_icon, link_icon %}
       a.region,
     ] %} {% if pill %}
     <span class="pill">{{ pill }}</span>
-    {% endif %} {% endfor %}
+    {% endif %} {% endfor %} {% for vibe in a.vibes or [] %}
+    <span class="pill">{{ vibe }}</span>
+    {% endfor %}
   </div>
   <div
     class="activity-modal-row"
