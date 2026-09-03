@@ -6,10 +6,21 @@
 }
 
 @font-face {
+  font-family: "Vaticanus";
+  src: url("../fonts/Vaticanus.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "Lazy Dog";
   src: url("../fonts/LAZYDOG.TTF") format("truetype");
   font-weight: normal;
   font-style: normal;
+}
+
+.font-vaticanus {
+  letter-spacing: 0.05em;
 }
 
 html,

@@ -39,6 +39,7 @@
         --color-carnation: #f45f57;
         --color-seagreen: #4c956c;
         --color-lavender: #a09ebb;
+        --font-vaticanus: "Vaticanus", sans-serif;
         --font-lazydog: "Lazy Dog", sans-serif;
       }
     </style>
@@ -60,7 +61,7 @@
 
     <h1
       id="swipe-heading"
-      class="text-2xl lg:text-3xl font-bold font-lazydog pt-6 lg:pt-0"
+      class="text-2xl lg:text-3xl font-bold font-vaticanus pt-6 lg:pt-0"
     >
       Swipe till it sticks
     </h1>
@@ -116,7 +117,7 @@
       <div class="stack-empty" id="stack-empty">
         {% if has_next %}
         <div class="text-8xl">😭</div>
-        <p class="stack-empty-title font-lazydog">Oh naurrrrrrr</p>
+        <p class="stack-empty-title font-vaticanus">Oh naurrrrrrr</p>
         <p class="stack-empty-text">Looks like we're out of cards</p>
         <a
           id="i-want-more-btn"
@@ -126,7 +127,7 @@
         >
         {% else %}
         <div class="text-8xl">💀</div>
-        <p class="stack-empty-title font-lazydog">
+        <p class="stack-empty-title font-vaticanus">
           Well damn, you've exhausted all your options
         </p>
         <p class="stack-empty-text">Time to lower your standards</p>
