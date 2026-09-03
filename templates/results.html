@@ -105,8 +105,6 @@
               {% else %} {{activity.location}} {% endif %}
             </div>
             <div class="card-pills">
-              <span class="pill">{{activity.budget}}</span>
-              <span class="pill">{{activity.effortLevel}} Effort</span>
               {% for vibe in activity.vibes %}
               <span class="pill">{{ vibe }}</span>
               {% endfor %}
