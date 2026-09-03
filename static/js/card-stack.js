@@ -169,6 +169,9 @@
     [d.budget, d.effortLevel, d.indoorOrOutdoor, d.numberOfPeople, d.region]
       .filter(Boolean)
       .forEach((text) => modalPills.appendChild(pill(text)));
+    (d.vibes ? d.vibes.split(",") : [])
+      .filter(Boolean)
+      .forEach((text) => modalPills.appendChild(pill(text)));
 
     modalDescriptionRow.style.display = d.description ? "flex" : "none";
     modalDescription.textContent = d.description || "";

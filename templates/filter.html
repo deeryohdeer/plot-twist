@@ -632,6 +632,141 @@ person_simple_hike_icon %}
           </div>
 
           <div class="flex flex-col gap-2">
+            <span
+              id="vibe-label"
+              class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-vaticanus"
+            >
+              <span
+                class="flex items-center justify-center shrink-0 text-carnation"
+                >{{ wand_sparkles_icon() }}</span
+              >
+              What's the vibe?
+            </span>
+            <div
+              role="group"
+              aria-labelledby="vibe-label"
+              class="flex flex-wrap gap-2"
+            >
+              <input
+                type="checkbox"
+                name="vibe"
+                id="vibe-sporty"
+                value="Sporty"
+                class="sr-only vibe-checkbox"
+              />
+              <label
+                for="vibe-sporty"
+                class="vibe-pill rounded-full border-2 border-black px-4 py-2 text-xs sm:text-sm font-medium text-black cursor-pointer transition-colors"
+                >Sporty</label
+              >
+
+              <input
+                type="checkbox"
+                name="vibe"
+                id="vibe-artsy"
+                value="Artsy"
+                class="sr-only vibe-checkbox"
+              />
+              <label
+                for="vibe-artsy"
+                class="vibe-pill rounded-full border-2 border-black px-4 py-2 text-xs sm:text-sm font-medium text-black cursor-pointer transition-colors"
+                >Artsy</label
+              >
+
+              <input
+                type="checkbox"
+                name="vibe"
+                id="vibe-groovy"
+                value="Groovy"
+                class="sr-only vibe-checkbox"
+              />
+              <label
+                for="vibe-groovy"
+                class="vibe-pill rounded-full border-2 border-black px-4 py-2 text-xs sm:text-sm font-medium text-black cursor-pointer transition-colors"
+                >Groovy</label
+              >
+
+              <input
+                type="checkbox"
+                name="vibe"
+                id="vibe-musical"
+                value="Musical"
+                class="sr-only vibe-checkbox"
+              />
+              <label
+                for="vibe-musical"
+                class="vibe-pill rounded-full border-2 border-black px-4 py-2 text-xs sm:text-sm font-medium text-black cursor-pointer transition-colors"
+                >Musical</label
+              >
+
+              <input
+                type="checkbox"
+                name="vibe"
+                id="vibe-outdoorsy"
+                value="Outdoorsy"
+                class="sr-only vibe-checkbox"
+              />
+              <label
+                for="vibe-outdoorsy"
+                class="vibe-pill rounded-full border-2 border-black px-4 py-2 text-xs sm:text-sm font-medium text-black cursor-pointer transition-colors"
+                >Outdoorsy</label
+              >
+
+              <input
+                type="checkbox"
+                name="vibe"
+                id="vibe-relaxing"
+                value="Relaxing"
+                class="sr-only vibe-checkbox"
+              />
+              <label
+                for="vibe-relaxing"
+                class="vibe-pill rounded-full border-2 border-black px-4 py-2 text-xs sm:text-sm font-medium text-black cursor-pointer transition-colors"
+                >Relaxing</label
+              >
+
+              <input
+                type="checkbox"
+                name="vibe"
+                id="vibe-party"
+                value="Party"
+                class="sr-only vibe-checkbox"
+              />
+              <label
+                for="vibe-party"
+                class="vibe-pill rounded-full border-2 border-black px-4 py-2 text-xs sm:text-sm font-medium text-black cursor-pointer transition-colors"
+                >Party</label
+              >
+
+              <input
+                type="checkbox"
+                name="vibe"
+                id="vibe-chill"
+                value="Chill"
+                class="sr-only vibe-checkbox"
+              />
+              <label
+                for="vibe-chill"
+                class="vibe-pill rounded-full border-2 border-black px-4 py-2 text-xs sm:text-sm font-medium text-black cursor-pointer transition-colors"
+                >Chill</label
+              >
+
+              <input
+                type="checkbox"
+                name="vibe"
+                id="vibe-datenight"
+                value="DateNight"
+                class="sr-only vibe-checkbox"
+              />
+              <label
+                for="vibe-datenight"
+                class="vibe-pill rounded-full border-2 border-black px-4 py-2 text-xs sm:text-sm font-medium text-black cursor-pointer transition-colors"
+                >Date Night</label
+              >
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
             <label
               for="region"
               class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-vaticanus"
@@ -691,5 +826,6 @@ person_simple_hike_icon %}
     <script src="{{ url_for('static', path='js/num-people-slider.js') }}"></script>
     <script src="{{ url_for('static', path='js/budget-slider.js') }}"></script>
     <script src="{{ url_for('static', path='js/effort-slider.js') }}"></script>
+    <script src="{{ url_for('static', path='js/vibe-filter.js') }}"></script>
   </body>
 </html>
