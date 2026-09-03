@@ -333,6 +333,67 @@ person_simple_hike_icon %}
           </div>
         </div>
 
+        <div class="flex flex-col gap-2">
+          <span
+            id="dayNight-label"
+            class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-vaticanus"
+          >
+            <span
+              class="flex items-center justify-center shrink-0 text-seagreen"
+              >{{ house_icon() }}</span
+            >
+            Day or night?
+          </span>
+          <div
+            role="group"
+            aria-labelledby="dayNight-label"
+            class="flex gap-2"
+          >
+            <input
+              type="radio"
+              name="dayNight"
+              id="dayNight-any"
+              value="Any"
+              class="peer/dn-any sr-only"
+              checked
+            />
+            <label
+              for="dayNight-any"
+              aria-label="Day or Night"
+              class="flex-1 text-center rounded-full border-2 border-black py-2 text-xs sm:text-sm font-medium text-black cursor-pointer peer-checked/dn-any:bg-black peer-checked/dn-any:text-white"
+              >Either</label
+            >
+
+            <input
+              type="radio"
+              name="dayNight"
+              id="dayNight-day"
+              value="Day"
+              class="peer/dn-day sr-only"
+            />
+            <label
+              for="dayNight-day"
+              aria-label="Day"
+              class="flex-1 text-center rounded-full border-2 border-black py-2 text-xs sm:text-sm font-medium text-black cursor-pointer peer-checked/dn-day:bg-black peer-checked/dn-day:text-white"
+              >Day</label
+            >
+
+            <input
+              type="radio"
+              name="dayNight"
+              id="dayNight-night"
+              value="Night"
+              class="peer/dn-night sr-only"
+            />
+            <label
+              for="dayNight-night"
+              aria-label="Night"
+              class="flex-1 text-center rounded-full border-2 border-black py-2 text-xs sm:text-sm font-medium text-black cursor-pointer peer-checked/dn-night:bg-black peer-checked/dn-night:text-white"
+              >Night</label
+            >
+          </div>
+        </div>
+
         <div class="flex flex-col gap-3">
           <label
             for="numPpl-slider"

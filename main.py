@@ -24,6 +24,7 @@ templates = Jinja2Templates(directory="templates")
 VALID_DAYS = {"Any", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"}
 VALID_NUM_PPL = {"Any", "Just myself", "Two people", "Small group", "Big group"}
 VALID_INDOOR_OUTDOOR = {"Any", "Indoor", "Outdoor"}
+VALID_DAY_NIGHT = {"Any", "Day", "Night"}
 VALID_BUDGET = {"Any", "Free", "$", "$$", "$$$"}
 VALID_EFFORT_LEVEL = {"Any", "Low", "Medium", "High"}
 VALID_REGION = {
@@ -32,7 +33,6 @@ VALID_REGION = {
     "Central Coast", "Hunter/Newcastle", "Southern Highlands", "South Coast",
     "NSW - Other",
 }
-
 
 @app.exception_handler(StarletteHTTPException)
 async def not_found_handler(request: Request, exc: StarletteHTTPException):
@@ -62,12 +62,13 @@ async def filterpage(request: Request):
     return templates.TemplateResponse(request, "filter.html")
 
 @app.get("/results")
-async def read_results(request: Request, day, numPpl, indoorOutdoor, budget, effortLevel, region, isRandom: bool=False, page: int=Query(1,ge=1), seed: int|None=None):
+async def read_results(request: Request, day, numPpl, indoorOutdoor, dayNight, budget, effortLevel, region, isRandom: bool=False, page: int=Query(1,ge=1), seed: int|None=None):
 
     if (
         day not in VALID_DAYS
         or numPpl not in VALID_NUM_PPL
         or indoorOutdoor not in VALID_INDOOR_OUTDOOR
+        or dayNight not in VALID_DAY_NIGHT
         or budget not in VALID_BUDGET
         or effortLevel not in VALID_EFFORT_LEVEL
         or region not in VALID_REGION
@@ -86,8 +87,9 @@ async def read_results(request: Request, day, numPpl, indoorOutdoor, budget, eff
 
     if not isRandom:
         filterNumPpl = [entry for entry in fullList if numPpl=="Any" or entry["numberOfPeople"] in (numPpl, "Any")]
-        filterIndoorOutdoor = [entry for entry in filterNumPpl if indoorOutdoor=="Any" or entry['indoorOrOutdoor']==indoorOutdoor]   
-        filterDay = [entry for entry in filterIndoorOutdoor if day=="Any" or entry.get(day)==1]
+        filterIndoorOutdoor = [entry for entry in filterNumPpl if indoorOutdoor=="Any" or entry['indoorOrOutdoor']==indoorOutdoor] 
+        filterDayNight = [entry for entry in filterIndoorOutdoor if dayNight=="Any" or entry['dayNight']==dayNight]
+        filterDay = [entry for entry in filterDayNight if day=="Any" or entry.get(day)==1]
 
         budget_levels = {"Free": 0, "$": 1, "$$": 2, "$$$": 3}
         filterBudget = [entry for entry in filterDay if budget=="Any" or budget_levels[entry["budget"]] <= budget_levels[budget]]
