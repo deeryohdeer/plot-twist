@@ -3,7 +3,8 @@ bird_icon, house_icon, circle_dollar_sign_icon, flame_kindling_icon,
 map_pin_icon, wand_sparkles_icon, puzzle_icon, gem_icon, ghost_icon,
 telescope_icon, kayak_icon, chevron_down_icon, hand_coins_icon,
 dollar_sign_icon, fish_icon, turtle_icon, squirrel_icon, rabbit_icon,
-person_simple_hike_icon %}
+person_simple_hike_icon, sun_icon, sun_moon_icon, moon_icon,
+tent_tree_icon, door_stairwell_icon %}
 <html>
   <head>
     <title>plottwist</title>
@@ -278,9 +279,19 @@ person_simple_hike_icon %}
             class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-vaticanus"
           >
             <span
+              id="indoorOutdoor-icons"
               class="flex items-center justify-center shrink-0 text-seagreen"
-              >{{ house_icon() }}</span
             >
+              <span class="indoorOutdoor-icon flex" data-value="Any"
+                >{{ house_icon() }}</span
+              >
+              <span class="indoorOutdoor-icon hidden" data-value="Indoor"
+                >{{ door_stairwell_icon() }}</span
+              >
+              <span class="indoorOutdoor-icon hidden" data-value="Outdoor"
+                >{{ tent_tree_icon() }}</span
+              >
+            </span>
             Indoor or outdoor?
           </span>
           <div
@@ -339,9 +350,19 @@ person_simple_hike_icon %}
             class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-vaticanus"
           >
             <span
-              class="flex items-center justify-center shrink-0 text-seagreen"
-              >{{ house_icon() }}</span
+              id="dayNight-icons"
+              class="flex items-center justify-center shrink-0 text-lavender"
             >
+              <span class="dayNight-icon flex" data-value="Any"
+                >{{ sun_moon_icon() }}</span
+              >
+              <span class="dayNight-icon hidden" data-value="Day"
+                >{{ sun_icon() }}</span
+              >
+              <span class="dayNight-icon hidden" data-value="Night"
+                >{{ moon_icon() }}</span
+              >
+            </span>
             Day or night?
           </span>
           <div
@@ -400,7 +421,7 @@ person_simple_hike_icon %}
             class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-vaticanus"
           >
             <span
-              class="flex items-center justify-center shrink-0 text-lavender"
+              class="flex items-center justify-center shrink-0 text-carnation"
               >{{ person_simple_hike_icon() }}</span
             >
             How many people are coming?
@@ -567,7 +588,7 @@ person_simple_hike_icon %}
               class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-vaticanus"
             >
               <span
-                class="flex items-center justify-center shrink-0 text-lavender"
+                class="flex items-center justify-center shrink-0 text-seagreen"
                 >{{ flame_kindling_icon() }}</span
               >
               How much effort do you want to spend?
@@ -637,7 +658,7 @@ person_simple_hike_icon %}
               class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-vaticanus"
             >
               <span
-                class="flex items-center justify-center shrink-0 text-carnation"
+                class="flex items-center justify-center shrink-0 text-lavender"
                 >{{ wand_sparkles_icon() }}</span
               >
               What's the vibe?
@@ -772,7 +793,7 @@ person_simple_hike_icon %}
               class="flex items-center gap-3 text-base md:text-lg font-medium text-black/70 font-vaticanus"
             >
               <span
-                class="flex items-center justify-center shrink-0 text-seagreen"
+                class="flex items-center justify-center shrink-0 text-carnation"
                 >{{ map_pin_icon() }}</span
               >
               Where would you like to go?
@@ -823,6 +844,8 @@ person_simple_hike_icon %}
     </a>
 
     <script src="{{ url_for('static', path='js/register-sw.js') }}"></script>
+    <script src="{{ url_for('static', path='js/indoor-outdoor-icon.js') }}"></script>
+    <script src="{{ url_for('static', path='js/day-night-icon.js') }}"></script>
     <script src="{{ url_for('static', path='js/num-people-slider.js') }}"></script>
     <script src="{{ url_for('static', path='js/budget-slider.js') }}"></script>
     <script src="{{ url_for('static', path='js/effort-slider.js') }}"></script>
