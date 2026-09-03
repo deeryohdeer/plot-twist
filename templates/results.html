@@ -106,7 +106,7 @@
             </div>
             <div class="card-pills">
               {% for vibe in activity.vibes %}
-              <span class="pill">{{ vibe }}</span>
+              <span class="pill pill-vibe" style="{{ vibe|vibe_style }}">{{ vibe }}</span>
               {% endfor %}
             </div>
           </div>
@@ -159,6 +159,7 @@
       </div>
     </div>
 
+    <script src="{{ url_for('static', path='js/vibe-colors.js') }}"></script>
     <script src="{{ url_for('static', path='js/card-stack.js') }}"></script>
     <script src="{{ url_for('static', path='js/share.js') }}"></script>
     <script src="{{ url_for('static', path='js/register-sw.js') }}"></script>

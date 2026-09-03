@@ -137,10 +137,14 @@
     "activity-modal-share-popover",
   );
 
-  function pill(text) {
+  function pill(text, color) {
     const span = document.createElement("span");
-    span.className = "pill";
+    span.className = color ? "pill pill-vibe" : "pill";
     span.textContent = text;
+    if (color) {
+      span.style.backgroundColor = color.bg;
+      span.style.color = color.fg;
+    }
     return span;
   }
 
@@ -171,7 +175,11 @@
       .forEach((text) => modalPills.appendChild(pill(text)));
     (d.vibes ? d.vibes.split(",") : [])
       .filter(Boolean)
-      .forEach((text) => modalPills.appendChild(pill(text)));
+      .forEach((text) =>
+        modalPills.appendChild(
+          pill(text, window.getVibeColor ? window.getVibeColor(text) : null),
+        ),
+      );
 
     modalDescriptionRow.style.display = d.description ? "flex" : "none";
     modalDescription.textContent = d.description || "";
