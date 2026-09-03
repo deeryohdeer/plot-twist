@@ -331,17 +331,6 @@ body {
   gap: 0.6rem;
 }
 
-.activity-modal-tag {
-  align-self: flex-start;
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #1e1812;
-  background: #f6c146;
-  border-radius: 100px;
-  padding: 4px 12px;
-}
-
 .activity-modal-title {
   font-size: 1.6rem;
   color: #fff;
@@ -589,10 +578,6 @@ body {
     min-width: 0;
     gap: 1.1rem;
     padding: 2.5rem;
-  }
-
-  .activity-modal-tag {
-    font-size: 0.75rem;
   }
 
   .activity-modal-title {
